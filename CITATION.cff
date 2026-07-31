@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this package, please cite it as below."
+title: "Near-miss constructions, interaction surfaces, and prime-support obstructions for the 3x3 magic square of squares"
+type: software
+authors:
+  - family-names: Babanskyy
+    given-names: Oleksiy
+    orcid: "https://orcid.org/0009-0001-6176-6208"
+repository-code: "https://github.com/aconsciousfractal/FCIG-Magic-Square-of-Squares-Near-Miss-Prime-Support"
+license: MIT
+date-released: "2026-07-31"
+keywords:
+  - magic-square-of-squares
+  - labar-problem
+  - arithmetic-progressions-of-squares
+  - congruent-number-curve
+  - near-miss-constructions
+  - s-unit-equation
+  - prime-support
+  - genus-two-chabauty
+  - elliptic-curves
+  - reproducibility
+  - verified-exhibit
+abstract: >-
+  Difference-side arithmetic of the 3x3 magic square of squares problem:
+  a seven-line normal form (three same-difference square progressions on a
+  transversal frame); three explicit mechanisms producing infinite (8,7)
+  near-miss families with a complete least-shift law; the interaction
+  surface for the eighth line, its saturation and full S5 cone monodromy;
+  imported fixed-difference finiteness with one completely closed fibre
+  and a finite-Kummer-class stop; a five-term S-unit support law with an
+  exact mod-8 endpoint/interior table and, for primitive positive
+  configurations, the complete exclusion of the supports {2,3} and
+  {2,3,p}; and the four-prime frontier stated exactly and left open. Every computation ships as an exact machine-checkable
+  certificate replayed by a standard-library verifier; commercial-CAS
+  evidence enters only as hash-verified frozen transcripts with their
+  exact calculator inputs. Classical ingredients are attributed; no
+  priority or firstness is claimed.

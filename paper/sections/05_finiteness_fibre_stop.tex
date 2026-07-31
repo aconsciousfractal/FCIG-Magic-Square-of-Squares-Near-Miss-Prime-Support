@@ -1,0 +1,128 @@
+% ============================================================================
+% Section 5 — finiteness, the closed fibre, the finite-class stop. Proofs
+% copied from the controlling documents: docs/FIXED_SQUARECLASS_FINITE_
+% THEOREM.md (the CGF25 specialization and squareclass passage),
+% docs/E840_THREE_TRANSVERSAL_FIBRE_THEOREM.md (§§4-6: the x0=841 fibre),
+% docs/HALFPOINT_KUMMER_STOP_THEOREM.md (§§1-2, 6: the stop). No re-derivation.
+% ============================================================================
+
+\section{Finiteness, the closed fibre, and the finite-class stop}\label{sec:finiteness}
+
+\subsection{Fixed difference and fixed squareclass}
+
+\begin{proof}[Proof of Theorem~\ref{main:finiteness}(i)]
+\textbf{Imported layer.} Caro and Garc\'ia-Fritz~\cite{CGF25} classify the
+images of nonconstant morphisms $E\to X_{(c_1,c_2,c_3)}\subset E^3$ cut out
+by $c_1x(P_1)+c_2x(P_2)+c_3x(P_3)=0$ (their Theorem~1.2, four types) and
+bound, via Uniform Mordell--Lang, the intersection of the complement of
+those curves with any finite-rank subgroup of $E^3$ (their Theorem~1.3).
+Both are imported; nothing below re-proves them.
+
+\textbf{Exact specialization.} Over $\mathbb C$ every $E_d$ has $j=1728$,
+$\operatorname{End}(E_d)=\Z[i]$, unit squares $\pm1$; take
+$(c_0,c_1,c_2)=(-2,1,1)$. Type (a) has two coordinates at infinity, so no
+finite Parker centre. In type (b) the cancellation $c_i+u^2c_j=0$ forces
+the moving pair to be the equal-coefficient pair $(1,1)$ with $u^2=-1$, and
+the constant coordinate (the $-2$ slot) satisfies, in the Weierstrass
+convention of~\cite{CGF25} with quadratic coefficient $A=0$,
+$x(R)=-A(c_i+c_j)/(3c_k)=0$: the two-torsion point $(0,0)$, whose square
+progression data is nonpositive or repeated, disjoint from the positive
+distinct locus. In type (c) the unit condition $-2+1/u^2+1/v^2=0$ with
+inverse unit squares $\pm1$ forces $u^2=v^2=1$, i.e.\ three equal
+$x$-coordinates --- the repeated diagonal. Type (d) is absent twice over:
+its exceptional curve has CM by $\Z[\sqrt{-2}]$ while $E_d$ has CM by
+$\Z[i]$, and no permutation of $(-2,1,1)$ satisfies $c_1=2c_2=2c_3$.
+Hence every classified curve inside $X_d$ avoids the positive distinct
+Parker locus, and applying the imported Theorem~1.3 to
+$\Gamma=\Gamma_d^{3}$ of rank $3r$ gives finiteness with the stated
+$D^{3r+1}$ shape. The bound is non-effective and yields no enumeration.
+
+\textbf{Squareclass passage.} Writing $d=q^2k$, the isomorphism
+$E_k\to E_d$, $(X,Y)\mapsto(q^2X,q^3Y)$ commutes with doubling and scales
+$x$-coordinates, the difference and the interaction relation all by $q^2$,
+preserving positivity and distinctness; every solution with difference in
+the squareclass $[k]$ descends to one of the finitely many on $E_k$.
+\end{proof}
+
+\subsection{The fibre $x_0=841$ is closed}
+
+Here $841=x(2Q)$ is the centre of Robertson's classical progression.
+
+\begin{proof}[Proof of Theorem~\ref{main:finiteness}(ii)]
+Fix $x_0=841$, write $x_1=841+t$, $x_2=841-t$, and put
+$f(x)=x(x^2-840^2)$. If both endpoints lie in $x(2\Esn(\Q))$ then $f(841+t)$
+and $f(841-t)$ are rational squares, so their product is one:
+$w^2=f(841+t)f(841-t)$, which for $a=841$ simplifies to the genus-two
+curve
+\[
+C:\;w^2=(1-t^2)(841^2-t^2)(1681^2-t^2).
+\]
+This is only a necessary condition, and that is enough: we close the
+superset. The even sextic makes $C$ bielliptic. The quotient by
+$(t,w)\mapsto(-t,w)$ has rank $3$, so it decides nothing --- the naive
+``compute the rank, then elliptic Chabauty'' route was under-specified. The
+complementary quotient by $(t,w)\mapsto(-t,-w)$ is decisive: for $t\neq0$
+set $X=1/t^2$, $Y=w/t^3$, then with $A=841^2$, $B=1681^2$, $L=AB$,
+$u=LX$, $v=LY$ the monic model is
+\[
+E_-:\;v^2=(u-A)(u-B)(u-L),
+\]
+and $\operatorname{rank}E_-(\Q)=0$ with
+$E_-(\Q)_{\mathrm{tors}}\cong(\Z/2)^2$, the nonzero torsion sitting at
+$u\in\{A,B,L\}$. The rank and torsion are computed in proof mode and
+independently replayed on the official Magma Calculator V2.29-8
+($\operatorname{RankBounds}=(0,0)$, proof flag true); the frozen transcript
+and machine-readable certificate ship in the companion repository, and
+Magma enters only as that hash-verified transcript. Every rational point of
+$C$ with $t\neq0$ maps to $E_-(\Q)$; the three finite torsion points give
+$t^2=L/u\in\{1,A,B\}$, the point at infinity of $E_-$ lifts to the two
+points with $t=0$, and the two infinite points of the even model are
+irrational since its leading coefficient is $-1$. Hence
+\[
+t\in\{0,\pm1,\pm841,\pm1681\}
+\]
+for every affine rational point. Positive endpoint centres require
+$841\pm t>840$, i.e.\ $-1<t<1$, leaving only $t=0$: the repeated
+three-entry boundary, not a distinct completion. The fibre contains no
+positive nonconstant three-transversal completion.
+\end{proof}
+
+\subsection{The finite-class stop}
+
+\begin{proof}[Proof of Theorem~\ref{main:kummerstop}]
+Well-definedness: if $2Q'=P=2Q''$ then $Q'-Q''\in E_d(\Q)[2]$, so the class
+of a half modulo $2^nE_d(\Q)+E_d(\Q)[2]$ does not depend on the half, and
+the doubling map exhibits the canonical isomorphism with
+$2E_d(\Q)/2^{n+1}E_d(\Q)$ (kernel exactly $2^nE_d(\Q)+E_d(\Q)[2]$).
+
+The countercertificate lives on $\Esn$ with the locked basis $Q,R$ of
+Section~\ref{sec:surface}. The two classical progressions have Kummer
+representatives $\delta(Q)=(7,10,70)$ and $\delta(R)=(14,6,21)$,
+reproducing the rank-two structure. Now put $H=Q+2R$: then
+$\delta(H)=\delta(Q)$, yet
+\[
+x(2H)=\tfrac{490152611881}{53187849}\neq841=x(2Q),
+\]
+and $2H$ yields a genuinely distinct positive square progression (roots
+$667439/7293$, $700109/7293$, $731321/7293$). In general, for every
+$n\ge1$ the points $Q$ and $Q+2^nR$ share their $\lambda_n$-class while
+their doubled $x$-coordinates differ --- equality would force
+$2^{n+1}R=O$ or $4Q+2^{n+1}R=O$ against free independence. Finally compare
+the half triples $(Q,Q,Q)$ and $(Q,Q,Q+2^nR)$: identical
+$\lambda_n$-class triples, yet the first doubled-centre triple satisfies
+the interaction $x_1+x_2=2x_0$ and the second does not. Hence neither
+$P\mapsto x(P)$ nor the interaction factors through the finite class
+triples, for any $n$.
+\end{proof}
+
+\begin{remark}[Scope of the stop]
+The certified true witness is deliberately the repeated triple $(Q,Q,Q)$,
+so the theorem rules out exactly the obstructions that retain only the
+three individual finite Kummer/2-Selmer classes on the ambient
+doubled-point space. It does not exclude representative-level methods ---
+covering curves, heights, valuations, a Mordell--Weil sieve --- nor a
+separate statement whose hypotheses first impose Parker-open positivity
+and pairwise distinctness. Sections~\ref{sec:supportlaw}
+and~\ref{sec:threeprime} pursue precisely such finer invariants, along a
+different quantity.
+\end{remark}

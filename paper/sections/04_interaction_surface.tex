@@ -1,0 +1,128 @@
+% ============================================================================
+% Section 4 — the interaction surface. Proofs copied from the controlling
+% documents: docs/E840_THREE_TRANSVERSAL_FIBRE_THEOREM.md (§§2-3: the
+% interaction equation and the Mordell-Weil source lock) and
+% docs/PARKER_OPEN_SATURATION_THEOREM.md (SAT-1, SAT-4, S5 monodromy).
+% No re-derivation.
+% ============================================================================
+
+\section{The interaction surface}\label{sec:surface}
+
+\subsection{The transversal equation}
+
+For arbitrary $x_0,x_1,x_2$ consider
+\[
+\begin{pmatrix}
+x_1 & x_2+840 & x_0-840\\
+x_2-840 & x_0 & x_1+840\\
+x_0+840 & x_1-840 & x_2
+\end{pmatrix}.
+\]
+Every row, every column and the principal diagonal sums to $x_0+x_1+x_2$,
+while the antidiagonal sums to $3x_0$; all eight sums agree if and only if
+\[
+x_1+x_2=2x_0 .
+\]
+This proves Theorem~\ref{main:surface}(i): imposing that each $x_i$ be the
+$x$-coordinate of a point of $2\Esn(\Q)$ --- the arithmetic condition of
+Lemma~\ref{lem:doubling} --- makes the fully magic completion of the
+transversal frame exactly one linear equation on $\Esn^{3}$, hence a
+surface. The diagonal $(P,P,P)$ is not isolated, and the membership
+condition $P_i\in2\Esn(\Q)$ is arithmetic rather than a further geometric
+equation over an algebraic closure.
+
+For later use we record the Mordell--Weil source lock. The minimal model of
+$\Esn$ is recorded as LMFDB \texttt{705600.vn3}, $Y^2=X^3-44100X$, with
+rank $2$, full rational $2$-torsion and free generators $(-84,1764)$,
+$(294,3528)$; transporting by $(x,y)=(4X,8Y)$ and adjusting by the
+two-torsion point $T=(-840,0)$ gives the free basis
+\[
+Q=(1960,78400),\qquad R=(1176,28224)
+\]
+used throughout, with
+\[
+2Q=(841,-1189),\qquad 2R=(1369,-39997).
+\]
+Since doubling kills the rational two-torsion, $2Q$ and $2R$ generate the
+free part of $2\Esn(\Q)$.
+
+\subsection{Saturation: one surface, not a bundle of components}
+
+Normalizing the three same-difference square progressions (the weave
+coordinates of the companion documents) reduces the Parker open locus to
+the affine variety $Y$ cut out by
+\[
+F=2R^2S^2-(1+W^2)(R^2+S^2)+2W^2=0,\qquad
+A^2=W^2+R^2S^2,\quad B^2=W^2R^2+S^2,\quad C^2=W^2S^2+R^2,
+\]
+with the Parker open $Y^{\circ}$ removing $RSWABC=0$, the nine zero-cell
+divisors and the $27$ cross-progression collision divisors (30 distinct
+normalized factors in all); positivity stays a real semialgebraic condition
+and is never encoded as a polynomial saturation.
+
+\begin{proof}[Proof of Theorem~\ref{main:surface}(ii), saturation part]
+As a polynomial in $S$,
+\[
+F=(2R^2-W^2-1)S^2+2W^2-(1+W^2)R^2,
+\]
+whose leading coefficient and constant term are coprime; the coefficient
+$2R^2-W^2-1$ is squarefree and occurs to odd order in the ratio defining
+$S^2$, so that ratio is not a square in $\Q(R,W)$ and $F$ is irreducible.
+Over the function field of $F=0$ put $p_A=W^2+R^2S^2$, $p_B=W^2R^2+S^2$,
+$p_C=W^2S^2+R^2$. In squared coordinates $r=R^2$, $s=S^2$, $w=W^2$, setting
+$p_A=0$ gives $F(r,s,-rs)=(r+s)(rs-1)$, and on the reduced component
+$RS=1$, $W^2=-1$ the function $p_A$ has generic valuation one while $p_B$
+and $p_C$ are generically nonzero; the case $p_B=0$ reduces to
+$-2r^2w+rw^2-r+2w=0$, linear in $p_B$ at the generic point of each reduced
+component with $p_A$ and $p_C=2p_A$ generically nonzero; the $p_C$ case is
+symmetric. Hence every nonempty product of the three radicands has odd
+valuation somewhere and is not a square, so adjoining $A,B,C$ gives a
+degree-eight extension with integral coordinate ring: the four equations
+define a single prime component of dimension two. None of the declared
+zero/collision polynomials vanishes on it, so saturating the prime ideal by
+their product changes nothing, and $Y^{\circ}$ is one irreducible surface.
+\end{proof}
+
+\subsection{The square-progression cone and its $S_5$ wall}
+
+The four equations imply the exact identity
+\[
+2A^2=B^2+C^2 :
+\]
+the three auxiliary roots themselves form a square progression, and the
+normalized interaction maps $Y$ onto this classical cone. In squared
+coordinates $a=rs+w$, $b=rw+s$, $c=sw+r$ (so $2a=b+c$), reconstruction away
+from $r^2=1$ is
+\[
+s=\frac{b-ar}{1-r^2},\qquad w=\frac{a-br}{1-r^2},
+\]
+where $r$ satisfies the quintic
+\[
+Q(r)=c(1-r^2)^2-(b-ar)(a-br)-r(1-r^2)^2=0 .
+\]
+
+\begin{proof}[Proof of Theorem~\ref{main:surface}(ii), cone part]
+The quintic has leading coefficient $-1$ and the displayed inverse
+reconstructs $s,w$ from each generic root, so the squared-coordinate map to
+the cone is generically finite of degree five; each squared triple has
+eight sign choices of $(R,S,W)$, giving degree $5\cdot8=40$ on the full
+signed cover. For the monodromy, specialize at the rational cone point
+$(A,B,C)=(5,1,7)$: the reconstruction polynomial
+\[
+-r^5+49r^4+2r^3-123r^2+625r+24
+\]
+is irreducible modulo $7$, factors modulo $29$ with degree pattern
+$[2,1,1,1]$, and has nonzero discriminant $-24364389070416096000$, so the
+specialization is separable. Irreducibility supplies a transitive
+degree-five group containing a five-cycle; the mod-$29$ pattern supplies a
+transposition; among transitive subgroups of $S_5$ this forces the full
+$S_5$, and the generic monodromy contains the specialized one.
+\end{proof}
+
+\begin{remark}[What the wall does and does not say]
+Generic $S_5$ monodromy proves the cone map has no generic rational
+section and that its quintic cannot be resolved by a tower of quadratic
+radicals. It does \emph{not} prove that $Y$ admits no other useful rational
+map, no height-decreasing correspondence, and no further structure; those
+remain open research directions, not consequences.
+\end{remark}

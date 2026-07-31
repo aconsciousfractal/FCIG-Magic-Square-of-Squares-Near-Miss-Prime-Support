@@ -1,0 +1,82 @@
+% ============================================================================
+% Section 2 — the seven-line normal form. Proofs copied from the controlling
+% document docs/DIAGONAL_RETRACTION_THEOREMS.md (§3 retraction lemma, §5
+% universal seven-line form); the fully-magic criterion is the elementary
+% consequence recorded in docs/STATE_OF_THE_ART.md §3.5. No re-derivation.
+% ============================================================================
+
+\section{The seven-line normal form}\label{sec:normalform}
+
+\begin{lemma}[Retraction bookkeeping]\label{lem:retraction}
+Let a fully magic $3\times3$ array have common line sum $M$.
+\emph{(i)} Subtracting the same $t$ from the three cells of one long
+diagonal leaves the three rows, the three columns and the other diagonal
+with sum $M-t$, while the selected diagonal has sum $M-3t$; the exact line
+defect is $2t$.
+\emph{(ii)} More generally, subtracting $\tau$ from the three cells of a
+permutation transversal $T$ leaves every row and every column with sum
+$M-\tau$; if $T$ meets the two diagonals in $j$ and $k$ cells, their sums
+become $M-j\tau$ and $M-k\tau$.
+\emph{(iii)} Conversely, if exactly one diagonal of a $3\times3$ array
+fails while the other seven lines share a common sum, adding half the
+defect to each cell of the failed diagonal restores a fully magic array.
+\end{lemma}
+
+\begin{proof}
+(i) Every row and every column contains exactly one modified cell, and the
+other diagonal contains exactly one modified cell, while the selected
+diagonal contains all three; the sums follow, and the defect is
+$(M-t)-(M-3t)=2t$. Nothing here uses squareness or any property of a
+particular family.
+(ii) A permutation transversal meets every row and every column in exactly
+one cell, and meets the diagonals in $j$ resp.\ $k$ cells by definition of
+$j,k$; the same count gives the sums.
+(iii) By Theorem~\ref{main:normalform} (proved independently below) the
+array is the displayed normal form, with seven-line sum $A+E+P$, failed
+antidiagonal sum $3E$, and defect $\delta=A+P-2E$. Each row and column
+contains exactly one antidiagonal cell, and the principal diagonal contains
+one (the centre), so adding $\delta/2$ to the three antidiagonal cells
+raises all seven line sums to $A+E+P+\delta/2$ and the antidiagonal to
+$3E+3\delta/2$; both equal $\tfrac32(A+P)$, so all eight lines agree.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main:normalform}]
+The failed line cannot be a row: the three columns already force the total
+$3S$, so if two rows have sum $S$ the third does as well. The same argument
+excludes a failed column. Up to the dihedral action of the grid the failed
+line is therefore the antidiagonal. Solving the seven linear line equations
+gives the displayed universal form; the seven common lines have sum
+$A+E+P$ and the antidiagonal has sum $3E$. The nine entries decompose into
+the three arithmetic progressions
+\[
+(A-D,\,A,\,A+D),\qquad (P-D,\,P,\,P+D),\qquad (E-D,\,E,\,E+D),
+\]
+of one common difference $D$. Consequently an array with exactly eight
+square entries consists of two full three-square progressions and one
+progression containing exactly two squares, which is the last assertion.
+\end{proof}
+
+\begin{remark}[Where full magic lives]\label{rem:fourthAP}
+In the normal form, the array is fully magic if and only if the
+antidiagonal sum equals the common sum, that is $3E=A+E+P$, equivalently
+\[
+A+P=2E:
+\]
+the three centres themselves must form a third-term arithmetic progression.
+For an all-squares array this is a \emph{fourth} square progression, with
+its own common difference $E-A$ --- never equal to $\pm D$, since $E=A\pm D$
+would repeat the entry at position $(1,2)$ or $(2,1)$ against nine-way
+distinctness --- and this single extra condition is exactly
+where the elliptic wall of Section~\ref{sec:surface} lives. The classical
+one-parameter families of nine-square arrays with seven equal sums
+(Lucas~\cite{LUC76}; Sallows's record example~\cite{SAL97}) sit inside this
+normal form, as does the general parametrization of $3\times3$ magic
+squares going back to Lucas~\cite{LUC91}.
+\end{remark}
+
+\begin{remark}[Census normalization]\label{rem:census}
+The bounded census of Appendix~A quotients by the geometric $D_4$ action
+and measures height by the largest square root among the eight square
+entries; its exact minimum statements are supporting propositions at their
+frozen bound and are never used as evidence for an unbounded claim.
+\end{remark}

@@ -1,0 +1,113 @@
+% ============================================================================
+% Section 1 — Introduction. Controlling documents: docs/STATE_OF_THE_ART.md,
+% docs/PROBLEM_INTAKE.md, docs/LITERATURE_WEI23_COMPARISON.md,
+% docs/BIBLIOGRAPHY.md (citation strings transcribed from the locked rows).
+% ============================================================================
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{The problem and its records}
+
+Whether a $3\times3$ magic square whose nine entries are distinct positive
+integer squares exists was posed by LaBar in 1984 and popularised by Gardner,
+who offered \$100 for an example; the problem also appears in Guy's
+\emph{Unsolved Problems in Number Theory} (this history is recorded in
+Bremner~\cite{BRE99}, \S0). It remains open in both directions. The two
+record objects are dual, and both have stood since 1997: a fully magic
+square with \emph{seven} of nine entries square, due to
+Bremner~\cite{BRE99}, and Sallows's array of \emph{nine} distinct squares
+with seven of its eight lines sharing one sum~\cite{SAL97}. Bremner states
+in the same place that an example with eight distinct square entries is
+unknown. Euler had already produced
+an order-$4$ magic square of distinct squares in 1770, so order three is
+exactly where the problem lives.
+
+\subsection{A rationality filter}
+
+A fully magic square of nine distinct squares \emph{does exist} over a
+number field of degree four: Bremner's square over
+$\Q(\sqrt3,\sqrt{133})$, with centre $532=(2\sqrt{133})^{2}$ and the other
+eight entries squares in $\Q(\sqrt3)$~\cite{BRE99} --- the companion
+repository replays it as an exact verified witness (Bremner, \S3, also
+constructs an example over a field of degree $27$). The consequence deserves emphasis: there is no
+combinatorial or shape-only obstruction to the Parker problem. The only
+property that can fail is rationality over $\Q$, so any impossibility
+argument must use an invariant that separates $\Q$ from a quartic field.
+This filter shapes the whole paper: the positive constructions of
+Section~\ref{sec:families} show how close the rational story comes, and the
+support laws of Sections~\ref{sec:supportlaw}--\ref{sec:threeprime} are
+genuinely rational-arithmetic statements, invisible over a larger field.
+
+\subsection{The entry side: what is known about a hypothetical solution}
+
+% W2 CLOSED 2026-07-31: the six results below are quoted at primary grade,
+% verified against Rabern's text (RHUMJ 4(1), art. 3; SL-P41-RABERN-PRIMARY,
+% six of six, no divergence); WEI23 §2.1's restatement matches the primary.
+A hypothetical rational solution is constrained through the prime factors of
+its \emph{entries}; throughout this paragraph the square is taken in the
+primitive normalization (unit gcd of the nine entries).
+Rabern~\cite{RAB03} proved --- Weisenberg's restatement in~\cite{WEI23},
+\S2.1, matches the primary on all six results --- that every prime factor of
+an entry is odd; that a prime dividing the centre is $1 \bmod 4$; that a
+prime $p\equiv3,5 \pmod 8$ dividing a non-centre entry also divides the
+centre and the third entry of that line; that no $p\equiv3\pmod 8$ divides
+any entry; that no $p\equiv5\pmod8$ divides a middle-side entry; and that a
+$p\equiv3\pmod4$ dividing a corner divides the two non-adjacent middle-side
+entries. Woll~\cite{WOL18} proved that a prime $p$ dividing only the centre
+forces $p$ to possess three consecutive nonzero quadratic residues, and
+counted the resulting residue classes; Labruna~\cite{LAB18} studied the
+order-three analogue over finite fields, where in characteristic greater
+than three a nontrivial magic square of squares attains exactly $3$, $5$,
+$7$ or $9$ distinct entries, each degree realized over infinitely many
+prime fields. Weisenberg~\cite{WEI23} added the
+order bookkeeping (a prime dividing exactly three entries attains its
+minimum order at least twice), the restriction $p\equiv1\pmod{24}$ for a
+prime dividing exactly two entries, consecutive-residue patterns for
+single-entry primes, a complete seven-arrangement list of the ways a prime
+factor can appear, and a proposal --- not executed there --- to organize
+searches by the Gaussian prime signature of the centre. A recent preprint
+of Hill~\cite{HILL26} announces a nonexistence proof; it is unrefereed,
+and nothing in this paper depends on it.
+
+All of these statements constrain \emph{entries of a completed square}.
+The present paper works on a different quantity --- the common difference
+of the three square progressions forced by the completion problem --- and
+Section~\ref{sec:supportlaw} depends on none of the entry-side results;
+the two layers meet only in the classical toolbox of quadratic residues
+and sums of two squares.
+
+\subsection{The difference side: what this paper proves}
+
+The objects and the seven main theorems are stated in full in the front
+matter. In one paragraph: every seven-line array is three same-difference
+arithmetic progressions (Theorem~\ref{main:normalform}); three explicit
+mechanisms produce infinite $(8,7)$ families, with a complete least-shift
+law for the first (Theorem~\ref{main:families}); completing the eighth line
+of the transversal frame is a single equation on $\Esn^{3}$, whose
+saturated model is one smooth surface with an $S_5$ cone
+(Theorem~\ref{main:surface}); for fixed difference the relevant points are
+finite by a theorem imported from Caro and Garc\'ia-Fritz~\cite{CGF25}, one
+fibre is closed completely, and finite Kummer classes alone can never
+decide the interaction (Theorems~\ref{main:finiteness}
+and~\ref{main:kummerstop}); the common difference obeys a five-term
+$S$-unit law with an endpoint/interior valuation table
+(Theorem~\ref{main:supportlaw}, resting on the subspace theorem of Evertse,
+Schlickewei and Schmidt and on the classical equal-area correspondence
+recorded by Robertson~\cite{ROB96}); and no primitive configuration has
+$\supp(2d)=\{2,3,p\}$ for any prime $p\neq3$
+(Theorem~\ref{main:threeprime}, whose triangle-classification layer is
+owned by Aebi~\cite{AEB26}). The four-prime structure is developed to an
+explicit frontier in Section~\ref{sec:frontier} and left open.
+
+\subsection{Method, certificates, and what is not claimed}
+
+Every computation in this paper is exact and ships as a machine-checkable
+certificate in the companion repository; bounded censuses corroborate
+statements but never prove an unbounded one, and evidence produced by
+commercial computer-algebra runs enters only as hash-verified frozen
+transcripts. Catalogued web data (Boyer's pages~\cite{BOY05,BOYWEB},
+Fituvalu's tables, Brown's centre records) is used under explicit
+provenance locks, with the corrections recorded in Appendix~A. The
+what-this-paper-does-not-claim block of the front matter is part of the
+paper's contract: in particular, no novelty or priority is asserted for any
+statement, and every no-hit prior-art search is reported as exactly that.

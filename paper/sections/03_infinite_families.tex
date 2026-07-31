@@ -1,0 +1,282 @@
+% ============================================================================
+% Section 3 — infinite (8,7) families. Proofs copied from the controlling
+% documents: docs/DIAGONAL_RETRACTION_THEOREMS.md (DR-1, DR-3, DR-4, DR-4A),
+% docs/FITUVALU_TYPE6VI_STRUCTURE.md (VI-1, VI-2, fixed-bridge check),
+% docs/TYPE6VI_ELLIPTIC_LIFT_THEOREM.md (EL-0..EL-4). No re-derivation.
+% T11 note: DR-4's complete three-case interval analysis goes to Appendix B
+% together with its exact certificate; this section keeps the proof frame.
+% ============================================================================
+
+\section{Infinite $(8,7)$ families}\label{sec:families}
+
+This section proves the four parts of Theorem~\ref{main:families}. Three
+mechanisms are involved: a diagonal retraction of a catalogued six-square
+carrier family, a bridge completion inside a catalogued carrier type, and
+an elliptic-orbit lift of one fixed carrier.
+
+\subsection{The retraction family and its least-shift law}
+
+The carrier is the six-square fully magic family recorded on Boyer's
+catalogue pages~\cite{BOYWEB} and attributed there to Wesolowski; the
+catalogue states explicitly that the recurrence below ``was not given by
+Arkadiusz'', and the $n=1$ grid already occurs as Configuration~II of
+Bremner~\cite{BRE01}, so we speak of the Bremner/Wesolowski carrier. With
+$(x_0,y_0,z_0)=(3,1,1)$ and
+\[
+x_{n+1}=3x_n+2z_n,\qquad y_{n+1}=x_n,\qquad z_{n+1}=x_n+z_n,
+\]
+the carrier $W_n$ is fully magic with centre $E=4z^4+5z^2+1$ and common sum
+$3E$, where $(x,y,z)=(x_n,y_n,z_n)$. Subtracting $t=6z^2$ from its
+antidiagonal and using the recurrence identities
+\[
+x^2+y^2z^2-6z^2=(yz+1)^2,\qquad
+x^2z^2+y^2-6z^2=(xz-1)^2,\qquad
+\tfrac{(x^2+y^2)(z^2+1)}{2}-6z^2=4z^4-z^2+1
+\]
+produces
+\[
+N_n=\begin{pmatrix}
+(xy-z)^2 & (xz+y)^2 & (yz+1)^2\\
+(x+yz)^2 & 4z^4-z^2+1 & (xz-y)^2\\
+(xz-1)^2 & (yz-x)^2 & (xy+z)^2
+\end{pmatrix}.
+\]
+
+\begin{proof}[Proof of Theorem~\ref{main:families}(i)]
+By Lemma~\ref{lem:retraction}(i) the seven unselected lines of $N_n$ share
+the sum $3E-6z^2=3(4z^4+3z^2+1)$, the antidiagonal sums to
+$3E-18z^2=3(4z^4-z^2+1)$, and the defect is $12z^2$. For $z>1$,
+\[
+(2z^2-1)^2<4z^4-z^2+1<(2z^2)^2,
+\]
+so the centre is not a square. The eight positive roots are, in increasing
+order,
+\[
+yz-x<yz+1<x+yz<xy-z<xy+z<xz-y<xz-1<xz+y:
+\]
+positivity of the first follows from $yz-x=y(z-1)-2z\ge3(z-1)-2z=z-3>0$,
+most gaps are immediate, and the two non-obvious ones reduce, through the
+recurrence invariants, to
+\[
+(xy-z)-(x+yz)=2z^2-yz-y-3z+1>0,\qquad
+(xz-y)-(xy+z)=(y-1)(z-1)-2>0,
+\]
+the first bounded below by $(z-1)(z-2)>0$ using $y\le z-1$, the second at
+least $4$. Hence all nine entries are positive and distinct. For
+root-primitivity: an integer dividing all eight roots divides both
+$(yz+1)-(yz-x)=x+1$ and $(x+yz)-(yz+1)=x-1$, hence divides $2$; the
+recurrence keeps $x,y$ odd and toggles the parity of $z$, so for odd $n$
+all eight roots are odd and their gcd is $1$. There are infinitely many
+odd indices.
+\end{proof}
+
+\begin{proposition}[Complete pair-closing classification]\label{prop:factorpairs}
+Fix $n$ and write the retracted antidiagonal entries of the carrier as
+$C<E<G$ with common gap $\Delta$. Every positive shift $0<t<C$ for which at
+least two of $C-t$, $E-t$, $G-t$ are squares arises from a same-parity
+factor pair, and every retained pair works: for branch $CE$, from
+$de=\Delta$, $0<d<e$, $d\equiv e\pmod2$, via $u=(e-d)/2$, $w=(e+d)/2$,
+$t=C-u^2$; for branch $EG$, from $de=\Delta$ via $w=(e-d)/2$,
+$v=(e+d)/2$, $t=E-w^2$; for branch $CG$ from $de=2\Delta$
+via $u=(e-d)/2$, $v=(e+d)/2$, $t=C-u^2$.
+\end{proposition}
+
+\begin{proof}
+For $CE$, subtracting the two square equations gives
+$w^2-u^2=\Delta=(w-u)(w+u)$, so $d=w-u$ and $e=w+u$ have the stated product
+and parity, and the inverse formulas recover $u,w$. The other branches are
+identical with difference $\Delta$ or $2\Delta$. This is a divisor
+classification, not a scan over $t$.
+\end{proof}
+
+\begin{proposition}[Least shift]\label{prop:leastshift}
+For every $n\ge2$, $t_0=6z^2$ is the least positive shift closing at least
+one pair; at $n=1$ the least is $9$. Hence $t_{\min}(1)=9$ and
+$t_{\min}(n)=6z_n^2$ for $n\ge2$. Leastness does not mean uniqueness:
+larger nondegenerate closing shifts exist and are recorded exactly.
+\end{proposition}
+
+\begin{proof}[Proof frame]
+For $n\ge2$ the recurrence on $(y,z)$ is $(y,z)\mapsto(y+2z,y+3z)$,
+starting at $(11,15)$, and direct induction gives
+\[
+z>y,\quad 2y>z,\quad 5y>3z,\quad 5z>6y,\quad 8y>5z,\quad z\ge15 .
+\]
+Assume $0<t<t_0$ closes a pair and put $h=t_0-t$, $0<h<6z^2$. At $t_0$ the
+three entries are $C-t_0=Y^2$ with $Y=yz+1$, $E-t_0=4z^4-z^2+1$, and
+$G-t_0=X^2$ with $X=xz-1$; each entry can be square inside the short
+interval only along an explicit one-parameter list (for the $C$ entry,
+$C-t=(Y+a)^2$ forces $h=a(2Y+a)$, and similarly for $E$ and $G$), and the
+listed windows are excluded pairwise by the induction inequalities. The
+complete three-case interval analysis, with its exact certificate, is
+reproduced in Appendix~B. At $n=1$, $(C,E,G)=(265,1105,1945)$: for
+$1\le t\le8$ each retracted entry lies strictly between consecutive squares
+($16^2<C-t<17^2$, $33^2<E-t<34^2$, $44^2<G-t<45^2$), so no pair closes
+below $t=9$, while $t=9$ gives $(256,1096,1936)=(16^2,1096,44^2)$.
+\end{proof}
+
+Parts (i)--(ii) of Theorem~\ref{main:families} are proved.
+
+\subsection{The bridge completion in type 6.VI}
+
+The catalogued carrier type \texttt{6:6} (6.VI here) is normalized, after
+the dihedral action, as
+\[
+M(A,N,Z)=\begin{pmatrix}
+2N-Z & A & N-A+Z\\
+2Z-A & N & 2N-2Z+A\\
+N+A-Z & 2N-A & Z
+\end{pmatrix},
+\]
+with square cells $A=a^2$, $N=n^2$, $Z=z^2$, $B=2N-A=b^2$, $D=2Z-A=d^2$,
+$C=2N-D=c^2$. The type taxonomy and database records are Fituvalu's~\cite{FIT}; the
+fixed numerical carrier used below is historically Bremner's
+Configuration~VI~\cite{BRE01}.
+
+\begin{proposition}[The four-progression network]\label{prop:fourap}
+The six source squares satisfy $a^2+b^2=2n^2$, $d^2+c^2=2n^2$ and
+$d^2+a^2=2z^2$, so the source contains the three square progressions
+$(a^2,n^2,b^2)$, $(d^2,n^2,c^2)$, $(d^2,z^2,a^2)$. With
+$\delta=a^2-z^2=z^2-d^2>0$, the selected antidiagonal is identically
+$(n^2-\delta,\,n^2,\,n^2+\delta)$, and subtracting $t>0$ closes it to
+squares $(x^2,y^2,w^2)$ exactly when
+\[
+x^2=y^2-\delta,\qquad w^2=y^2+\delta,\qquad t=n^2-y^2>0:
+\]
+a \emph{fourth} square progression, with the difference of the bridge
+$(d^2,z^2,a^2)$.
+\end{proposition}
+
+\begin{proof}
+Substituting $D=2Z-A$ into the normalized array gives $A-Z=Z-D=\delta$, and
+the antidiagonal entries become $N-\delta$, $N$, $N+\delta$; a common
+subtraction preserves their differences, and the closure conditions are the
+displayed ones.
+\end{proof}
+
+\begin{proposition}[Complete bridge-completion classification]\label{prop:bridge}
+Fix an increasing bridge progression $(d^2,z^2,a^2)$ of difference
+$\delta$. Every positive type-6.VI completion arises from a same-parity
+factor pair
+\[
+uv=2\delta,\qquad 0<u<v,\qquad u\equiv v\pmod 2,
+\]
+via $b=(v-u)/2$, $c=(v+u)/2$, $n^2=(a^2+b^2)/2$, a pair being retained
+exactly when $n^2$ is an integer square; then $d^2+c^2=a^2+b^2=2n^2$
+automatically. The pair $(u,v)=(a-d,a+d)$ always returns the tautological
+completion $(b,n,c)=(d,z,a)$, which repeats square cells and is not
+admissible. Positivity, nine-way distinctness and the six-square mask are
+separate final checks.
+\end{proposition}
+
+\begin{proof}
+Subtracting the two centre relations gives $c^2-b^2=a^2-d^2=2\delta$, so
+$u=c-b$, $v=c+b$ have the stated product and parity, and inversion recovers
+$b,c$; conversely any retained pair satisfies $c^2-b^2=2\delta=a^2-d^2$, so
+the two expressions for $2n^2$ agree.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main:families}(iii)]
+For the fixed bridge $(23^2,37^2,47^2)$, $\delta=840$: running
+Proposition~\ref{prop:bridge} over the finitely many same-parity factor
+pairs of $2\delta=1680$ retains exactly the tautological $(23,37,47)$ and
+the unique admissible completion $(79,65,89)$ (exact finite check;
+certificate in Appendix~B). Coupling the resulting carrier with Robertson's
+classical progression $(1^2,29^2,41^2)$ of the same
+difference~\cite{ROB96} retracts the antidiagonal by $\tau=65^2-29^2=3384$
+and yields the explicit $(8,7)$ array
+\[
+\begin{pmatrix}
+7081 & 2209 & 1\\
+529 & 841 & 7921\\
+1681 & 6241 & 1369
+\end{pmatrix}
+\]
+with seven-line sum $9291$, failed antidiagonal sum $2523$, and unique
+nonsquare $7081$.
+\end{proof}
+
+\subsection{The elliptic-orbit lift}
+
+The fixed carrier is
+\[
+M_0=\begin{pmatrix}
+7081 & 2209 & 3385\\
+529 & 4225 & 7921\\
+5065 & 6241 & 1369
+\end{pmatrix},
+\]
+Bremner's Configuration~VI~\cite{BRE01} in the normalized orientation
+(Fituvalu database row 340545~\cite{FIT}): fully magic with sum $12675$, six square
+entries, outside roots $\{23,37,47,79,89\}$, and selected antidiagonal
+$(65^2-840,\,65^2,\,65^2+840)$. Let
+\[
+E\colon\;Y^2=X^3-840^2X,\qquad Q=(1960,78400),\qquad P=2Q=(841,-1189).
+\]
+
+\begin{lemma}[Doubling produces a square progression]\label{lem:doubling}
+For $R=(u,v)\in E(\Q)$ with $v\neq0$,
+\[
+x(2R)=\Bigl(\frac{u^2+840^2}{2v}\Bigr)^{2},\qquad
+x(2R)\mp840=\Bigl(\frac{u^2\mp1680u-840^2}{2v}\Bigr)^{2},
+\]
+so every finite point of $2E(\Q)$ supplies three rational squares in
+arithmetic progression with common difference $840$ --- the classical
+congruent-number correspondence (cf.~\cite{ROB96}), in the exact convention
+used by the lift.
+\end{lemma}
+
+\begin{lemma}[Fixed-carrier lift]\label{lem:lift}
+Let $R\in2E(\Q)$ with $840<x(R)<65^2$. Write the positive roots of
+$x(R)-840$, $x(R)$, $x(R)+840$ in lowest terms and let $\lambda$ be the
+\emph{least} common multiple of their denominators. Scale $M_0$ by
+$\lambda^2$ and subtract $\tau=\lambda^2(65^2-x(R))$ from the selected
+antidiagonal; the antidiagonal becomes the three cleared squares. If the
+three new roots avoid $\{23,37,47,79,89\}$, the output is positive with
+nine distinct entries and exactly eight squares, the unique nonsquare being
+$7081\lambda^2$ --- and it is \emph{entry-primitive}: a common prime $p$ of
+all entries would divide $\lambda$; choosing a reduced root denominator of
+maximal $p$-adic valuation, its cleared numerator stays prime to $p$, and
+its square blocks $p$. The argument uses minimality of $\lambda$ and fails
+for an arbitrary common multiple.
+\end{lemma}
+
+\begin{lemma}[$Q$ is non-torsion]\label{lem:nontorsion}
+$P=2Q=(841,-1189)$ is integral with $1189=29\cdot41$, while
+$4\cdot840^{6}$ has only the prime divisors $2,3,5,7$; by the Lutz--Nagell
+criterion an integral torsion point with nonzero ordinate would satisfy
+$Y^2\mid4\cdot840^6$, so $P$ is non-torsion, hence so is $Q$.
+% T14 bibliography crosswalk: the Lutz–Nagell source is locked in the
+% repository as IMPA-LNT (§4.3, Thm 4.3); formal entry added there.
+Independently, $\#E(\mathbb F_{11})=12$ and $\#E(\mathbb F_{13})=20$ at
+good primes bound the rational torsion order by $\gcd(12,20)=4$, and $P$
+is neither infinity nor rational two-torsion.
+\end{lemma}
+
+\begin{proof}[Proof of Theorem~\ref{main:families}(iv)]
+$P$ lies in the identity component $E(\mathbb R)^{0}$, a circle group, and
+is non-torsion, so its positive multiples are dense there. The open set
+$U=\{R\in E(\mathbb R)^{0}:840<x(R)<4225\}$ contains $P$; removing the
+finite set where one of the three roots equals one of $23,37,47,79,89$
+leaves a nonempty open set $V$ --- the roots at $P$ itself are $(1,29,41)$.
+Density gives infinitely many positive multiples $mP=2mQ$ in $V$, and
+Lemma~\ref{lem:lift}, always with the least common multiple, turns each
+return into a primitive positive $(8,7)$ array. If the outputs at indices
+$m,n$ were related by a $D_4$ action and a positive square scale $\rho^2$,
+the unique nonsquare entries would force
+$7081\lambda_n^2=\rho^2\,7081\lambda_m^2$, so $\rho=\lambda_n/\lambda_m$;
+a $D_4$ action fixes the centre, so comparing centres gives
+$x(mP)=x(nP)$, hence $mP=\pm nP$, and non-torsion with $m,n>0$ forces
+$m=n$. Distinct return indices therefore give distinct
+square-scale/$D_4$ classes. Two exact witnesses, including the $m=3$
+return, are frozen in the companion repository.
+\end{proof}
+
+\begin{remark}[From constructions to the wall]
+Part (iv) reaches the $(8,7)$ metric infinitely often from one carrier.
+Closing the eighth line of the same transversal frame is the interaction
+problem of Section~\ref{sec:surface}: by Remark~\ref{rem:fourthAP} it
+demands a fourth square progression through the centres,
+and that single extra condition changes the landscape from constructive to
+arithmetic.
+\end{remark}

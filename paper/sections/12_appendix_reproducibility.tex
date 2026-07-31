@@ -1,0 +1,43 @@
+% ============================================================================
+% Appendix C — reproducibility, engines and data policy.
+% ============================================================================
+
+\section{Reproducibility}\label{app:repro}
+
+\subsection{Engines}
+
+All theorem-level arithmetic in this paper is exact: integer and symbolic
+computation in Python with implementation-separated replays where a result
+is load-bearing, and elliptic-curve rank/torsion/point computations in
+proof mode. Results attributed to the official Magma Calculator V2.29-8
+(the rank-zero quotients of Sections~\ref{sec:finiteness}
+and~\ref{sec:frontier}, the certified-complete point lists, the descent
+transcripts) enter the record exclusively as \textbf{hash-verified frozen
+transcripts}: the verifier checks digests and parsed assertions and never
+executes that software. No floating-point quantity feeds any conclusion.
+The manuscript builds with pdflatex; the draft is internal and unpromoted.
+
+\subsection{Data policy}
+
+Catalogued third-party data is cited and, where licensing is unresolved,
+\textbf{never bundled}: the Fituvalu tables are referenced by locator and
+digest~\cite{FIT} (URL, file name, byte count and SHA-256 in the
+bibliography entry and in the repository source lock), and third-party
+PDFs are cited by locator without redistribution. Web catalogue records
+(Boyer's pages~\cite{BOYWEB}, Brown's note~\cite{BRO}) are used under
+dated locators recorded in the repository's source locks. Bounded censuses are labelled with their frozen
+bounds and are never used as evidence for an unbounded statement; where a
+census executable has a recorded interface defect, only its frozen default
+output is cited.
+
+\subsection{Manifest}
+
+The companion repository ships a manifest of SHA-256 digests covering
+every shipped source byte of the public package --- scripts, certificates,
+transcripts, documentation and this manuscript's sources; the compiled PDF
+(a deterministic function of the pinned sources on a fixed TeX
+distribution) and the regenerated results directory are deliberately
+unpinned --- together with a single verifier entry point whose expected
+output is itself frozen and whose digest is pinned inside the verifier. A
+verification run requires the frozen expectation, compares the live output
+against it byte for byte, and fails closed on any drift or on its absence.

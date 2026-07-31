@@ -1,0 +1,99 @@
+% ============================================================================
+% Section 7 — three-prime exclusion. Proofs copied from the frozen theorem
+% lock and the controlling documents docs/COMPLETE_THREE_PRIME_SUPPORT_
+% THEOREM.md and docs/ONE_INTERIOR_SUPPORT_THEOREM.md. No re-derivation.
+% ============================================================================
+
+\section{Three-prime exclusion}\label{sec:threeprime}
+
+Throughout, $\supp(2d)=\{2,3,p\}$ with $p\neq3$ prime, and
+$d/2=XYZ$ with $X=2^{\alpha}$, $Y=3^{\beta}$, $Z=p^{\gamma}$. The two
+technical stages are stated first; the headline
+Theorem~\ref{main:threeprime} subsumes both by a different global
+argument, and its proof is independent of theirs.
+
+\begin{proposition}[All-endpoint case, $p\equiv3\bmod8$]\label{prop:threeblock}
+There is no primitive positive Parker configuration with
+$\supp(2d)=\{2,3,p\}$ and $p\equiv3\pmod8$.
+\end{proposition}
+
+\begin{proof}
+By the endpoint table of Section~\ref{sec:supportlaw}, $p\equiv3\bmod8$
+forces all three indices to be endpoints at $p$, at $3$ (same residue
+argument), and --- by the opposite-parity mechanism at $2$ --- at the
+$2$-power as well. Each progression's equal-area Pythagorean triangle is
+then primitive, and its legs are a unitary partition of the three whole
+blocks $X,Y,Z$. Apart from the impossible split $\{1,XYZ\}$, only
+$\{X,YZ\}$, $\{Y,XZ\}$, $\{Z,XY\}$ remain, and three pairwise-distinct
+progressions must use all three. Factoring the hypotenuse equations of the
+last two gives
+\[
+Y^2-1=2XZ,\qquad Z^2-1=2XY ,
+\]
+whose difference factors as $(Y-Z)(Y+Z+2X)=0$. Positivity forces $Y=Z$,
+after which $Y(Y-2X)=1$, impossible for positive prime-power blocks.
+\end{proof}
+
+\begin{proposition}[One-interior law, $p\equiv5,7\bmod8$]\label{prop:oneinterior}
+Let $\supp(2d)=\{2,3,p\}$ with $p\equiv5$ or $7\pmod8$. The all-endpoint
+branch is impossible by the three-block argument, so $\gamma=1$ is
+excluded, and for $\gamma\ge2$ exactly one index is interior at $p$. If
+$p\equiv5\pmod8$ the centre progression is the interior one and exactly one
+of
+\[
+v_p(X^2+Y^2)=2h,\qquad v_p(1+Y^2)=2h,\qquad v_p(1+X^2)=2h
+\]
+holds, with $h=v_p(s_0)\ge1$; if $p\equiv7\pmod8$ one outer progression is
+interior and exactly one of the six ordered differences
+\[
+v_p(2X^2-Y^2),\; v_p(2Y^2-X^2),\; v_p(2-Y^2),\;
+v_p(2-X^2),\; v_p(2Y^2-1),\; v_p(2X^2-1)
+\]
+equals $2h$, with $h=\min(a,\gamma-a)$. These are necessary branch laws,
+not contradictions; their exact certificate covers all nine identities.
+\end{proposition}
+
+The nine residual branches of Proposition~\ref{prop:oneinterior} need not
+be analyzed one by one: the headline theorem closes every case, including
+$p\equiv1\bmod8$, at once.
+
+\begin{proof}[Proof of Theorem~\ref{main:threeprime}]
+By the endpoint table, every index is an endpoint at $3$ and at least two
+indices are endpoints at $p$. Those two indices give two \emph{distinct
+primitive} Pythagorean triangles of the same area $d/4$, whose area has
+exactly three distinct prime factors. Writing $X=2^{\alpha}=2x$, the three
+endpoint types satisfy
+\[
+YZ=x^2-1,\qquad Y^2-1=4xZ,\qquad Z^2-1=4xY .
+\]
+Combining the first with each of the others reduces both mixed pairs to
+one equation
+\[
+W(W^2-1)=4x(x^2-1),
+\]
+where $W$ is the remaining odd block. The $2$-adic valuation of the right
+side forces $W\equiv\pm1\pmod{2x}$, while monotonicity of $W(W^2-1)$ gives
+$x<W<2x$; the only residue in that window is $W=2x-1$, which forces
+$x=2$, $W=3$, and then the third block equals $1$ --- not a prime power in
+the support. The remaining pair of endpoint types forces an equality of
+powers of two distinct primes, equally impossible. Hence no primitive
+positive Parker configuration has $\supp(2d)=\{2,3,p\}$ for any prime
+$p\neq3$.
+\end{proof}
+
+\begin{remark}[Attribution boundary, restated]
+Aebi~\cite{AEB26} classifies the primitive Pythagorean triangles with
+exactly three area primes, a statement at the triangle level stronger than
+what the proof above extracts, and that classification layer is his. The
+content proved here is exactly the \emph{join} of that factorization layer
+with the endpoint law of Section~\ref{sec:supportlaw}; no priority is
+asserted for the join, and the general firstness boundary of the front
+matter applies verbatim.
+\end{remark}
+
+\begin{remark}[What does not follow]
+Nothing here extends to $|\supp(2d)|=4$: Section~\ref{sec:frontier} shows
+exactly how the four-prime structure resists, and no four-prime exclusion
+is claimed anywhere in this paper. Effective enumeration within a support
+and global support-size control equally do not follow.
+\end{remark}

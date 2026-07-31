@@ -1,0 +1,89 @@
+% ============================================================================
+% Section 9 — conclusions and the computational program. Summaries copied
+% from docs/PARKER_GLOBAL_EXHAUSTIVITY_PROGRAM.md (taxonomy AG, centre-side
+% record), docs/PARKER_ALL_SUPPORT_COMPILER_THEOREM.md (AH) and
+% docs/PARKER_OUTER_PRIMITIVE_GAUSSIAN_REDUCTION.md (AI); full statements
+% stay in the project documents, per the destination split.
+% ============================================================================
+
+\section{Conclusions and the computational program}\label{sec:program}
+
+The theorems of this paper close two whole support classes and one fibre,
+and they map the frontier exactly. This closing section summarizes the
+program that organizes what remains, and states where each open object
+lives. Everything here is a summary: the citable record is the companion
+repository's dossiers and exhausted-routes catalogue, while the full
+statements and their certificates remain in the unpublished project
+record behind this paper.
+
+\subsection{The difference-side taxonomy}
+
+For each progression write $U_i=(t_i-r_i)/2$, $V_i=(t_i+r_i)/2$, so
+$U_iV_i=d/2$ and $U_i^2+V_i^2=s_i^2$. An odd support prime is interior at
+most at one vertex, and its allowed interior vertices depend only on
+$p\bmod8$: for $p\equiv1$ all of $\{0,1,2\}$; for $p\equiv3$ none; for
+$p\equiv5$ only the centre $\{0\}$; for $p\equiv7$ only the outer vertices
+$\{1,2\}$. The number of primitive progressions is
+$3-\#\{\text{distinct occupied interior vertices}\}\ge\max(0,5-\omega(2d))$.
+The eight labelled incidence strata have exact arithmetic minima for the
+common difference ($24$, $600$, $1{,}176$, $29{,}400$, $339{,}864$,
+$8{,}496{,}600$ for the deepest stratum), and the zero-primitive stratum
+passes its combinatorial gate exactly under the Hall conditions
+\[
+n_1+n_5\ge1,\qquad n_1+n_7\ge2,\qquad n_1+n_5+n_7\ge3
+\]
+on the counts of extra primes by residue class. \textbf{These are necessary
+minima and matching conditions, not existence results}, and no Diophantine
+statement follows from the taxonomy alone. The entry-side counterpart of
+this classification --- which primes divide which \emph{entries} --- is the
+lineage of Rabern, Woll, Labruna and
+Weisenberg~\cite{RAB03,WOL18,LAB18,WEI23} discussed in
+Section~\ref{sec:intro}. On the centre side, the catalogue of Gaussian
+representations of the square centre parallels the signature-based
+organization proposed by Weisenberg~\cite{WEI23}, \S3.
+
+\subsection{The compiler and the outer reduction}
+
+A fail-closed compiler accepts the complete factorization of $2d$ with the
+three valuation rows, raises a typed violation of any encoded necessary
+law, routes exact supports $\{2,3\}$ and $\{2,3,p\}$ to the exclusions of
+Sections~\ref{sec:supportlaw}--\ref{sec:threeprime}, and otherwise emits
+one canonical branch key with its successor problem --- an interface
+closure, deliberately not a Diophantine one. For the two-primitive-AP outer
+branch, the canonical edge factors are pairwise coprime with exactly one
+divisible by four; the two normalized odd norms share a unique squarefree
+kernel; every odd prime common to them is $1\bmod8$; and the branch admits
+an explicit double-cover presentation --- the entry point of the surface
+geometry of Section~\ref{sec:surface}.
+
+\subsection{Where the open objects live}
+
+The companion repository carries three dossiers, each declaring its
+terminal state exactly:
+
+\begin{itemize}
+\item \textbf{J458}: the descent chain growing out of the area-30/60
+covering classes of Section~\ref{sec:frontier}, developed through explicit
+higher descents to a single residual class $q_R$ over $\Q(\sqrt{218})$;
+open at exactly the decision $q_R(K)$ --- a point gives rank two, emptiness
+gives rank one with a nontrivial divisible Tate--Shafarevich class.
+\item \textbf{The lift tower} ($n\ge3$): the reconstruction covers of the
+transversal frame; the $n=3$ branch is closed completely in the dossier,
+the $n=5$ branch is developed to two genus-two covers over $\Q(\sqrt2)$
+whose complete fake two-Selmer set has four classes, none eliminated, with
+a saturated rank-two pair-field lattice and conditional
+elliptic-Chabauty gates.
+\item \textbf{The degree-90 toolchain}: the class of a marked half ideal
+$[A_R]$ in a degree-90 $S$-class group, open, with the field itself now
+computable, the splitting
+$d_{90}=\dim\mathrm{Cl}_S(F_{30})[2]+\dim\ker(N)[2]$ proved, and the
+short-vector route measured to exhaustion.
+\end{itemize}
+
+An exhausted-routes catalogue records every closed route with its exact
+boundary, so that no successor re-runs a dead end. The program's remaining
+gates are recorded with declared difficulty in the repository's task
+matrix; the deepest --- deciding every one-primitive branch, closing the
+zero-primitive high-support stratum by an effective coloured $S$-unit
+theorem, and the final exhaustive join --- are frontier problems with no
+known finite reduction, and this paper claims nothing about them.

@@ -1,0 +1,933 @@
+{
+  "claim_scope": "exact finite certificates and frozen-transcript digests for the theorems of the main paper; no novelty or firstness claim; nothing here proves or refutes the existence of a 3x3 magic square of squares",
+  "engine_policy": "python standard library only; exact integer and rational arithmetic; commercial computer algebra enters only as hash-verified frozen transcripts and is never executed",
+  "families": {
+    "family1_quartic_witness": {
+      "attribution": "Bremner (BRE99); exact replay only",
+      "centre": 532,
+      "distinct_entries": 9,
+      "entries_a_plus_b_sqrt3": [
+        [
+          [
+            532,
+            -130
+          ],
+          [
+            532,
+            306
+          ],
+          [
+            532,
+            -176
+          ]
+        ],
+        [
+          [
+            532,
+            -46
+          ],
+          [
+            532,
+            0
+          ],
+          [
+            532,
+            46
+          ]
+        ],
+        [
+          [
+            532,
+            176
+          ],
+          [
+            532,
+            -306
+          ],
+          [
+            532,
+            130
+          ]
+        ]
+      ],
+      "field": "Q(sqrt3, sqrt133), biquadratic of degree 4",
+      "magic_sum": 1596
+    },
+    "family2_infinite_families": {
+      "bridge": {
+        "array": [
+          [
+            7081,
+            2209,
+            1
+          ],
+          [
+            529,
+            841,
+            7921
+          ],
+          [
+            1681,
+            6241,
+            1369
+          ]
+        ],
+        "completions": [
+          [
+            10,
+            168,
+            79,
+            65,
+            89
+          ],
+          [
+            24,
+            70,
+            23,
+            37,
+            47
+          ]
+        ],
+        "delta": 840,
+        "failed_antidiagonal_sum": 2523,
+        "seven_line_sum": 9291
+      },
+      "elliptic_lift": {
+        "doubling_identities": true,
+        "lutz_nagell": {
+          "divisor": 1405192126464000000,
+          "gcd_bound": 4,
+          "orders": {
+            "11": 12,
+            "13": 20
+          },
+          "support": [
+            2,
+            3,
+            5,
+            7
+          ]
+        },
+        "window_indices_m_le_12": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "witnesses": [
+          {
+            "cleared_root_gcd": 1,
+            "cleared_roots": [
+              1,
+              29,
+              41
+            ],
+            "common_line_sum": 9291,
+            "entry_gcd": 1,
+            "failed_diagonal_sum": 2523,
+            "lambda": 1,
+            "m": 1,
+            "output_grid": [
+              [
+                7081,
+                2209,
+                1
+              ],
+              [
+                529,
+                841,
+                7921
+              ],
+              [
+                1681,
+                6241,
+                1369
+              ]
+            ],
+            "roots": [
+              "1",
+              "29",
+              "41"
+            ],
+            "shift_tau": 3384,
+            "x": "841"
+          },
+          {
+            "cleared_root_gcd": 1,
+            "cleared_roots": [
+              5988689683199,
+              58028338062269,
+              81845657382761
+            ],
+            "common_line_sum": 36879823184393833759508080411,
+            "entry_gcd": 1,
+            "failed_diagonal_sum": 10101864054806931485164285083,
+            "lambda": 1991476962717,
+            "m": 3,
+            "output_grid": [
+              [
+                28083107871163326576204412209,
+                8760850909108853044320794601,
+                35864404121654138982873601
+              ],
+              [
+                2098003680814206998843685081,
+                3367288018268977161721428361,
+                31414531485310649598942966969
+              ],
+              [
+                6698711632416300184459983121,
+                24751684257016003553465857449,
+                5429427294961530021582239841
+              ]
+            ],
+            "roots": [
+              "5988689683199/1991476962717",
+              "58028338062269/1991476962717",
+              "81845657382761/1991476962717"
+            ],
+            "shift_tau": 13388979564793451137171897664,
+            "x": "3367288018268977161721428361/3965980493032527408022089"
+          }
+        ]
+      },
+      "retraction": {
+        "census": {
+          "1": {
+            "branch_counts": [
+              2,
+              3,
+              1
+            ],
+            "distinct_shifts": 4,
+            "t_min": 9
+          },
+          "2": {
+            "branch_counts": [
+              6,
+              5,
+              1
+            ],
+            "distinct_shifts": 10,
+            "t_min": 1350
+          },
+          "3": {
+            "branch_counts": [
+              9,
+              8,
+              2
+            ],
+            "distinct_shifts": 17,
+            "t_min": 18816
+          },
+          "4": {
+            "branch_counts": [
+              28,
+              22,
+              4
+            ],
+            "distinct_shifts": 52,
+            "t_min": 262086
+          },
+          "5": {
+            "branch_counts": [
+              33,
+              32,
+              4
+            ],
+            "distinct_shifts": 67,
+            "t_min": 3650400
+          },
+          "6": {
+            "branch_counts": [
+              44,
+              35,
+              6
+            ],
+            "distinct_shifts": 83,
+            "t_min": 50843526
+          }
+        },
+        "identities_mod_invariant": true,
+        "interval_analysis_identities": true,
+        "root_gcd_pattern_n1_20": [
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2
+        ]
+      }
+    },
+    "family3_interaction_surface": {
+      "interaction_equation": "eight sums agree iff x1+x2=2x0",
+      "mw_lock": {
+        "Q": [
+          1960,
+          78400
+        ],
+        "R": [
+          1176,
+          28224
+        ],
+        "generators": [
+          [
+            -84,
+            -1764
+          ],
+          [
+            294,
+            3528
+          ]
+        ],
+        "minimal_model": "y^2=x^3-44100x",
+        "two_Q": [
+          841,
+          -1189
+        ],
+        "two_R": [
+          1369,
+          -39997
+        ]
+      },
+      "s5_monodromy": {
+        "degrees": {
+          "signed_cover": 40,
+          "squared_quotient": 5
+        },
+        "discriminant": -24364389070416096000,
+        "mod29": [
+          2,
+          1,
+          1,
+          1
+        ],
+        "mod7": [
+          5
+        ],
+        "quintic": [
+          24,
+          625,
+          -123,
+          2,
+          49,
+          -1
+        ]
+      },
+      "saturation": {
+        "branch_divisors": true,
+        "conic_in_ideal": true,
+        "irreducibility_premises": true,
+        "saturated_factors": 30
+      }
+    },
+    "family4_fibre_stop": {
+      "admissible_t": [
+        0
+      ],
+      "curve": "w^2=(1-t^2)(841^2-t^2)(1681^2-t^2)",
+      "quotient": "v^2=(u-841^2)(u-1681^2)(u-841^2*1681^2)",
+      "quotient_identity": true,
+      "t_list": [
+        -1681,
+        -841,
+        -1,
+        0,
+        1,
+        841,
+        1681
+      ],
+      "transcript": {
+        "rank": 0,
+        "rank_proved": true,
+        "torsion_invariants": [
+          2,
+          2
+        ]
+      }
+    },
+    "family5_half_class_stop": {
+      "H": [
+        "331240/9",
+        "-190590400/27"
+      ],
+      "delta_Q": [
+        7,
+        10,
+        70
+      ],
+      "delta_R": [
+        14,
+        6,
+        21
+      ],
+      "family_levels": [
+        {
+          "n": 1,
+          "x_2H": "490152611881/53187849"
+        },
+        {
+          "n": 2,
+          "x_2H": "14584303384400740178282608143444497650920866761/7742485329606015668459342091497890231470169"
+        },
+        {
+          "n": 3,
+          "x_2H": "10161175441355462676017365806454297669802611354847005680943146406821981470641758546036648828441511035240269389576453587211999775942457779482929808670008175890120590302891260996064396018238029641/10316676052682045837178809272998836005892648189689174281445919245170348962362227649749133182747273258717827019389582260803100455188618791699027567568618701522741517082446823431331629046225"
+        }
+      ],
+      "roots_2H": [
+        "667439/7293",
+        "700109/7293",
+        "731321/7293"
+      ],
+      "torsion_images": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          -210,
+          -105
+        ],
+        [
+          105,
+          210,
+          2
+        ],
+        [
+          210,
+          -1,
+          -210
+        ]
+      ],
+      "x_2H": "490152611881/53187849"
+    },
+    "family6_support_law": {
+      "endpoint_table_mod8": {
+        "1": [
+          "01",
+          "02",
+          "12"
+        ],
+        "3": [],
+        "5": [
+          "12"
+        ],
+        "7": [
+          "01",
+          "02"
+        ]
+      },
+      "exclusion_23_cases": 240,
+      "nondegeneracy_consequences": {
+        "0": "z1=2z0 <=> r=2",
+        "01": "B^2=2W^2 (2 not a rational square)",
+        "012": "2s=1",
+        "013": "w=2r",
+        "02": "r=s=1",
+        "023": "2r=1",
+        "03": "r=w=1",
+        "1": "1/z1=2z0 <=> s=2w",
+        "12": "s=w=1",
+        "123": "w=2s",
+        "13": "r=s=w",
+        "2": "z2=2z0 <=> s=2",
+        "23": "C^2=2W^2 (2 not a rational square)",
+        "3": "1/z2=2z0 <=> r=2w"
+      },
+      "torus_identity_on_surface": "(L.1)*RSW = -F",
+      "unit_equation": "U = 1 + z0*T/2"
+    },
+    "family7_three_prime_exclusion": {
+      "aebi_areas": [
+        30,
+        60,
+        180,
+        84,
+        504,
+        1224
+      ],
+      "aebi_cores": [
+        [
+          5,
+          12,
+          13
+        ],
+        [
+          8,
+          15,
+          17
+        ],
+        [
+          9,
+          40,
+          41
+        ],
+        [
+          7,
+          24,
+          25
+        ],
+        [
+          16,
+          63,
+          65
+        ],
+        [
+          17,
+          144,
+          145
+        ]
+      ],
+      "depth_fixtures": {
+        "p5": "v_5(1+2^10)=2",
+        "p7": "v_7(2-2^22)=2"
+      },
+      "one_interior_identities": 9,
+      "three_block_identities": true,
+      "w_forcing_hits": [
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    "family8_four_prime_frontier": {
+      "balanced_cores": {
+        "1224": {
+          "core": [
+            17,
+            144,
+            145
+          ],
+          "fourth_powers": [
+            260144641,
+            442050625,
+            671898241
+          ],
+          "integer_model_roots": [
+            0,
+            103808377689281,
+            315999889281250
+          ]
+        },
+        "180": {
+          "core": [
+            9,
+            40,
+            41
+          ],
+          "fourth_powers": [
+            923521,
+            2825761,
+            5764801
+          ],
+          "integer_model_roots": [
+            0,
+            18849063610,
+            95002084820
+          ]
+        },
+        "30": {
+          "core": [
+            5,
+            12,
+            13
+          ],
+          "fourth_powers": [
+            2401,
+            28561,
+            83521
+          ],
+          "integer_model_roots": [
+            0,
+            8247435,
+            144804270
+          ]
+        },
+        "504": {
+          "core": [
+            16,
+            63,
+            65
+          ],
+          "fourth_powers": [
+            4879681,
+            17850625,
+            38950081
+          ],
+          "integer_model_roots": [
+            0,
+            178747594711,
+            1055864468750
+          ]
+        },
+        "6": {
+          "core": [
+            3,
+            4,
+            5
+          ],
+          "fourth_powers": [
+            1,
+            625,
+            2401
+          ],
+          "integer_model_roots": [
+            0,
+            111,
+            93750
+          ]
+        },
+        "60": {
+          "core": [
+            8,
+            15,
+            17
+          ],
+          "fourth_powers": [
+            2401,
+            83521,
+            279841
+          ],
+          "integer_model_roots": [
+            0,
+            29460270,
+            1448254140
+          ]
+        },
+        "84": {
+          "core": [
+            7,
+            24,
+            25
+          ],
+          "fourth_powers": [
+            83521,
+            390625,
+            923521
+          ],
+          "integer_model_roots": [
+            0,
+            2781750426,
+            20507812500
+          ]
+        }
+      },
+      "central_allowed_t": [
+        -49,
+        -25,
+        -1,
+        0,
+        1,
+        25,
+        49
+      ],
+      "edge_identity": true,
+      "fake_selmer_singletons": {
+        "30": {
+          "set": [
+            0
+          ],
+          "size": 1
+        },
+        "60": {
+          "set": [
+            0
+          ],
+          "size": 1
+        }
+      },
+      "fixtures": {
+        "area_210_edge_value": -528,
+        "area_30600_edge_value": -401016,
+        "area_30600_nonclosure_witness": 926641
+      },
+      "jacobian_ranks": {
+        "1224": 5,
+        "180": 3,
+        "30": 2,
+        "504": 4,
+        "60": 2,
+        "84": 3
+      },
+      "outer_t_list": [
+        "-49",
+        "-25",
+        "-49/2",
+        "-25/2",
+        "-1",
+        "-1/2",
+        "0"
+      ]
+    },
+    "family9_height_census": {
+      "canonical_representatives": [
+        [
+          [
+            1,
+            1801,
+            1369
+          ],
+          [
+            2209,
+            841,
+            121
+          ],
+          [
+            961,
+            529,
+            1681
+          ]
+        ],
+        [
+          [
+            1,
+            1849,
+            1369
+          ],
+          [
+            2209,
+            841,
+            169
+          ],
+          [
+            1009,
+            529,
+            1681
+          ]
+        ],
+        [
+          [
+            1,
+            1936,
+            1369
+          ],
+          [
+            2209,
+            841,
+            256
+          ],
+          [
+            1096,
+            529,
+            1681
+          ]
+        ],
+        [
+          [
+            121,
+            1681,
+            1369
+          ],
+          [
+            2209,
+            961,
+            1
+          ],
+          [
+            841,
+            529,
+            1801
+          ]
+        ],
+        [
+          [
+            169,
+            1681,
+            1369
+          ],
+          [
+            2209,
+            1009,
+            1
+          ],
+          [
+            841,
+            529,
+            1849
+          ]
+        ],
+        [
+          [
+            256,
+            1681,
+            1369
+          ],
+          [
+            2209,
+            1096,
+            1
+          ],
+          [
+            841,
+            529,
+            1936
+          ]
+        ],
+        [
+          [
+            529,
+            1681,
+            961
+          ],
+          [
+            1801,
+            1369,
+            1
+          ],
+          [
+            841,
+            121,
+            2209
+          ]
+        ],
+        [
+          [
+            529,
+            1681,
+            1009
+          ],
+          [
+            1849,
+            1369,
+            1
+          ],
+          [
+            841,
+            169,
+            2209
+          ]
+        ],
+        [
+          [
+            529,
+            1681,
+            1096
+          ],
+          [
+            1936,
+            1369,
+            1
+          ],
+          [
+            841,
+            256,
+            2209
+          ]
+        ]
+      ],
+      "centre_nonsquare_classes": 2,
+      "d4_classes": 9,
+      "doubled_difference": 840,
+      "full_pair_roots": [
+        [
+          1,
+          29,
+          41
+        ],
+        [
+          23,
+          37,
+          47
+        ]
+      ],
+      "full_progressions_h46": 12,
+      "full_progressions_h47": 13,
+      "labelled_arrays": 18,
+      "partial_progressions": [
+        [
+          121,
+          961,
+          1801
+        ],
+        [
+          169,
+          1009,
+          1849
+        ],
+        [
+          256,
+          1096,
+          1936
+        ]
+      ]
+    }
+  },
+  "frozen_files": {
+    "e840_bielliptic_fibre.m": {
+      "bytes": 1288,
+      "sha256": "428fb7f7648b2b2a346ae22694fedf20c71a95c9f0610e85d7bbd9b2c7d65116"
+    },
+    "e840_bielliptic_fibre_magma_certificate.json": {
+      "bytes": 1909,
+      "sha256": "79e75c71d3503a847031fca442cd29dfa2a65ee7ecafe770b24bc004032c982c"
+    },
+    "e840_bielliptic_fibre_magma_v2_29_8.txt": {
+      "bytes": 996,
+      "sha256": "a84c0079783703ffb1d15d9abcd1736128c7782ecea2a48be9bce38ed0af3020"
+    },
+    "parker_balanced_core6_fibre.m": {
+      "bytes": 1070,
+      "sha256": "e27e9e75e095928afb978333d13555a27ccd50922e46f6357c30ae198aed1eb0"
+    },
+    "parker_balanced_core6_fibre_magma_v2_29_8.txt": {
+      "bytes": 402,
+      "sha256": "1058ca697172c157d7d5947c9e74109b25a2a0ca59e1dc43fb67759185562bba"
+    },
+    "parker_po104_central_mw_gate.m": {
+      "bytes": 1299,
+      "sha256": "9cfbaa794fae9bb4e375716cdbb7c4360f2397a53984b6a1eee633848f9143f6"
+    },
+    "parker_po104_central_mw_gate_magma_v2_29_8.txt": {
+      "bytes": 942,
+      "sha256": "6bb39849e7b5708f336aefd1833b731236cdec3d5720a5f8d8c6ee8abd69c021"
+    },
+    "parker_po104_outer_core6_gate.m": {
+      "bytes": 732,
+      "sha256": "5d323cca3431ed52816ea214a68c11e1d0a57c0adaf26c45f935cda27db94ac1"
+    },
+    "parker_po104_outer_core6_gate_magma_v2_29_8.txt": {
+      "bytes": 206,
+      "sha256": "c68b8d2e7836abbcfcd378edede545fd2cd10f2103bc0617dfc1cdcd1bb4aadc"
+    },
+    "parker_po105_full_class_a30.m": {
+      "bytes": 342,
+      "sha256": "1009d00e24ccc287ecb6ec2da27c1c982acdd7dff6dc1f0094547ad9dbab71a1"
+    },
+    "parker_po105_full_class_a30_magma_v2_29_8.txt": {
+      "bytes": 112,
+      "sha256": "32625b49d08f52f0dd73d0735424ce4c34aaa88d53750d6f4afb518fdf8dd986"
+    },
+    "parker_po105_full_class_a60.m": {
+      "bytes": 346,
+      "sha256": "6c8cc3cb265cf6333e077f84bc0c2002b7058c1bdb7373366094b47fbc477fb6"
+    },
+    "parker_po105_full_class_a60_magma_v2_29_8.txt": {
+      "bytes": 113,
+      "sha256": "28a3e9eefea8c4e281d722242c95ca97a7a552a501d410058e2f85d15948ac45"
+    }
+  },
+  "schema": "FCIG-P41-NEARMISS-SUPPORT-CERTIFICATES-v1",
+  "status": "PASS",
+  "terminal": "P41_MAIN_PAPER_EXACT_CERTIFICATES_PASS"
+}

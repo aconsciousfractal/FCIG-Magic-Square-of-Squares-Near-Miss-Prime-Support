@@ -1,0 +1,98 @@
+% ============================================================================
+% Section 8 — the four-prime frontier. Statements and proofs copied from the
+% frozen theorem lock and the controlling documents docs/FOUR_PRIME_
+% INCIDENCE_FACTORIZATION_THEOREM.md, docs/BALANCED_DROPOUT_FIXED_FIBRE_
+% THEOREM.md, docs/OUTER_CORE6_AND_ADDITION_CURVE_THEOREM.md. This section
+% claims NO four-prime exclusion; its purpose is to state the frontier
+% exactly, with the open residue listed in the text.
+% ============================================================================
+
+\section{The four-prime frontier}\label{sec:frontier}
+
+Let $\supp(2d)=\{2,3,p,q\}$ with $p,q$ distinct primes different from
+$2,3$, and put $U_i=(t_i-r_i)/2$, $V_i=(t_i+r_i)/2$, $N=d/2$, so
+$U_iV_i=N$ and $U_i^2+V_i^2=s_i^2$.
+
+\begin{proposition}[Endpoint incidence and edge factorization]\label{prop:fourprime}
+Each extra prime labels either no interior progression or one
+residue-permitted interior vertex, so at least one progression is endpoint
+at both $p$ and $q$ and its Pythagorean triple is primitive; the number of
+primitive progressions is $3-\#(\{I_p,I_q\}\setminus\{\varnothing\})$. For
+every pair $i,j$, setting
+\[
+G=\gcd(U_i,U_j),\quad R=U_i/G,\quad S=U_j/G,\quad B=N/(GRS)
+\]
+gives $U_i=GR$, $V_i=BS$, $U_j=GS$, $V_j=BR$ and the edge identity
+\[
+s_i^2-s_j^2=(G^2-B^2)(R^2-S^2).
+\]
+An interior-prime label splits its prime-power block on the two incident
+edges and leaves it whole on the opposite edge; the Parker interaction
+becomes the equality $F_{10}=F_{02}=D\neq0$ of the two canonical products
+of four difference factors. Two exact fixtures (area $210$; the mixed
+area-$30600$ dropout) certify that neither two primitive progressions nor
+one primitive plus one interior progression is by itself contradictory ---
+which is precisely why no exclusion is claimed at this level.
+\end{proposition}
+
+\begin{proposition}[Balanced-dropout reduction]\label{prop:balanced}
+If an extra prime is balanced at an interior vertex (its exponent split
+equally between the two legs), every other interior label is absent or
+co-located at the same vertex; every balanced branch has
+$d/4=Ag_i^2$ with
+\[
+A\in\{6,30,60,180,84,504,1224\},
+\]
+and primitive core $(3,4,5)$ or one of the six cores classified by
+Aebi~\cite{AEB26}. If both extra primes are balanced at the central vertex,
+then $A=6$ and, after scaling, a candidate forces a rational point on
+\[
+w^2=(1-t^2)(625-t^2)(2401-t^2),
+\]
+whose complementary bielliptic quotient (the method of Flynn and
+Wetherell~\cite{FW99}) is $y^2=x(x-111)(x-93750)$, of rank zero with
+torsion $(\Z/2)^2$ --- proof-mode computation replayed on the official
+Magma V2.29-8, entering as a hash-verified frozen transcript. The rational
+lifts give $t\in\{0,\pm1,\pm25,\pm49\}$, positivity requires $|t|<1$, and
+$t=0$ repeats the progression: the central double-balanced branch is empty.
+\end{proposition}
+
+\begin{proposition}[Outer core-area-6 exclusion and the addition curves]\label{prop:outercore}
+If both extra primes are balanced at an outer vertex, the primitive core is
+$(3,4,5)$; with core entries $1,25,49$ and central and opposite outer
+entries $25+t$, $25+2t$, a candidate forces a rational point on
+\[
+W^2=(t+1)(t+25)(t+49)(2t+1)(2t+25)(2t+49),
+\]
+whose complete set of rational $t$-coordinates is
+\[
+\{-49,\,-25,\,-49/2,\,-25/2,\,-1,\,-1/2,\,0\}
+\]
+(certified-complete point list, frozen transcript). Positivity of both new
+progressions requires $t>-1/2$, so only $t=0$ survives and repeats the
+core: the outer double-balanced core-area-6 branch is empty on the
+positive distinct locus. For the residual central cores, normalizing the
+congruent-number curve as $E_n\colon y^2=x^3-n^2x$ with fixed central
+$x$-coordinate $a$, a secant slope $z$ between $P,Q$ with $x(P)+x(Q)=2a$
+lies on
+\[
+H_{n,a}\colon\;Y^2=\bigl(z^2-(2a-n)\bigr)\bigl(z^2-2a\bigr)\bigl(z^2-(2a+n)\bigr);
+\]
+for the six Aebi central cores (areas $30,60,180,84,504,1224$) the Jacobian
+ranks are $2,2,3,3,4,5$, so ordinary genus-two Chabauty does not apply. In
+the first two cases, two-cover descent leaves a singleton fake two-Selmer
+set, identifying a unique covering class for elliptic or quadratic
+Chabauty in the sense of Bruin~\cite{BRU03} --- a target, not a result: the
+rational points remain undetermined.
+\end{proposition}
+
+\subsection*{The exact open boundary}
+
+\textbf{No four-prime exclusion is claimed.} What remains open at this
+frontier, stated exactly: the six Aebi central genus-two fibres (ranks
+$2,2,3,3,4,5$ above), the outer fixed cores other than the area-6 one, and
+the persistent unbalanced four-prime primitive cores. The continuation of
+the residual arithmetic --- including the J458 chain that grows out of the
+area-30/60 covering classes --- lives in the companion repository's
+dossiers with its own open gates, and no statement about it is imported
+here.

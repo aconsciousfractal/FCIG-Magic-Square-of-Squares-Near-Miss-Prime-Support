@@ -1,0 +1,79 @@
+{
+  "agreement_with_sage_pari": {
+    "conductor": true,
+    "minimal_model": true,
+    "nonzero_torsion_x": true,
+    "rank": true,
+    "root_number": true,
+    "torsion_invariants": true
+  },
+  "boundary": {
+    "global_interaction_surface_classified": false,
+    "novelty_or_firstness_established": false,
+    "parker_nonexistence_proved": false,
+    "specialist_prior_art_review_complete": false
+  },
+  "claim": "P41-C079",
+  "curve": {
+    "a_invariants": [
+      0,
+      -1998610598883,
+      0,
+      7061164703720084163,
+      -3994430203629571309037281
+    ],
+    "equation": "v^2=(u-841^2)(u-1681^2)(u-841^2*1681^2)"
+  },
+  "date": "2026-07-26",
+  "engine": {
+    "independent_from_first_engine": true,
+    "name": "Magma",
+    "official_calculator": "https://magma.maths.usyd.edu.au/calc/",
+    "version": "V2.29-8"
+  },
+  "experiment": "E-P41-024",
+  "input_artifact": {
+    "byte_exact_resubmission_pass": true,
+    "bytes": 1288,
+    "path": "scripts/e840_bielliptic_fibre.m",
+    "sha256": "428fb7f7648b2b2a346ae22694fedf20c71a95c9f0610e85d7bbd9b2c7d65116"
+  },
+  "obligation": {
+    "id": "PO-091",
+    "status": "CLOSED_TECHNICALLY_INDEPENDENT_MAGMA_REPLAY"
+  },
+  "output": {
+    "assertions": "PASS",
+    "conductor": 222693537175200,
+    "minimal_model_a_invariants": [
+      0,
+      0,
+      0,
+      -5201071800095511407025,
+      -144373467524717542538756740005000
+    ],
+    "nonzero_torsion_x": [
+      707281,
+      2825761,
+      1998607065841
+    ],
+    "rank": 0,
+    "rank_bounds": [
+      0,
+      0
+    ],
+    "rank_proved": true,
+    "root_number": 1,
+    "status": "PASS_INDEPENDENT_MAGMA_REPLAY",
+    "torsion_invariants": [
+      2,
+      2
+    ],
+    "torsion_order": 4
+  },
+  "transcript_artifact": {
+    "bytes": 996,
+    "path": "results/e840_bielliptic_fibre_magma_v2_29_8.txt",
+    "sha256": "a84c0079783703ffb1d15d9abcd1736128c7782ecea2a48be9bce38ed0af3020"
+  }
+}

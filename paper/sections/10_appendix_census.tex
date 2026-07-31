@@ -1,0 +1,84 @@
+% ============================================================================
+% Appendix A — census and provenance. Content copied from
+% docs/DIAGONAL_RETRACTION_THEOREMS.md (§6, DR-2 and its certificate
+% argument) and docs/CANDIDATE_NEARMISS_SQUARES.md (the Brown provenance
+% correction). The census bound rule follows the open obligation PO-075:
+% only the frozen default bound is citable.
+% ============================================================================
+
+\appendix
+
+\section{Census and provenance}\label{app:census}
+
+\subsection{The exact minimum census}
+
+The census definition is frozen: nine distinct positive integer entries;
+exactly eight positive squares; exactly seven of the eight ordinary lines
+with one common sum; quotient by the geometric $D_4$ action; height equal
+to the largest positive square root among the eight squares.
+
+\begin{proposition}[Exact minimum]\label{prop:census}
+Under this definition there are $0$ classes of height $\le46$ and exactly
+$9$ classes of height $\le47$, of which exactly two have a nonsquare
+centre.
+\end{proposition}
+
+\begin{proof}[Certificate argument]
+Two independent exact enumerators agree: one scans integer progression
+centres and common differences; the other builds full progressions from
+root triples and partial ones from root pairs. At height $46$ there are
+twelve full three-square progressions, all with distinct common
+differences; two full progressions of one difference are necessary, so the
+census is empty. At height $47$ the only difference supporting two full
+progressions is $840$:
+\[
+(1,841,1681)=(1^2,29^2,41^2),\qquad(529,1369,2209)=(23^2,37^2,47^2),
+\]
+and the only compatible partial progressions are $(121,961,1801)$,
+$(169,1009,1849)$, $(256,1096,1936)$. For each partial progression the six
+role assignments collapse to three $D_4$ classes, giving $3\times3=9$; the
+last two partials carry their nonsquare in the middle, and assigning either
+to the centre role gives one centre-nonsquare class each. The census is
+replayed from scratch by the companion verifier (\texttt{verify.py},
+census family), and all nine canonical representatives are frozen in its
+expected certificate.
+\end{proof}
+
+The three shifts $t=9,96,144$ of the $n=1$ carrier antidiagonal
+$(265,1105,1945)$ produce exactly the three partial components of the
+minimum layer --- stated carefully: only three designated orientations are
+literal antidiagonal retractions of the fixed source orientation; the other
+six classes are role reassignments. The census engine of the project
+record carries a reserved bound option; \textbf{only the frozen default
+bound above is citable} until that obligation closes, and no census figure
+in this paper uses any other bound.
+
+\subsection{Provenance of the centre-true eight-square arrays}
+
+A related catalogued family must not be confused with the $(8,7)$ metric:
+the \emph{centre-true} arrays with a nonsquare centre $g$, eight distinct
+square entries around it, magic sum $3g$, and \textbf{six} magic lines
+(three rows, middle column, both diagonals; the outer columns fail). Seven
+such arrays with centres
+\[
+157441,\;411625,\;786361,\;1199809,\;2033641,\;12138289,\;19953649
+\]
+circulated in an earlier phase of this project as if new. The red-team
+audit corrected the record: Brown's note on automedian triangles and magic
+squares~\cite{BRO} already lists, for each of these seven centres, the six
+roots of the top and bottom rows. What this project adds is only the square
+middle-pair completion and the six-line arrangement; whether that
+completion is itself absent from the literature has not been source-locked,
+and no novelty is claimed. For example, at $g=157441$:
+\[
+\begin{pmatrix}
+421^2 & 49^2 & 541^2\\
+481^2 & g & 289^2\\
+149^2 & 559^2 & 371^2
+\end{pmatrix},
+\]
+whose six stated lines each sum to $3g=472323$. Brown also states that a
+Parker centre root needs more than two distinct primes $1\bmod4$; that
+statement is non-refereed and its proof scope is unaudited here, but it
+blocks any ``first centre-prime obstruction'' wording, and none appears in
+this paper.

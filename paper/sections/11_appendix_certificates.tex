@@ -1,0 +1,85 @@
+% ============================================================================
+% Appendix B — the deferred DR-4 interval analysis (copied whole from
+% docs/DIAGONAL_RETRACTION_THEOREMS.md §10) and the certificate discipline.
+% ============================================================================
+
+\section{The least-shift interval analysis, and certificates}\label{app:certificates}
+
+\subsection{The complete case analysis for Proposition~\ref{prop:leastshift}}
+
+Setting and notation as in Section~\ref{sec:families}: $n\ge2$,
+$(y,z)\mapsto(y+2z,y+3z)$ from $(11,15)$, induction inequalities
+\[
+z>y,\quad 2y>z,\quad 5y>3z,\quad 5z>6y,\quad 8y>5z,\quad z\ge15,
+\]
+$t_0=6z^2$, $h=t_0-t$ with $0<h<6z^2$, and at $t_0$ the three entries are
+$C-t_0=Y^2$ ($Y=yz+1$), $E-t_0=H=4z^4-z^2+1$, $G-t_0=X^2$ ($X=xz-1$).
+
+\emph{The $C$ entry.} If $C-t=(Y+a)^2$ then $h=a(2Y+a)$. If $a\ge5$ then
+$h\ge5(2Y+5)=10yz+35>6z^2$ because $5y>3z$; hence only $a\in\{1,2,3,4\}$.
+
+\emph{The $G$ entry.} If $G-t=(X+b)^2$ with $b\ge2$ then
+$h\ge4X+4=4yz+8z^2>6z^2$ (here $X=xz-1$ and $x=y+2z$ along the
+recurrence); thus $b=1$ and necessarily $h=2X+1=2yz+4z^2-1$.
+
+\emph{The $E$ entry.} The exact neighbouring squares are
+\[
+(2z^2-1)^2<H<(2z^2)^2<(2z^2+1)^2<H+6z^2<(2z^2+2)^2,
+\]
+so $E-t$ can be square only for $h=z^2-1$ or $h=5z^2$.
+
+\emph{Excluding $CE$.} Equating $a(2Y+a)$ with the two possible $E$
+increments gives, for $a=1,2,3,4$ respectively:
+\[
+\begin{array}{r|c|c}
+a & \text{equality with } z^2-1 & \text{equality with } 5z^2\\\hline
+1 & z(z-2y)=4 & z(5z-2y)=3\\
+2 & z(z-4y)=9 & z(5z-4y)=8\\
+3 & z(z-6y)=16 & z(5z-6y)=15\\
+4 & z(z-8y)=25 & z(5z-8y)=24
+\end{array}
+\]
+The first column is negative in every row because $2y>z$. In the second
+column, rows $1$ and $2$ equate positive multiples of $z\ge15$ with $3$ or
+$8$; row $3$ has $5z-6y>0$, and for $z>15$ the product exceeds $15$ while
+at $(y,z)=(11,15)$ it equals $135$; row $4$ is negative because $8y>5z$.
+Branch $CE$ is impossible.
+
+\emph{Excluding $CG$.} Equating the four $C$ increments with
+$2yz+4z^2-1$ gives respectively
+\[
+4z^2=4,\qquad 2z(2z-y)=9,\qquad z(z-y)=4,\qquad 2z(2z-3y)=25 .
+\]
+The first and third contradict $z\ge15$; the second and fourth equate an
+even integer with an odd one. Branch $CG$ is impossible.
+
+\emph{Excluding $EG$.} The $G$ increment exceeds $z^2-1$, their difference
+being $2yz+3z^2>0$; equality with $5z^2$ would give $z(2y-z)=1$,
+contradicting $z\ge15$ and $2y>z$. Branch $EG$ is impossible.
+
+Every pair is excluded, so no positive pair-closing shift is smaller than
+$6z^2$; the shift $6z^2$ itself closes $C$ and $G$, and
+Theorem~\ref{main:families}(i) shows it is nondegenerate. The proof is
+uniform in $n$, uses no factorization of a particular $\Delta$ and no scan
+over $t$; the factor-pair census for $2\le n\le20$ is corroboration only.
+The statement deliberately starts at $n=2$: at $n=1$ the shift $9$ is
+smaller than the uniform $6z^2=96$.
+
+\subsection{Certificate discipline}
+
+Every theorem of this paper is backed by an exact machine-checkable
+certificate in the companion repository, consumed by a single verifier
+entry point; the verifier re-derives the exact witnesses (the recurrence
+identities and least shifts; the bridge divisor check and the $(79,65,89)$
+completion; the elliptic-orbit witnesses with denominator clearing; the
+saturation and monodromy data; the fibre algebra and pulled-back $t$-lists;
+the half-class countercertificate; the torus, endpoint-table and
+three-block identities; the four-prime incidence and fixed-fibre
+identities) using exact integer and symbolic arithmetic only. Computations
+performed on commercial computer algebra (the rank, torsion and complete
+point-list gates attributed in the text to the official Magma Calculator
+V2.29-8) enter exclusively as \emph{frozen transcripts} verified by hash;
+the verifier checks the hashes and the parsed assertions, and never
+requires that software to run. The exact file-level certificate map is
+generated together with the verifier and shipped in the repository
+manifest.

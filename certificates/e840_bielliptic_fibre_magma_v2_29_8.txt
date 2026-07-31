@@ -1,0 +1,30 @@
+P41_E840_EMINUS_MAGMA_GATE
+MAGMA_VERSION 2 29 8
+CURVE Elliptic Curve defined by y^2 = x^3 - 1998610598883*x^2 + 7061164703720084163*x - 3994430203629571309037281 over Rational Field
+MINIMAL_MODEL Elliptic Curve defined by y^2 = x^3 - 5201071800095511407025*x - 144373467524717542538756740005000 over Rational Field
+CONDUCTOR 222693537175200
+RANK_BOUNDS 0 0
+RANK 0
+RANK_PROVED true
+TORSION_ORDER 4
+TORSION_INVARIANTS [ 2, 2 ]
+TORSION_POINTS [
+    (0 : 1 : 0),
+    (1998607065841 : 0 : 1),
+    (2825761 : 0 : 1),
+    (707281 : 0 : 1)
+]
+NONZERO_TORSION_X [ 707281, 2825761, 1998607065841 ]
+ROOT_NUMBER 1
+ASSERTIONS PASS
+STATUS PASS_INDEPENDENT_MAGMA_REPLAY
+
+OFFICIAL_CALCULATOR https://magma.maths.usyd.edu.au/calc/
+CALCULATOR_RUNTIME Magma V2.29-8
+REPLAY_DATE 2026-07-26
+TOTAL_TIME 0.480 seconds
+TOTAL_MEMORY 85.16MB
+
+The volatile calculator seed is intentionally omitted. It is not an input to
+the mathematical certificate. The exact submitted source is frozen as
+scripts/e840_bielliptic_fibre.m.

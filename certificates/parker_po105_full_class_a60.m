@@ -1,0 +1,11 @@
+print "P41_PO105_A60_FULL_CLASS";
+Q<Z> := PolynomialRing(Rationals());
+C := HyperellipticCurve((Z^2-1352)*(Z^2-2312)*(Z^2-3272));
+Hk, AtoHk := TwoCoverDescent(C);
+A<theta> := Domain(AtoHk);
+delta := 192963/2737-theta;
+print "SELMER_SIZE", #Hk;
+print "SELMER_SET", Hk;
+print "DELTA_IMAGE", AtoHk(delta);
+print "DELTA", delta;
+print "STATUS DONE";
