@@ -1,4 +1,5 @@
 __pycache__/
+tmp/
 *.pyc
 *.pyo
 paper/*.aux
@@ -8,5 +9,6 @@ paper/*.toc
 paper/*.synctex.gz
 paper/*.fdb_latexmk
 paper/*.fls
+paper/*.xdv
 paper/main.pdf
 results/verification.log

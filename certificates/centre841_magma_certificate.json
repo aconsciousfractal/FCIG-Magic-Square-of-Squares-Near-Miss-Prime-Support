@@ -13,7 +13,7 @@
     "parker_nonexistence_proved": false,
     "specialist_prior_art_review_complete": false
   },
-  "claim": "P41-C079",
+  "claim": "closed centre-841 fibre",
   "curve": {
     "a_invariants": [
       0,
@@ -31,15 +31,15 @@
     "official_calculator": "https://magma.maths.usyd.edu.au/calc/",
     "version": "V2.29-8"
   },
-  "experiment": "E-P41-024",
+  "experiment": "independent Magma replay",
   "input_artifact": {
     "byte_exact_resubmission_pass": true,
-    "bytes": 1288,
-    "path": "scripts/e840_bielliptic_fibre.m",
-    "sha256": "428fb7f7648b2b2a346ae22694fedf20c71a95c9f0610e85d7bbd9b2c7d65116"
+    "bytes": 1307,
+    "path": "certificates/centre841_bielliptic_fibre.m",
+    "sha256": "5b5793874481007b889ceeeac9d0897feb99714c215a9a93d13c2dc32402c57c"
   },
   "obligation": {
-    "id": "PO-091",
+    "id": "computer-assisted rank gate",
     "status": "CLOSED_TECHNICALLY_INDEPENDENT_MAGMA_REPLAY"
   },
   "output": {
@@ -72,8 +72,8 @@
     "torsion_order": 4
   },
   "transcript_artifact": {
-    "bytes": 996,
-    "path": "results/e840_bielliptic_fibre_magma_v2_29_8.txt",
-    "sha256": "a84c0079783703ffb1d15d9abcd1736128c7782ecea2a48be9bce38ed0af3020"
+    "bytes": 1011,
+    "path": "certificates/centre841_bielliptic_fibre_magma_v2_29_8.txt",
+    "sha256": "1da0876d133846b057b5a6372376246fd16f9cfcc46b87d041a657e095ffece8"
   }
 }

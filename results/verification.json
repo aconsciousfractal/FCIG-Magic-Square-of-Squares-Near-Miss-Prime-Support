@@ -1,9 +1,184 @@
 {
   "claim_scope": "exact finite certificates and frozen-transcript digests for the theorems of the main paper; no novelty or firstness claim; nothing here proves or refutes the existence of a 3x3 magic square of squares",
-  "engine_policy": "python standard library only; exact integer and rational arithmetic; commercial computer algebra enters only as hash-verified frozen transcripts and is never executed",
+  "engine_policy": "python standard library only; exact integer and rational arithmetic, plus deterministic Decimal quadrature used only to corroborate a displayed decimal; external computer algebra enters only as hash-verified frozen records and is never executed",
   "families": {
+    "family0_line_sum_lattice": {
+      "cokernel": "Z direct-sum Z/3Z",
+      "exceptional_prime": 3,
+      "free_relation": [
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "image_conditions": [
+        "R1+R2+R3=C1+C2+C3",
+        "R1+R3=C2+Dplus+Dminus (mod 3)"
+      ],
+      "matrix": [
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "minor6": {
+        "columns_zero_based": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6
+        ],
+        "determinant": -1,
+        "rows_zero_based": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6
+        ]
+      },
+      "minor7": {
+        "columns_zero_based": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "determinant": -3,
+        "rows_zero_based": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7
+        ]
+      },
+      "mod3_relation": [
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "rank_over_Q": 7,
+      "ranks_mod_p": {
+        "2": 7,
+        "3": 6,
+        "5": 7,
+        "7": 7
+      },
+      "smith_form": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        0
+      ]
+    },
     "family1_quartic_witness": {
-      "attribution": "Bremner (BRE99); exact replay only",
+      "attribution": "Bremner (BRE01); exact replay only",
       "centre": 532,
       "distinct_entries": 9,
       "entries_a_plus_b_sqrt3": [
@@ -106,6 +281,27 @@
             3,
             5,
             7
+          ]
+        },
+        "return_density": {
+          "beta_argument": "28224/714025",
+          "beta_parameters": [
+            "1/4",
+            "1/2"
+          ],
+          "coarse_decimal": "0.65852714982712128666",
+          "counting_law": "A(N)=delta*N+o(N)",
+          "decimal_16": "0.6585271498271213",
+          "exact_expression": "1-I_(28224/714025)(1/4,1/2)",
+          "fine_decimal": "0.65852714982712130625",
+          "logical_role": "numerical corroboration only",
+          "simpson_panels": [
+            4096,
+            8192
+          ],
+          "window": [
+            840,
+            4225
           ]
         },
         "window_indices_m_le_12": [
@@ -342,6 +538,14 @@
       "admissible_t": [
         0
       ],
+      "contextual_first_quotient": {
+        "engine": "PARI/GP 2.17.4",
+        "load_bearing": false,
+        "rank_bounds": [
+          3,
+          3
+        ]
+      },
       "curve": "w^2=(1-t^2)(841^2-t^2)(1681^2-t^2)",
       "quotient": "v^2=(u-841^2)(u-1681^2)(u-841^2*1681^2)",
       "quotient_identity": true,
@@ -362,6 +566,81 @@
           2
         ]
       }
+    },
+    "family4b_bremner_shadow": {
+      "admissible_parameter": "0",
+      "coefficient_matrix": [
+        [
+          88,
+          -153,
+          65
+        ],
+        [
+          -23,
+          0,
+          23
+        ],
+        [
+          -65,
+          153,
+          -88
+        ]
+      ],
+      "cremona_label": "345345r4",
+      "curve": "y^2=x(x-529)(x-4225)",
+      "finite_field_counts": {
+        "17": 16,
+        "41": 40
+      },
+      "halving_tests": {
+        "0": [
+          false,
+          false
+        ],
+        "4225": [
+          true,
+          false
+        ],
+        "529": [
+          true,
+          false
+        ]
+      },
+      "quotient_map": "x=1/t^2, y=Y/t^3",
+      "rank_bounds": [
+        0,
+        0
+      ],
+      "rejected_nonzero_parameters": {
+        "-1/23": [
+          "0",
+          "2",
+          "-42/23",
+          "88/23"
+        ],
+        "-1/65": [
+          "42/65",
+          "88/65",
+          "0",
+          "2"
+        ],
+        "1/23": [
+          "2",
+          "0",
+          "88/23",
+          "-42/23"
+        ],
+        "1/65": [
+          "88/65",
+          "42/65",
+          "2",
+          "0"
+        ]
+      },
+      "torsion_invariants": [
+        2,
+        2
+      ]
     },
     "family5_half_class_stop": {
       "H": [
@@ -645,12 +924,14 @@
       "edge_identity": true,
       "fake_selmer_singletons": {
         "30": {
+          "engine": "Magma V2.29-8",
           "set": [
             0
           ],
           "size": 1
         },
         "60": {
+          "engine": "Magma V2.29-8",
           "set": [
             0
           ],
@@ -854,6 +1135,33 @@
       "full_progressions_h46": 12,
       "full_progressions_h47": 13,
       "labelled_arrays": 18,
+      "partial_progression_candidates": [
+        [
+          121,
+          961,
+          1801
+        ],
+        [
+          169,
+          1009,
+          1849
+        ],
+        [
+          256,
+          1096,
+          1936
+        ],
+        [
+          841,
+          1681,
+          2521
+        ],
+        [
+          1369,
+          2209,
+          3049
+        ]
+      ],
       "partial_progressions": [
         [
           121,
@@ -874,60 +1182,76 @@
     }
   },
   "frozen_files": {
-    "e840_bielliptic_fibre.m": {
-      "bytes": 1288,
-      "sha256": "428fb7f7648b2b2a346ae22694fedf20c71a95c9f0610e85d7bbd9b2c7d65116"
+    "addition_curve_full_class_area30.m": {
+      "bytes": 350,
+      "sha256": "74cbed6c9ef1284ddbe4294bcefcae0c2502e70d7f0407d6d644ec62f3861c5b"
     },
-    "e840_bielliptic_fibre_magma_certificate.json": {
-      "bytes": 1909,
-      "sha256": "79e75c71d3503a847031fca442cd29dfa2a65ee7ecafe770b24bc004032c982c"
+    "addition_curve_full_class_area60.m": {
+      "bytes": 354,
+      "sha256": "84cdb031d7369fe20e697840d3a35e266c0da33abc075ff143859b8412ec96c9"
     },
-    "e840_bielliptic_fibre_magma_v2_29_8.txt": {
-      "bytes": 996,
-      "sha256": "a84c0079783703ffb1d15d9abcd1736128c7782ecea2a48be9bce38ed0af3020"
+    "area30_magma.txt": {
+      "bytes": 141,
+      "sha256": "54f829dba69bbd882dcbe856d7153c197e2d974434fecfb6824bf9a06e5a79b0"
     },
-    "parker_balanced_core6_fibre.m": {
-      "bytes": 1070,
-      "sha256": "e27e9e75e095928afb978333d13555a27ccd50922e46f6357c30ae198aed1eb0"
+    "area60_magma.txt": {
+      "bytes": 142,
+      "sha256": "7f2bc34e20adb1848846e81ea3bb1a1f835801abcefa576a94ffe045a1a1fdfa"
     },
-    "parker_balanced_core6_fibre_magma_v2_29_8.txt": {
-      "bytes": 402,
-      "sha256": "1058ca697172c157d7d5947c9e74109b25a2a0ca59e1dc43fb67759185562bba"
+    "balanced_core6_fibre.m": {
+      "bytes": 1077,
+      "sha256": "eabb0098f55029e930959d55f8d8ebad477aac67ffd973eb828278a68a5d7994"
     },
-    "parker_po104_central_mw_gate.m": {
-      "bytes": 1299,
-      "sha256": "9cfbaa794fae9bb4e375716cdbb7c4360f2397a53984b6a1eee633848f9143f6"
+    "balanced_core6_fibre_magma_v2_29_8.txt": {
+      "bytes": 401,
+      "sha256": "a258dff02db3930bd4667b1dcede72aff82ed80e58bafbfdd8cc486158c92c3e"
     },
-    "parker_po104_central_mw_gate_magma_v2_29_8.txt": {
-      "bytes": 942,
-      "sha256": "6bb39849e7b5708f336aefd1833b731236cdec3d5720a5f8d8c6ee8abd69c021"
+    "bremner_shadow_pair_quotients.gp": {
+      "bytes": 1521,
+      "sha256": "5965ced8c5e3d5697922675aefe0f5c7fd0960872de62be26b363cda764eaa2a"
     },
-    "parker_po104_outer_core6_gate.m": {
-      "bytes": 732,
-      "sha256": "5d323cca3431ed52816ea214a68c11e1d0a57c0adaf26c45f935cda27db94ac1"
+    "bremner_shadow_pair_quotients_pari_v2_17_4.txt": {
+      "bytes": 1367,
+      "sha256": "b98b2eb94932423e3cf32d46730313c5c68a5a25e9ac78bacd117c0e96808739"
     },
-    "parker_po104_outer_core6_gate_magma_v2_29_8.txt": {
-      "bytes": 206,
-      "sha256": "c68b8d2e7836abbcfcd378edede545fd2cd10f2103bc0617dfc1cdcd1bb4aadc"
+    "central_addition_curves.m": {
+      "bytes": 1308,
+      "sha256": "5a4f7d179b222d01b9dbee34894e9ce4a5aa7ab474c4bd5776e80234ffc6573a"
     },
-    "parker_po105_full_class_a30.m": {
-      "bytes": 342,
-      "sha256": "1009d00e24ccc287ecb6ec2da27c1c982acdd7dff6dc1f0094547ad9dbab71a1"
+    "central_addition_curves_magma_v2_29_8.txt": {
+      "bytes": 951,
+      "sha256": "66025ba611161827d46331f9449c7d732434ccfe5e1fc1e077b94224c5663624"
     },
-    "parker_po105_full_class_a30_magma_v2_29_8.txt": {
-      "bytes": 112,
-      "sha256": "32625b49d08f52f0dd73d0735424ce4c34aaa88d53750d6f4afb518fdf8dd986"
+    "centre841_bielliptic_fibre.m": {
+      "bytes": 1307,
+      "sha256": "5b5793874481007b889ceeeac9d0897feb99714c215a9a93d13c2dc32402c57c"
     },
-    "parker_po105_full_class_a60.m": {
-      "bytes": 346,
-      "sha256": "6c8cc3cb265cf6333e077f84bc0c2002b7058c1bdb7373366094b47fbc477fb6"
+    "centre841_bielliptic_fibre_magma_v2_29_8.txt": {
+      "bytes": 1011,
+      "sha256": "1da0876d133846b057b5a6372376246fd16f9cfcc46b87d041a657e095ffece8"
     },
-    "parker_po105_full_class_a60_magma_v2_29_8.txt": {
-      "bytes": 113,
-      "sha256": "28a3e9eefea8c4e281d722242c95ca97a7a552a501d410058e2f85d15948ac45"
+    "centre841_first_quotient_pari.gp": {
+      "bytes": 683,
+      "sha256": "a8e7a94dc8d9a5fe3e0a1c57343e1bae5a6e4004efc84b6ae341b8927d74e04c"
+    },
+    "centre841_first_quotient_pari_v2_17_4.txt": {
+      "bytes": 307,
+      "sha256": "fd690450c8cb8296edb8e2407372d06938913bcd4424bf364daa2a411b7369b1"
+    },
+    "centre841_magma_certificate.json": {
+      "bytes": 1981,
+      "sha256": "358e844f66e7299214de2825a0a67a25f2ac988932374550be29efe9a72e1055"
+    },
+    "outer_core6_gate.m": {
+      "bytes": 728,
+      "sha256": "aa99026e5ae46f0db40fdbeb5c1bae68eb034ae513e51076336a8dd70750d4ac"
+    },
+    "outer_core6_gate_magma_v2_29_8.txt": {
+      "bytes": 202,
+      "sha256": "982f676075a4973f9f0bdadabddb570096ffdbfad66123f41036608c4f5c9431"
     }
   },
-  "schema": "FCIG-P41-NEARMISS-SUPPORT-CERTIFICATES-v1",
+  "schema": "FCIG-NEARMISS-SUPPORT-CERTIFICATES-v1",
   "status": "PASS",
-  "terminal": "P41_MAIN_PAPER_EXACT_CERTIFICATES_PASS"
+  "terminal": "MAIN_PAPER_EXACT_CERTIFICATES_PASS"
 }

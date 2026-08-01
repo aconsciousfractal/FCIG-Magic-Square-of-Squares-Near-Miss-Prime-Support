@@ -1,10 +1,3 @@
-% ============================================================================
-% Section 5 — finiteness, the closed fibre, the finite-class stop. Proofs
-% copied from the controlling documents: docs/FIXED_SQUARECLASS_FINITE_
-% THEOREM.md (the CGF25 specialization and squareclass passage),
-% docs/E840_THREE_TRANSVERSAL_FIBRE_THEOREM.md (§§4-6: the x0=841 fibre),
-% docs/HALFPOINT_KUMMER_STOP_THEOREM.md (§§1-2, 6: the stop). No re-derivation.
-% ============================================================================
 
 \section{Finiteness, the closed fibre, and the finite-class stop}\label{sec:finiteness}
 
@@ -59,8 +52,11 @@ C:\;w^2=(1-t^2)(841^2-t^2)(1681^2-t^2).
 \]
 This is only a necessary condition, and that is enough: we close the
 superset. The even sextic makes $C$ bielliptic. The quotient by
-$(t,w)\mapsto(-t,w)$ has rank $3$, so it decides nothing --- the naive
-``compute the rank, then elliptic Chabauty'' route was under-specified. The
+$(t,w)\mapsto(-t,w)$ has rank $3$, as independently corroborated by the
+PARI/GP record shipped in the companion repository; this contextual
+calculation is not used in the proof and does not close the fibre. Thus the
+naive ``compute this rank, then elliptic Chabauty'' route was
+under-specified. The
 complementary quotient by $(t,w)\mapsto(-t,-w)$ is decisive: for $t\neq0$
 set $X=1/t^2$, $Y=w/t^3$, then with $A=841^2$, $B=1681^2$, $L=AB$,
 $u=LX$, $v=LY$ the monic model is
@@ -85,6 +81,50 @@ for every affine rational point. Positive endpoint centres require
 $841\pm t>840$, i.e.\ $-1<t<1$, leaving only $t=0$: the repeated
 three-entry boundary, not a distinct completion. The fibre contains no
 positive nonconstant three-transversal completion.
+\end{proof}
+
+\subsection{A fixed Bremner shadow is constant}
+
+Bremner's displayed degree-four solution~\cite{BRE01} decomposes into a
+rational constant part and a $\sqrt3$-anti-invariant part. After dividing
+by the constant centre, the resulting rational line is
+\[
+ J+tB,\qquad
+ B=\begin{pmatrix}
+ 88&-153&65\\ -23&0&23\\ -65&153&-88
+ \end{pmatrix},
+\]
+where $J$ is the all-ones matrix. The next proposition concerns only this
+one line; it is not a global obstruction to magic squares of squares.
+
+\begin{proposition}[Computer-assisted fixed Bremner shadow]\label{prop:bremnershadow}
+If every entry of $J+tB$ is a square in $\Q$, then $t=0$.
+\end{proposition}
+
+\begin{proof}
+The four conditions $1\pm23t,1\pm65t\in\Q^2$ imply
+\[
+ Y^2=(1-23^2t^2)(1-65^2t^2).
+\]
+For $t\ne0$, putting $x=1/t^2$ and $y=Y/t^3$ gives
+\[
+ E:\quad y^2=x(x-529)(x-4225).
+\]
+Under the documented semantics of \texttt{ellrank}, the first two entries
+of the frozen PARI/GP output are unconditional lower and upper rank bounds;
+both are zero. The same record identifies the minimal model as Cremona curve
+$345345\mathrm{r}4$~\cite{PARI,CREMONA}. For completeness, the torsion
+calculation is independently elementary. Reduction at $17$ and $41$ gives
+$\#E(\mathbb F_{17})=16$ and $\#E(\mathbb F_{41})=40$, so rational torsion has order
+dividing $8$. All three nonzero rational $2$-torsion points fail the
+standard halving criterion: for the roots $0,529,4225$, the two required
+root differences are never both rational squares. Hence
+$E(\Q)_{\rm tors}=E[2](\Q)\cong(\Z/2)^2$.
+
+The finite $x$-coordinates are therefore $0,529,4225$. Since
+$x=1/t^2$, a nonzero parameter would have to be
+$t=\pm1/23$ or $t=\pm1/65$. In each case one of the original four linear
+forms is $2$, not a rational square. Thus no nonzero $t$ is possible.
 \end{proof}
 
 \subsection{The finite-class stop}

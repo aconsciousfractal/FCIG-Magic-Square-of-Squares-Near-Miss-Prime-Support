@@ -1,22 +1,25 @@
 # Source lock
 
-No external data is bundled or required: the verifier constructs every
-object from scratch, and the frozen Magma layer under `certificates/` is
-this project's own record (inputs + transcripts). The theorems import or
-build on the following, cited in the paper and owned by their authors.
+No external data is bundled or required for the packaged integrity replay.
+The verifier reconstructs the elementary and symbolic objects, and
+authenticates and parses the frozen external-CAS records under
+`certificates/`; it does not independently recompute the calculations in
+those records. The theorems import or build on the following, cited in the
+paper and owned by their authors.
 
 ## Imported theorem cores (never re-proved here)
 
 | input | owner |
 |---|---|
-| fixed-difference finiteness core (`X_{(c1,c2,c3)}` morphism classification + Uniform Mordell–Lang bound) | Caro–García-Fritz, 2025 preprint cited as `CGF25` (Thm 1.2/1.3) |
+| fixed-difference finiteness core (`X_{(c1,c2,c3)}` morphism classification + Uniform Mordell–Lang bound) | Caro–García-Fritz, *J. Number Theory* 271 (2025), 109–121, DOI `10.1016/j.jnt.2024.11.003`, arXiv:2310.17592, Thms. 1.2/1.3; published primary and arXiv text read 2026-07-26 |
 | five-term `S`-unit equation count `exp(30^15(r+1))` | Evertse–Schlickewei–Schmidt, *Ann. of Math.* 155 (2002) |
-| every entry of a primitive configuration is `1 mod 24` (Lemma 1) | Pierrat–Thiriet–Zimmermann, *Magic Squares of Squares*, technical note dated 2015-03-13, cited as `PTZ15` |
+| natural density of multiples of a non-torsion real elliptic point in an open set | Cowan, *J. Number Theory* 211 (2020), 530–544, DOI `10.1016/j.jnt.2019.12.010`; published primary `https://www.sciencedirect.com/science/article/pii/S0022314X20300184`, arXiv:1901.10656 |
+| every entry of a primitive configuration is `1 mod 24` (Lemma 1) | Paul Pierrat, François Thiriet and Paul Zimmermann, *Magic Squares of Squares*, technical note dated 2015-03-13, cited as `PTZ15`; primary PDF `https://members.loria.fr/PZimmermann/papers/squares.pdf`, accessed 2026-08-01 |
 | primitive Pythagorean triangles with exactly three area primes | Aebi, *Elem. Math.* (2026), DOI 10.4171/EM/563 |
 | bielliptic quotient method for even genus-two sextics | Flynn–Wetherell, 1999 (`FW99`) |
 | two-cover descent and covering-class Chabauty framing | Bruin, *J. reine angew. Math.* 562 (2003) (`BRU03`) |
 | equal-area / congruent-number correspondence and the classical `(1,29,41)` progression | Robertson, *Math. Mag.* 69 (1996) |
-| Lutz–Nagell integral-torsion criterion | classical; carried per the locked lecture-note source (`IMPA-LNT`) |
+| Lutz-Nagell integral-torsion criterion | Silverman, *The Arithmetic of Elliptic Curves*, 2nd ed. (2009), Chap. VII, Prop. 3.1, DOI `10.1007/978-0-387-09494-6` |
 | Mordell–Weil basis of `y^2 = x^3 - 44100x` | LMFDB curve `705600.vn3` (transported basis re-verified exactly) |
 
 ## Historical and record layer
@@ -24,9 +27,13 @@ build on the following, cited in the paper and owned by their authors.
 | input | owner |
 |---|---|
 | problem statement (1984) and the \$100 offer | LaBar; Gardner (history as recorded in `BRE99` §0) |
-| the 7-of-9-squares fully magic record, the degree-27 full solution, and the degree-four witness over `Q(sqrt3, sqrt133)` replayed by the verifier (family 1) | Bremner, *Acta Arith.* 88 (1999) `BRE99` (pp. 289–290; read in full in the project record); Configurations II/VI in *Acta Arith.* 96 (2001) `BRE01` |
+| the 7-of-9-squares fully magic record and degree-27 full solution | Bremner, *Acta Arith.* 88 (1999) `BRE99`, pp. 289–290 |
+| degree-four witness over `Q(sqrt3,sqrt133)`, its rational/anti-invariant decomposition, and the fixed coefficient line used in Proposition BB | Bremner, *Acta Arith.* 99 (2001) `BRE01`, display (2), p. 289 and equations (28)–(29), pp. 306–307; DOI `10.4064/aa99-3-6`; family and formulas are Bremner's, while this paper contributes only the fixed-line deduction |
+| elliptic quotient in Proposition BB: `y^2=x(x-529)(x-4225)`, minimal label `345345r4`, rank interval `[0,0]` | Cremona elliptic-curve data, `https://johncremona.github.io/ecdata/`; PARI/GP 2.17.4 `ellsearch`, `ellrank`, `elltors`; catalogued data, not a novelty claim |
 | the 9-squares/7-sums record ("The Lost Theorem") | Sallows, *Math. Intelligencer* 19.4 (1997) |
-| the order-3 parametric normal form lineage | Lucas (1891), as recorded in the project's source locks |
+| the order-3 parametric normal form lineage | Lucas (1891), cited directly in the bibliography |
+| the seven-line almost-magic normal form, its three-common-difference-AP interpretation, and a nine-square seven-line elliptic construction | Houston, *Bosker Blog*, 13 and 18 July 2016, `https://bosker.wordpress.com/2016/07/13/magic-squares-of-squares/` and `https://bosker.wordpress.com/2016/07/18/almost-magic-squares-of-squares/`; both read 2026-08-01; historical ownership only, with the present integral Smith-form refinement proved independently |
+| classical lemniscatic integral and its Gamma evaluation | NIST Digital Library of Mathematical Functions, §19.20(i), Eq. (19.20.2), `https://dlmf.nist.gov/19.20`; terminology and evaluation only. The Beta push-forward of normalized Haar measure on `E_d(R)^0` is derived directly in the paper and is presented as an explanation of the existing density corollary, not as a novelty claim |
 
 ## Entry-side lineage (attributed prior art; disjoint object)
 
@@ -37,33 +44,49 @@ build on the following, cited in the paper and owned by their authors.
 | the finite-field order-three analogue (degrees 3/5/7/9) | Labruna, Montclair State Univ. ETD 138 (2018) |
 | order bookkeeping, `1 mod 24` two-entry restriction, seven-arrangement list, Gaussian-signature proposal | Weisenberg, *Rose-Hulman UMJ* 24 (2023), art. 7 |
 | announced nonexistence preprint — **unrefereed; nothing here depends on it** | Hill, arXiv preprint cited as `HILL26` |
+| Pell-transform approach and smallest-entry exclusion | The unity case is credited by Coumbe to Lee Morgenstern (2006); Coumbe owns the prime-square extension and the audited published statement: *JP J. Algebra Number Theory Appl.* 63(6) (2024), 587–614, DOI `10.17654/0972555524032`, primary PDF `https://pphmjopenaccess.com/jpjana/article/download/2332/1365/5024`. This paper does **not** import the exclusion because the unrestricted intermediate difference-set claim admits the literal repeated-summand instance `120+120=240`; this does not decide a distinct-summand repair or the final exclusion. No independent firstness claim for the unity case is made here. |
+
+## Recent adjacent work (cited, not imported)
+
+| input | owner |
+|---|---|
+| uniform rank-dependent bounds for arithmetic/geometric progressions and consecutive squares inside one elliptic coordinate set | Harrison–Mudgal–Schmidt, `https://arxiv.org/abs/2603.06483v1` (submitted 2026-03-06), Theorem 1.1; **unrefereed preprint**, complementary to rather than a replacement for the three-coordinate interaction theorem |
 
 ## Catalogue provenance (cited by locator + digest; never bundled)
 
 | input | owner and locator |
 |---|---|
 | type taxonomy `6:6` and the search-66 tables (row 340545 carrier) | Fituvalu (`FIT` in the bibliography): `fituvalu.nongnu.org`; dataset `unique-squares.csv`, 166,573,455 bytes, SHA-256 `fa88196c3055d39c8e29ce5f386ba7a1353a027003c28f82d604355919f00117`; source at Savannah, commit `b3063cf8` (2024-02-20). Never bundled (documentation CC BY-SA 4.0, code GPLv3+, dataset terms unresolved) |
-| catalogue pages for the Wesolowski carrier and near-miss records | Boyer (`BOY05`, `BOYWEB`): `multimagie.com`, dated locators in the project record |
-| centre-true records (the seven completions of Appendix A) | Brown (`BRO` in the bibliography): *Automedian Triangles and Magic Squares*, `mathpages.com/home/kmath417/kmath417.htm`, non-refereed; dated locator in the project record |
+| catalogue pages for the Wesolowski carrier and near-miss records | Boyer (`BOY05`, `BOYWEB`): `https://www.multimagie.com/English/SquaresOfSquares.htm` and `https://www.multimagie.com/English/SquaresOfSquaresSearch.htm`, accessed 2026-07-24; archival snapshots SHA-256 `2a2602ab68a9eb0ed4785eed34292ae5a151a00b5f4d593f7b53db8a217241df` (64,766 bytes) and `d753e84fbd81d04bfa104aff33bb82b83a05a2992d8948443b780399dd91343e` (105,400 bytes), not bundled |
+| centre-true records (the seven completions of Appendix A) | Brown (`BRO`): *Automedian Triangles and Magic Squares*, `https://www.mathpages.com/home/kmath417/kmath417.htm`, accessed 2026-07-24, non-refereed; archival HTML snapshot SHA-256 `17676ac268212fc856ac22d1209939a0030254d368c7806a0e62957f8518b383` (57,631 bytes), not bundled |
 
-## Note on the frozen Magma layer
+## Note on the frozen external-CAS layer
 
 The shipped transcripts are **normalized records** (uppercase `KEY VALUE`
-lines with an assertion status), not raw calculator session dumps: the
-`e840` transcript carries an appended provenance footer, and the two
-full-class Selmer transcripts omit the version banner (their engine and
-date, official Magma Calculator V2.29-8, are recorded in the project
-ledger). Byte-exact resubmission of the shipped `.m` inputs reproduces the
-**asserted values**, not the transcript bytes. The machine-readable `e840`
-certificate references its input and transcript by project-relative paths
-(`scripts/…`, `results/…`); in this package both files live under
-`certificates/`, and the verifier matches them by digest.
+lines with an assertion status), not raw calculator session dumps. The
+centre-841 transcript carries an appended provenance footer; the two
+full-class Selmer transcripts now carry an in-band `MAGMA_VERSION 2 29 8`
+record. Byte-exact resubmission of the shipped `.m` inputs reproduces the
+**asserted values**, not the transcript bytes. The centre-841
+machine-readable certificate references both its input and transcript by
+their public `certificates/…` paths, and the verifier matches them by digest.
+Two additional
+PARI/GP 2.17.4 input/output pairs are shipped. The first independently
+corroborates rank 3 for the first bielliptic quotient of the `x0=841` fibre;
+that contextual rank is not used to close the fibre. The second supplies the
+unconditional rank interval `[0,0]` and catalogue label used in Proposition
+BB. The verifier authenticates and parses both pairs but does not execute
+PARI/GP; for Proposition BB it independently checks the quotient identity,
+finite-field counts, torsion-halving obstruction and terminal parameter
+elimination.
 
 ## Engines
 
-Python 3 standard library (the verifier); official Magma Calculator
-V2.29-8 **only as frozen transcripts** with byte-exact resubmission
-inputs; the project record behind this package additionally used PARI/GP
-2.17.4 and SageMath 10.9 for exploration, none of which this package
-requires. The MIT license covers only the author's code and documentation
+Python 3 standard library (the verifier and both census implementations);
+official Magma Calculator V2.29-8 **only as frozen records** with byte-exact
+resubmission inputs; PARI/GP 2.17.4 as two reproducible input/output pairs,
+one contextual and one rank-bearing for Proposition BB. Neither external
+system is required to run the packaged
+integrity replay. Exploratory computations additionally used SageMath 10.9 for
+exploration. The MIT license covers only the author's code and documentation
 here.

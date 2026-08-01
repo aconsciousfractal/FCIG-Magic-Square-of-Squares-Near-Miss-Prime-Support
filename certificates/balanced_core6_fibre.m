@@ -1,4 +1,4 @@
-// Independent Magma gate for P41-C089 / PO-103.
+// Independent Magma gate for the balanced core-6 fibre.
 //
 // Replayed on the official University of Sydney Magma Calculator:
 // https://magma.maths.usyd.edu.au/calc/
@@ -7,7 +7,7 @@
 Q := Rationals();
 E := EllipticCurve([Q | 0, -93861, 0, 10406250, 0]);
 
-print "P41_PO103_CORE6_MAGMA_GATE";
+print "BALANCED_CORE6_MAGMA_GATE";
 vmaj, vmin, vpatch := GetVersion();
 print "MAGMA_VERSION", vmaj, vmin, vpatch;
 

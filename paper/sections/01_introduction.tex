@@ -1,8 +1,3 @@
-% ============================================================================
-% Section 1 — Introduction. Controlling documents: docs/STATE_OF_THE_ART.md,
-% docs/PROBLEM_INTAKE.md, docs/LITERATURE_WEI23_COMPARISON.md,
-% docs/BIBLIOGRAPHY.md (citation strings transcribed from the locked rows).
-% ============================================================================
 
 \section{Introduction}\label{sec:intro}
 
@@ -25,11 +20,15 @@ exactly where the problem lives.
 \subsection{A rationality filter}
 
 A fully magic square of nine distinct squares \emph{does exist} over a
-number field of degree four: Bremner's square over
-$\Q(\sqrt3,\sqrt{133})$, with centre $532=(2\sqrt{133})^{2}$ and the other
-eight entries squares in $\Q(\sqrt3)$~\cite{BRE99} --- the companion
-repository replays it as an exact verified witness (Bremner, \S3, also
-constructs an example over a field of degree $27$). The consequence deserves emphasis: there is no
+number field of degree four. Bremner displayed the underlying magic square
+with eight entries square in $\Q(\sqrt3)$ and centre $532$, which is not a
+square in that field~\cite{BRE01}; adjoining $\sqrt{133}$ makes the centre
+$532=(2\sqrt{133})^{2}$. Thus the degree-four completion is the elementary
+field extension of Bremner's displayed object, not an additional
+construction attributed to him. The companion repository replays it as an
+exact verified witness. Bremner~\cite{BRE99},
+\S3, separately constructs an example over a field of degree $27$. The
+consequence deserves emphasis: there is no
 combinatorial or shape-only obstruction to the Parker problem. The only
 property that can fail is rationality over $\Q$, so any impossibility
 argument must use an invariant that separates $\Q$ from a quartic field.
@@ -40,9 +39,6 @@ genuinely rational-arithmetic statements, invisible over a larger field.
 
 \subsection{The entry side: what is known about a hypothetical solution}
 
-% W2 CLOSED 2026-07-31: the six results below are quoted at primary grade,
-% verified against Rabern's text (RHUMJ 4(1), art. 3; SL-P41-RABERN-PRIMARY,
-% six of six, no divergence); WEI23 §2.1's restatement matches the primary.
 A hypothetical rational solution is constrained through the prime factors of
 its \emph{entries}; throughout this paragraph the square is taken in the
 primitive normalization (unit gcd of the nine entries).
@@ -68,6 +64,13 @@ factor can appear, and a proposal --- not executed there --- to organize
 searches by the Gaussian prime signature of the centre. A recent preprint
 of Hill~\cite{HILL26} announces a nonexistence proof; it is unrefereed,
 and nothing in this paper depends on it.
+Coumbe~\cite{COU24} develops a Pell-transform approach and claims that the
+smallest entry cannot be unity or a prime square. We do not import that
+exclusion: the unrestricted difference-set statement used in its proof has
+the literal instance $120+120=240$, coming from the two primitive
+progressions $(7^2,13^2,17^2)$ and $(7^2,17^2,23^2)$. This does not refute
+a repaired distinct-summand statement or the final exclusion itself, but it
+prevents the published proof from being used here without repair.
 
 All of these statements constrain \emph{entries of a completed square}.
 The present paper works on a different quantity --- the common difference
@@ -80,16 +83,25 @@ and sums of two squares.
 
 The objects and the seven main theorems are stated in full in the front
 matter. In one paragraph: every seven-line array is three same-difference
-arithmetic progressions (Theorem~\ref{main:normalform}); three explicit
+arithmetic progressions and its integral line-sum cokernel is
+$\mathbb Z\oplus\mathbb Z/3\mathbb Z$
+(Theorem~\ref{main:normalform} and Proposition~\ref{prop:linesumsnf}); three explicit
 mechanisms produce infinite $(8,7)$ families, with a complete least-shift
-law for the first (Theorem~\ref{main:families}); completing the eighth line
+law for the first and a positive-density orbit law for the third
+(Theorem~\ref{main:families}); completing the eighth line
 of the transversal frame is a single equation on $\Esn^{3}$, whose
-saturated model is one smooth surface with an $S_5$ cone
-(Theorem~\ref{main:surface}); for fixed difference the relevant points are
+saturated model is one irreducible surface with an $S_5$ cone
+(Theorem~\ref{main:surface}); the recent preprint of
+Harrison--Mudgal--Schmidt~\cite{HMS26} gives uniform rank-dependent bounds
+for progressions inside one elliptic coordinate set, a complementary result
+which does not decide this three-coordinate interaction. For fixed
+difference the relevant points are
 finite by a theorem imported from Caro and Garc\'ia-Fritz~\cite{CGF25}, one
 fibre is closed completely, and finite Kummer classes alone can never
 decide the interaction (Theorems~\ref{main:finiteness}
-and~\ref{main:kummerstop}); the common difference obeys a five-term
+and~\ref{main:kummerstop}); additionally, the rational shadow line extracted
+from Bremner's degree-four example has no nonconstant all-rational-square
+member (Proposition~\ref{prop:bremnershadow}); the common difference obeys a five-term
 $S$-unit law with an endpoint/interior valuation table
 (Theorem~\ref{main:supportlaw}, resting on the subspace theorem of Evertse,
 Schlickewei and Schmidt and on the classical equal-area correspondence
@@ -101,11 +113,14 @@ explicit frontier in Section~\ref{sec:frontier} and left open.
 
 \subsection{Method, certificates, and what is not claimed}
 
-Every computation in this paper is exact and ships as a machine-checkable
-certificate in the companion repository; bounded censuses corroborate
-statements but never prove an unbounded one, and evidence produced by
-commercial computer-algebra runs enters only as hash-verified frozen
-transcripts. Catalogued web data (Boyer's pages~\cite{BOY05,BOYWEB},
+The companion repository supplies exact Python replays for the elementary
+and symbolic computations. Results depending on external computer algebra
+--- ranks, complete point lists and Selmer sets --- ship instead as
+hash-pinned inputs and normalized output records: the public verifier
+authenticates and parses those records but does not independently recompute
+the underlying calculations. Bounded censuses corroborate statements but
+never prove an unbounded one. Catalogued web data (Boyer's
+pages~\cite{BOY05,BOYWEB},
 Fituvalu's tables, Brown's centre records) is used under explicit
 provenance locks, with the corrections recorded in Appendix~A. The
 what-this-paper-does-not-claim block of the front matter is part of the

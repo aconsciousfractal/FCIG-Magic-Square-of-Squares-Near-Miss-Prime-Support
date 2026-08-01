@@ -1,4 +1,4 @@
-print "P41_PO104_CENTRAL_MW_GATE";
+print "CENTRAL_ADDITION_CURVES_MAGMA_GATE";
 v1, v2, v3 := GetVersion();
 print "MAGMA_VERSION", v1, v2, v3;
 

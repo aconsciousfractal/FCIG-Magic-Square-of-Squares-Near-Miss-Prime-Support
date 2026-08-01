@@ -1,11 +1,11 @@
-% ============================================================================
-% Section 2 — the seven-line normal form. Proofs copied from the controlling
-% document docs/DIAGONAL_RETRACTION_THEOREMS.md (§3 retraction lemma, §5
-% universal seven-line form); the fully-magic criterion is the elementary
-% consequence recorded in docs/STATE_OF_THE_ART.md §3.5. No re-derivation.
-% ============================================================================
 
 \section{The seven-line normal form}\label{sec:normalform}
+
+Houston~\cite{HOU16A,HOU16B}, starting from the classical Lucas
+parametrization, explained this almost-magic normal form and its
+interpretation as three three-term arithmetic progressions of one common
+difference. We retain a self-contained proof because the integral image
+lattice below is needed to identify the exact congruence obstruction.
 
 \begin{lemma}[Retraction bookkeeping]\label{lem:retraction}
 Let a fully magic $3\times3$ array have common line sum $M$.
@@ -40,11 +40,62 @@ raises all seven line sums to $A+E+P+\delta/2$ and the antidiagonal to
 $3E+3\delta/2$; both equal $\tfrac32(A+P)$, so all eight lines agree.
 \end{proof}
 
+\begin{proposition}[Integral line-sum lattice]\label{prop:linesumsnf}
+Let $\Lambda:\mathbb Z^9\to\mathbb Z^8$ send
+$X=(a,b,c;d,e,f;g,h,i)$ to
+$(R_1,R_2,R_3,C_1,C_2,C_3,D_+,D_-)$, its three row sums, three column sums
+and two diagonal sums. Then
+\[
+\operatorname{SNF}(\Lambda)=\operatorname{diag}(1,1,1,1,1,1,3,0),
+\qquad
+\operatorname{coker}(\Lambda)\cong\mathbb Z\oplus\mathbb Z/3\mathbb Z.
+\]
+An integer vector of eight prescribed line sums lies in the image if and
+only if
+\[
+R_1+R_2+R_3=C_1+C_2+C_3,
+\qquad
+R_1+R_3\equiv C_2+D_++D_-\pmod3.
+\]
+Consequently $\Lambda$ has rank $6$ over $\mathbb F_3$ and rank $7$ over
+$\mathbb F_p$ for every prime $p\ne3$.
+\end{proposition}
+
+\begin{proof}
+In the entry order $(a,b,c,d,e,f,g,h,i)$, the matrix of $\Lambda$ is
+\[
+\left(\begin{array}{ccccccccc}
+1&1&1&0&0&0&0&0&0\\0&0&0&1&1&1&0&0&0\\
+0&0&0&0&0&0&1&1&1\\1&0&0&1&0&0&1&0&0\\
+0&1&0&0&1&0&0&1&0\\0&0&1&0&0&1&0&0&1\\
+1&0&0&0&1&0&0&0&1\\0&0&1&0&1&0&1&0&0
+\end{array}\right).
+\]
+The primitive left relation
+$-R_1-R_2-R_3+C_1+C_2+C_3=0$ bounds the rank by $7$. The minor on rows
+$(R_1,R_2,R_3,C_1,C_2,D_+,D_-)$ and columns $(a,b,c,d,e,f,g)$ is $-3$,
+whereas the minor on rows $(R_1,R_2,R_3,C_1,C_2,D_+)$ and columns
+$(a,b,c,d,f,g)$ is $-1$. Moreover
+\[
+R_1+R_3-C_2-D_+-D_-=-3e,
+\]
+so modulo $3$ the rank is at most $6$ and every $7$-minor is divisible by
+$3$. The sixth and seventh determinantal divisors are therefore $1$ and
+$3$, giving the displayed Smith form. The two stated conditions annihilate
+the image and define a surjective map
+$\mathbb Z^8\to\mathbb Z\oplus\mathbb Z/3\mathbb Z$ (use the $R_2$ and
+$D_+$ coordinate vectors); its kernel has the same quotient as
+$\operatorname{im}\Lambda$, so the two coincide. Reduction of the Smith
+form gives the rank statement.
+\end{proof}
+
 \begin{proof}[Proof of Theorem~\ref{main:normalform}]
 The failed line cannot be a row: the three columns already force the total
 $3S$, so if two rows have sum $S$ the third does as well. The same argument
 excludes a failed column. Up to the dihedral action of the grid the failed
-line is therefore the antidiagonal. Solving the seven linear line equations
+line is therefore the antidiagonal. Proposition~\ref{prop:linesumsnf}
+forces its sum to be divisible by $3$. Solving the seven linear line
+equations then shows that its central cell is one third of that sum and
 gives the displayed universal form; the seven common lines have sum
 $A+E+P$ and the antidiagonal has sum $3E$. The nine entries decompose into
 the three arithmetic progressions
@@ -62,11 +113,12 @@ antidiagonal sum equals the common sum, that is $3E=A+E+P$, equivalently
 \[
 A+P=2E:
 \]
-the three centres themselves must form a third-term arithmetic progression.
+the three centres themselves must form a three-term arithmetic progression.
 For an all-squares array this is a \emph{fourth} square progression, with
-its own common difference $E-A$ --- never equal to $\pm D$, since $E=A\pm D$
-would repeat the entry at position $(1,2)$ or $(2,1)$ against nine-way
-distinctness --- and this single extra condition is exactly
+its own common difference $E-A$ --- never equal to $\pm D$, since $E=A+D$
+would repeat the centre at positions $(2,2)$ and $(2,3)$, while $E=A-D$
+would repeat it at $(2,2)$ and $(3,2)$, against nine-way distinctness ---
+and this single extra condition is exactly
 where the elliptic wall of Section~\ref{sec:surface} lives. The classical
 one-parameter families of nine-square arrays with seven equal sums
 (Lucas~\cite{LUC76}; Sallows's record example~\cite{SAL97}) sit inside this

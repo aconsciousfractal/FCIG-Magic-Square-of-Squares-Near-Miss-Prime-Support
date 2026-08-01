@@ -6,7 +6,7 @@ Everything authored in this repository is released under the single MIT
 | Paths | License |
 |---|---|
 | `paper/**`, `scripts/**`, `docs/**`, `dossiers/**`, `results/**` | MIT |
-| `certificates/**` (verifier certificate, Magma inputs and transcripts authored here) | MIT |
+| `certificates/**` (verifier certificate and authored Magma/PARI inputs and normalized transcripts) | MIT |
 | `README.md`, `README_REVIEWER.md`, `REPRODUCE.md`, `CITATION.cff` | MIT |
 | `MANIFEST_SHA256.txt`, `requirements.txt`, `.gitignore`, `.gitattributes` | MIT |
 
@@ -16,27 +16,20 @@ Copyright (c) 2026 Oleksiy Babanskyy.
 
 This package embeds **no third-party source, data, or documents**:
 
-- `scripts/verify.py` constructs every object from scratch with no
-  external input; it needs only the Python standard library.
+- `scripts/verify.py` constructs its exact arithmetic objects without network
+  access and needs only the Python standard library.
 - The files under `certificates/` are this project's own artifacts: the
-  frozen expected verifier output, the calculator input files written
-  here, and the normalized transcripts of their runs on the official Magma
-  Calculator V2.29-8. Magma itself is commercial software of the
-  Computational Algebra Group (University of Sydney) and is neither
-  included nor required — the verifier only checks digests and parses the
-  frozen text.
-- **Fituvalu's catalogue tables are not bundled** (license unresolved);
-  the paper cites them by locator and digest with download instructions
-  (Appendix A/C), per the standing never-bundle rule.
-- The entry-side documents (Rabern; Woll; Labruna; Weisenberg), Boyer's
-  catalogue pages and Brown's centre records are cited by public locator
-  only; **no PDF is redistributed**.
-- The classical theorems the paper builds on are used only by **citation**
-  and remain the work of their respective authors (Bremner; Sallows;
-  Robertson; Lucas; Gardner; LaBar; Caro–García-Fritz;
-  Evertse–Schlickewei–Schmidt; Pierrat–Thiriet–Zimmermann; Aebi;
-  Flynn–Wetherell; Bruin; Bruin–Stoll; Fisher; Rabern; Woll; Labruna;
-  Weisenberg); see `docs/SOURCE_LOCK.md`.
+  frozen expected verifier output, calculator inputs written here, and
+  normalized transcripts from the official Magma Calculator V2.29-8 and
+  PARI/GP 2.17.4. The external systems are neither included nor required for
+  the packaged replay: the verifier checks digests and parses frozen text.
+- **Fituvalu's catalogue tables are not bundled** (license unresolved). The
+  bibliography and public source lock cite the relevant dataset by locator,
+  byte count, source commit and digest.
+- The entry-side documents, catalogue pages and historical sources are cited
+  by public locator only; no third-party PDF is redistributed.
+- Imported theorems are used only by citation and remain the work of their
+  authors; see `docs/SOURCE_LOCK.md` for the public attribution table.
 
-The MIT grant above covers only the original code and prose of this
-repository, not those cited results, catalogues, or the Magma software.
+The MIT grant covers only the original code and prose in this repository,
+not cited results, catalogues, Magma or PARI/GP.

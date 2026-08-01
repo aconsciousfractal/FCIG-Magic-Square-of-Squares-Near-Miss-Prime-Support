@@ -1,4 +1,4 @@
-// Independent Magma gate for P41-C079 / PO-091.
+// Independent Magma gate for the centre-841 bielliptic fibre.
 //
 // Replayed on the official University of Sydney Magma Calculator:
 // https://magma.maths.usyd.edu.au/calc/
@@ -14,7 +14,7 @@ E := EllipticCurve([
     -3994430203629571309037281
 ]);
 
-print "P41_E840_EMINUS_MAGMA_GATE";
+print "CENTRE841_BIELLIPTIC_MAGMA_GATE";
 vmaj, vmin, vpatch := GetVersion();
 print "MAGMA_VERSION", vmaj, vmin, vpatch;
 print "CURVE", E;

@@ -1,4 +1,4 @@
-print "P41_PO105_A30_FULL_CLASS";
+print "ADDITION_CURVE_AREA30_FULL_CLASS";
 Q<Z> := PolynomialRing(Rationals());
 C := HyperellipticCurve((Z^2-218)*(Z^2-338)*(Z^2-458));
 Hk, AtoHk := TwoCoverDescent(C);

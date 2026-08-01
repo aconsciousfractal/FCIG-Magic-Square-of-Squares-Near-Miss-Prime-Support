@@ -1,10 +1,3 @@
-% ============================================================================
-% Appendix A — census and provenance. Content copied from
-% docs/DIAGONAL_RETRACTION_THEOREMS.md (§6, DR-2 and its certificate
-% argument) and docs/CANDIDATE_NEARMISS_SQUARES.md (the Brown provenance
-% correction). The census bound rule follows the open obligation PO-075:
-% only the frozen default bound is citable.
-% ============================================================================
 
 \appendix
 
@@ -24,9 +17,11 @@ centre.
 \end{proposition}
 
 \begin{proof}[Certificate argument]
-Two independent exact enumerators agree: one scans integer progression
-centres and common differences; the other builds full progressions from
-root triples and partial ones from root pairs. At height $46$ there are
+Two independently implemented exact enumerators in the companion repository
+agree: \texttt{census\_reference.py} scans integer progression centres and
+common differences, while the census family of \texttt{verify.py} builds
+full progressions from root triples and partial ones from root pairs. At
+height $46$ there are
 twelve full three-square progressions, all with distinct common
 differences; two full progressions of one difference are necessary, so the
 census is empty. At height $47$ the only difference supporting two full
@@ -34,8 +29,20 @@ progressions is $840$:
 \[
 (1,841,1681)=(1^2,29^2,41^2),\qquad(529,1369,2209)=(23^2,37^2,47^2),
 \]
-and the only compatible partial progressions are $(121,961,1801)$,
-$(169,1009,1849)$, $(256,1096,1936)$. For each partial progression the six
+There are five raw partial progressions satisfying the square-height bound.
+Two repeat entries when combined with the full progressions and therefore
+fail nine-way distinctness:
+\[
+(841,1681,2521),\qquad (1369,2209,3049).
+\]
+The only compatible partial progressions are
+\[
+\begin{gathered}
+(121,961,1801),\qquad(169,1009,1849),\\
+(256,1096,1936).
+\end{gathered}
+\]
+For each partial progression the six
 role assignments collapse to three $D_4$ classes, giving $3\times3=9$; the
 last two partials carry their nonsquare in the middle, and assigning either
 to the centre role gives one centre-nonsquare class each. The census is
@@ -48,10 +55,8 @@ The three shifts $t=9,96,144$ of the $n=1$ carrier antidiagonal
 $(265,1105,1945)$ produce exactly the three partial components of the
 minimum layer --- stated carefully: only three designated orientations are
 literal antidiagonal retractions of the fixed source orientation; the other
-six classes are role reassignments. The census engine of the project
-record carries a reserved bound option; \textbf{only the frozen default
-bound above is citable} until that obligation closes, and no census figure
-in this paper uses any other bound.
+six classes are role reassignments. \textbf{The public census is frozen at
+the height-47 bound above}; no figure at any other bound is claimed here.
 
 \subsection{Provenance of the centre-true eight-square arrays}
 

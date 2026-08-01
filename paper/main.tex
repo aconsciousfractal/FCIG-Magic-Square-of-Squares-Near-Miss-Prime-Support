@@ -1,11 +1,8 @@
-% P41 main paper — driver. Assembled T14 2026-07-31; the claim boundary of
-% the companion repository (docs/PUBLIC_CLAIM_BOUNDARY.md) governs.
 \documentclass[11pt]{article}
 \input{macros}
-% Timestamp-free, byte-stable PDF on a fixed TeX distribution.
-\pdfinfoomitdate=1
-\pdfsuppressptexinfo=-1
-\pdftrailerid{}
+\ifdefined\pdfinfoomitdate\pdfinfoomitdate=1\fi
+\ifdefined\pdfsuppressptexinfo\pdfsuppressptexinfo=-1\fi
+\ifdefined\pdftrailerid\pdftrailerid{}\fi
 
 \title{Near-miss constructions, interaction surfaces, and prime-support
 obstructions for the $3\times 3$ magic square of squares\thanks{No novelty
@@ -14,7 +11,7 @@ ingredient is attributed in Section~1 and in the companion repository's
 source lock, and each no-hit prior-art search is reported as a dated
 negative search, never as a certificate.}}
 \author{Oleksiy Babanskyy}
-\date{2026-07-31}
+\date{August 2026}
 
 \begin{document}
 \maketitle

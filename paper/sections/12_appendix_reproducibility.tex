@@ -1,6 +1,3 @@
-% ============================================================================
-% Appendix C — reproducibility, engines and data policy.
-% ============================================================================
 
 \section{Reproducibility}\label{app:repro}
 
@@ -8,14 +5,23 @@
 
 All theorem-level arithmetic in this paper is exact: integer and symbolic
 computation in Python with implementation-separated replays where a result
-is load-bearing, and elliptic-curve rank/torsion/point computations in
-proof mode. Results attributed to the official Magma Calculator V2.29-8
+is load-bearing, and elliptic-curve rank, torsion, and rational-point
+computations in proof mode. Results attributed to the official Magma Calculator V2.29-8
 (the rank-zero quotients of Sections~\ref{sec:finiteness}
 and~\ref{sec:frontier}, the certified-complete point lists, the descent
 transcripts) enter the record exclusively as \textbf{hash-verified frozen
 transcripts}: the verifier checks digests and parsed assertions and never
-executes that software. No floating-point quantity feeds any conclusion.
-The manuscript builds with pdflatex; the draft is internal and unpromoted.
+executes that software. One accompanying PARI/GP record corroborates only the
+non-load-bearing rank-three quotient of Section~\ref{sec:finiteness}; a
+second pinned record supplies the unconditional rank-zero interval for
+Proposition~\ref{prop:bremnershadow}, while the verifier independently
+checks its quotient map, finite-field counts, torsion and terminal parameter
+elimination. No
+floating-point quantity feeds any conclusion. The checked-in manuscript was
+built deterministically with Tectonic 0.16.9 and its \texttt{xdvipdfmx}
+backend at the fixed \texttt{SOURCE\_DATE\_EPOCH}; the source also supports
+the three-pass \texttt{pdflatex} route documented in the companion
+repository. It is distributed as a public preprint companion artifact.
 
 \subsection{Data policy}
 

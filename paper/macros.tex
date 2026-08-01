@@ -1,7 +1,3 @@
-% P41 main paper — shared macros.
-% House rule: exposition may simplify notation but may never strengthen a
-% statement of the frozen theorem lock. The \locklabel marker keeps every
-% displayed theorem traceable to its lock label.
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[margin=2.6cm]{geometry}
 \usepackage{xcolor}
@@ -9,13 +5,12 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
 
-% traceability marker: prints the frozen-lock label(s) a statement compresses
-\newcommand{\locklabel}[1]{\textcolor{gray!70!black}{\footnotesize[lock: #1]}}
 
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}

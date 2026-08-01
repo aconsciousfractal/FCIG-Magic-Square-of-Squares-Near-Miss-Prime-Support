@@ -1,5 +1,6 @@
 # scripts/verify.py runs on the Python standard library alone (3.10+):
 # exact integer and rational arithmetic only, no third-party packages.
-# Commercial computer algebra enters exclusively as hash-verified frozen
-# transcripts under certificates/ and is never executed by the verifier.
+# External computer algebra enters exclusively as hash-pinned inputs and
+# normalized output records under certificates/; the verifier authenticates
+# and parses those records but never executes the external systems.
 # This file is intentionally dependency-free.

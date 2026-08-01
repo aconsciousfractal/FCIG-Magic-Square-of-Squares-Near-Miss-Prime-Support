@@ -1,4 +1,4 @@
-print "P41_PO104_OUTER_CORE6_GATE";
+print "OUTER_CORE6_MAGMA_GATE";
 v1, v2, v3 := GetVersion();
 print "MAGMA_VERSION", v1, v2, v3;
 

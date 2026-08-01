@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Deterministic verifier for the exact certificates of the P41 main paper.
+"""Deterministic verifier for the exact certificates of the public paper.
 
 Re-derives, with exact integer and rational arithmetic from the Python
 standard library only, the finite certificates behind the theorems of the
 manuscript (block <-> paper section shown below), and checks the frozen
-commercial-CAS transcripts by SHA-256 digest and parsed assertions, never
-by executing that software (paper, Appendix B "certificate discipline").
+external-CAS records by SHA-256 digest and parsed assertions, never by
+executing those systems (paper, Appendix B "certificate discipline").
 
+  family 0  (Sec. 2)  the integral line-sum lattice: the primitive free
+            relation, the exceptional mod-3 relation, determinant witnesses
+            for Smith form diag(1,1,1,1,1,1,3,0), and modular ranks
   family 1  (Sec. 1)  the rationality-filter witness: Bremner's fully
             magic square of nine distinct squares over Q(sqrt3, sqrt133),
             replayed in exact quadratic-field arithmetic
@@ -20,7 +23,12 @@ by executing that software (paper, Appendix B "certificate discipline").
             (irreducibility premises, branch divisors, degree-8 extension,
             the 30 saturated factors); the S5 monodromy certificate
   family 4  (Sec. 5.2)  the x0=841 fibre algebra, the bielliptic quotient
-            identity, the pulled-back t-list, the frozen rank-0 transcript
+            identity, the pulled-back t-list, the frozen rank-0 transcript;
+            a non-load-bearing PARI/GP rank-3 corroboration for the other
+            quotient
+  family 4b (Sec. 5.3)  the fixed Bremner-shadow quotient identity, frozen
+            unconditional rank-zero result, finite-field torsion bound,
+            halving test and exact elimination of every nonzero parameter
   family 5  (Sec. 5.3)  the half-class countercertificate (Q vs Q+2R and
             the 2^n family)
   family 6  (Sec. 6)  the torus identity, the nondegeneracy consequence
@@ -34,17 +42,20 @@ by executing that software (paper, Appendix B "certificate discipline").
             lists), the six addition curves H_{n,a} and their frozen ranks
   family 9  (App. A)  the frozen (8,7) height census replayed from scratch
             as a second independent enumerator (12/13 full progressions at
-            heights 46/47, unique doubled difference 840, three partials,
+            heights 46/47, unique doubled difference 840, five raw partials
+            of which three survive nine-way distinctness,
             18 arrays = 9 exact D4 classes, 2 centre-nonsquare), with the
             nine canonical representatives frozen in the expected output
 
-Engine policy: Python standard library only; no floating point feeds any
-conclusion.  Computations attributed in the paper to the official Magma
-Calculator V2.29-8 enter exclusively as frozen transcripts pinned by
-SHA-256 below and re-parsed here; this verifier never requires that
-software to run.  Output JSON is byte-stable across runs and under
-``python -O``; when certificates/expected_verification.json is present the
-run additionally asserts byte-identity against it.
+Engine policy: Python standard library only; no binary floating point feeds
+any conclusion. One deterministic high-precision Decimal quadrature only
+corroborates the displayed decimal for an analytically proved density and is
+not a logical input to that theorem. External-CAS computations attributed in the paper enter as
+frozen inputs and normalized output records pinned by SHA-256 below and
+re-parsed here; this verifier never executes Magma or PARI/GP.  Output JSON
+is byte-stable across runs and under
+``python -O``; the run requires certificates/expected_verification.json and
+asserts byte-identity against it.
 
 No novelty or firstness claim; nothing here proves or refutes the
 existence of a 3x3 fully magic square of nine distinct positive squares.
@@ -58,6 +69,7 @@ import json
 import math
 import re
 import time
+from decimal import Decimal, localcontext
 from fractions import Fraction
 from pathlib import Path
 
@@ -68,7 +80,7 @@ CERT = PKG / "certificates"
 # (a) the live output hashes to this constant, and (b) the shipped frozen
 # certificate exists and is byte-identical to the live output.
 EXPECTED_CERTIFICATE_SHA256 = \
-    "44581673ef938253410621324a6a5be946b0c8ae224a11fb51aa0d918b24440c"
+    "283db3886199a93f0c510799ac70973c705f809efdba1abfa2121100747cf1b6"
 
 D = 840  # the fixed common difference of the E840 weave
 
@@ -196,6 +208,56 @@ def fstr(q) -> str:
     if q.denominator == 1:
         return str(q.numerator)
     return f"{q.numerator}/{q.denominator}"
+
+
+def det_bareiss(a: list[list[int]]) -> int:
+    """Exact determinant by fraction-free Bareiss elimination."""
+    n = len(a)
+    require(n > 0 and all(len(row) == n for row in a),
+            "determinant requires a nonempty square matrix")
+    m = [row[:] for row in a]
+    sign, previous = 1, 1
+    for k in range(n - 1):
+        pivot = next((r for r in range(k, n) if m[r][k]), None)
+        if pivot is None:
+            return 0
+        if pivot != k:
+            m[k], m[pivot] = m[pivot], m[k]
+            sign = -sign
+        p = m[k][k]
+        for i in range(k + 1, n):
+            for j in range(k + 1, n):
+                numerator = m[i][j] * p - m[i][k] * m[k][j]
+                require(numerator % previous == 0,
+                        "Bareiss exact division failed")
+                m[i][j] = numerator // previous
+            m[i][k] = 0
+        previous = p
+    return sign * m[n - 1][n - 1]
+
+
+def rank_mod_p(a: list[list[int]], p: int) -> int:
+    """Row rank of an integer matrix over F_p."""
+    require(p > 1, "rank modulus")
+    m = [[x % p for x in row] for row in a]
+    rows, cols = len(m), len(m[0])
+    rank = 0
+    for col in range(cols):
+        pivot = next((r for r in range(rank, rows) if m[r][col]), None)
+        if pivot is None:
+            continue
+        m[rank], m[pivot] = m[pivot], m[rank]
+        inv = pow(m[rank][col], -1, p)
+        m[rank] = [(inv * x) % p for x in m[rank]]
+        for r in range(rows):
+            if r != rank and m[r][col]:
+                q = m[r][col]
+                m[r] = [(x - q * y) % p
+                        for x, y in zip(m[r], m[rank])]
+        rank += 1
+        if rank == rows:
+            break
+    return rank
 
 
 # --------------------------------------------------------------------------
@@ -503,33 +565,41 @@ def ec_mul(A: int, k: int, P):
 
 FROZEN_FILES = {
     # transcript / certificate outputs
-    "e840_bielliptic_fibre_magma_v2_29_8.txt":
-        ("a84c0079783703ffb1d15d9abcd1736128c7782ecea2a48be9bce38ed0af3020", 996),
-    "e840_bielliptic_fibre_magma_certificate.json":
-        ("79e75c71d3503a847031fca442cd29dfa2a65ee7ecafe770b24bc004032c982c", 1909),
-    "parker_balanced_core6_fibre_magma_v2_29_8.txt":
-        ("1058ca697172c157d7d5947c9e74109b25a2a0ca59e1dc43fb67759185562bba", 402),
-    "parker_po104_outer_core6_gate_magma_v2_29_8.txt":
-        ("c68b8d2e7836abbcfcd378edede545fd2cd10f2103bc0617dfc1cdcd1bb4aadc", 206),
-    "parker_po104_central_mw_gate_magma_v2_29_8.txt":
-        ("6bb39849e7b5708f336aefd1833b731236cdec3d5720a5f8d8c6ee8abd69c021", 942),
-    "parker_po105_full_class_a30_magma_v2_29_8.txt":
-        ("32625b49d08f52f0dd73d0735424ce4c34aaa88d53750d6f4afb518fdf8dd986", 112),
-    "parker_po105_full_class_a60_magma_v2_29_8.txt":
-        ("28a3e9eefea8c4e281d722242c95ca97a7a552a501d410058e2f85d15948ac45", 113),
+    "centre841_bielliptic_fibre_magma_v2_29_8.txt":
+        ("1da0876d133846b057b5a6372376246fd16f9cfcc46b87d041a657e095ffece8", 1011),
+    "centre841_magma_certificate.json":
+        ("358e844f66e7299214de2825a0a67a25f2ac988932374550be29efe9a72e1055", 1981),
+    "centre841_first_quotient_pari_v2_17_4.txt":
+        ("fd690450c8cb8296edb8e2407372d06938913bcd4424bf364daa2a411b7369b1", 307),
+    "bremner_shadow_pair_quotients_pari_v2_17_4.txt":
+        ("b98b2eb94932423e3cf32d46730313c5c68a5a25e9ac78bacd117c0e96808739", 1367),
+    "balanced_core6_fibre_magma_v2_29_8.txt":
+        ("a258dff02db3930bd4667b1dcede72aff82ed80e58bafbfdd8cc486158c92c3e", 401),
+    "outer_core6_gate_magma_v2_29_8.txt":
+        ("982f676075a4973f9f0bdadabddb570096ffdbfad66123f41036608c4f5c9431", 202),
+    "central_addition_curves_magma_v2_29_8.txt":
+        ("66025ba611161827d46331f9449c7d732434ccfe5e1fc1e077b94224c5663624", 951),
+    "area30_magma.txt":
+        ("54f829dba69bbd882dcbe856d7153c197e2d974434fecfb6824bf9a06e5a79b0", 141),
+    "area60_magma.txt":
+        ("7f2bc34e20adb1848846e81ea3bb1a1f835801abcefa576a94ffe045a1a1fdfa", 142),
     # frozen calculator inputs (byte-exact resubmission sources)
-    "e840_bielliptic_fibre.m":
-        ("428fb7f7648b2b2a346ae22694fedf20c71a95c9f0610e85d7bbd9b2c7d65116", 1288),
-    "parker_balanced_core6_fibre.m":
-        ("e27e9e75e095928afb978333d13555a27ccd50922e46f6357c30ae198aed1eb0", 1070),
-    "parker_po104_outer_core6_gate.m":
-        ("5d323cca3431ed52816ea214a68c11e1d0a57c0adaf26c45f935cda27db94ac1", 732),
-    "parker_po104_central_mw_gate.m":
-        ("9cfbaa794fae9bb4e375716cdbb7c4360f2397a53984b6a1eee633848f9143f6", 1299),
-    "parker_po105_full_class_a30.m":
-        ("1009d00e24ccc287ecb6ec2da27c1c982acdd7dff6dc1f0094547ad9dbab71a1", 342),
-    "parker_po105_full_class_a60.m":
-        ("6c8cc3cb265cf6333e077f84bc0c2002b7058c1bdb7373366094b47fbc477fb6", 346),
+    "centre841_bielliptic_fibre.m":
+        ("5b5793874481007b889ceeeac9d0897feb99714c215a9a93d13c2dc32402c57c", 1307),
+    "centre841_first_quotient_pari.gp":
+        ("a8e7a94dc8d9a5fe3e0a1c57343e1bae5a6e4004efc84b6ae341b8927d74e04c", 683),
+    "bremner_shadow_pair_quotients.gp":
+        ("5965ced8c5e3d5697922675aefe0f5c7fd0960872de62be26b363cda764eaa2a", 1521),
+    "balanced_core6_fibre.m":
+        ("eabb0098f55029e930959d55f8d8ebad477aac67ffd973eb828278a68a5d7994", 1077),
+    "outer_core6_gate.m":
+        ("aa99026e5ae46f0db40fdbeb5c1bae68eb034ae513e51076336a8dd70750d4ac", 728),
+    "central_addition_curves.m":
+        ("5a4f7d179b222d01b9dbee34894e9ce4a5aa7ab474c4bd5776e80234ffc6573a", 1308),
+    "addition_curve_full_class_area30.m":
+        ("74cbed6c9ef1284ddbe4294bcefcae0c2502e70d7f0407d6d644ec62f3861c5b", 350),
+    "addition_curve_full_class_area60.m":
+        ("84cdb031d7369fe20e697840d3a35e266c0da33abc075ff143859b8412ec96c9", 354),
 }
 
 _KEY_RE = re.compile(r"^[A-Z][A-Z0-9_]*(?:\s|$)")
@@ -595,6 +665,73 @@ def parse_int_list(s: str) -> list:
 
 
 # --------------------------------------------------------------------------
+# family 0 -- Section 2: integral lattice of the eight line sums
+# --------------------------------------------------------------------------
+
+def family0_line_sum_lattice(emit) -> dict:
+    matrix = [
+        [1, 1, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 1, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 1, 1],
+        [1, 0, 0, 1, 0, 0, 1, 0, 0],
+        [0, 1, 0, 0, 1, 0, 0, 1, 0],
+        [0, 0, 1, 0, 0, 1, 0, 0, 1],
+        [1, 0, 0, 0, 1, 0, 0, 0, 1],
+        [0, 0, 1, 0, 1, 0, 1, 0, 0],
+    ]
+
+    def left_product(v):
+        return [sum(v[r] * matrix[r][c] for r in range(8))
+                for c in range(9)]
+
+    free_relation = [-1, -1, -1, 1, 1, 1, 0, 0]
+    mod3_relation = [1, 0, 1, 0, -1, 0, -1, -1]
+    require(left_product(free_relation) == [0] * 9,
+            "primitive free line-sum relation")
+    require(left_product(mod3_relation) == [0, 0, 0, 0, -3, 0, 0, 0, 0],
+            "exceptional mod-3 line-sum relation")
+
+    rows6, cols6 = [0, 1, 2, 3, 4, 6], [0, 1, 2, 3, 5, 6]
+    rows7, cols7 = [0, 1, 2, 3, 4, 6, 7], list(range(7))
+    minor6 = [[matrix[r][c] for c in cols6] for r in rows6]
+    minor7 = [[matrix[r][c] for c in cols7] for r in rows7]
+    det6, det7 = det_bareiss(minor6), det_bareiss(minor7)
+    require(det6 == -1 and det7 == -3,
+            "Smith determinant witnesses")
+    ranks = {str(p): rank_mod_p(matrix, p) for p in (2, 3, 5, 7)}
+    require(ranks == {"2": 7, "3": 6, "5": 7, "7": 7},
+            "line-sum modular ranks")
+
+    # The free relation bounds the rational rank by seven and det7 != 0
+    # gives equality. Since rank mod 3 is six, every 7-minor is divisible
+    # by 3; det7=-3 makes their gcd exactly 3. The unit 6-minor fixes all
+    # preceding invariant factors. These are the determinantal-divisor
+    # data for the asserted Smith form.
+    smith = [1, 1, 1, 1, 1, 1, 3, 0]
+    emit("family0: line-sum lattice certified exactly -- Smith form "
+         "diag(1,1,1,1,1,1,3,0), cokernel Z plus Z/3Z, unique "
+         "exceptional characteristic 3")
+    return {
+        "matrix": matrix,
+        "rank_over_Q": 7,
+        "smith_form": smith,
+        "cokernel": "Z direct-sum Z/3Z",
+        "free_relation": free_relation,
+        "mod3_relation": mod3_relation,
+        "minor6": {"rows_zero_based": rows6,
+                   "columns_zero_based": cols6, "determinant": det6},
+        "minor7": {"rows_zero_based": rows7,
+                   "columns_zero_based": cols7, "determinant": det7},
+        "image_conditions": [
+            "R1+R2+R3=C1+C2+C3",
+            "R1+R3=C2+Dplus+Dminus (mod 3)",
+        ],
+        "ranks_mod_p": ranks,
+        "exceptional_prime": 3,
+    }
+
+
+# --------------------------------------------------------------------------
 # family 1 -- Section 1: the rationality-filter witness (Bremner's square
 # over Q(sqrt3, sqrt133)); everything else in Sections 1-2 is historical or
 # proved in prose with no computational content to replay.
@@ -603,7 +740,7 @@ def parse_int_list(s: str) -> list:
 def family1_quartic_witness(emit) -> dict:
     """Exact replay of the degree-four witness promised in Section 1: a
     fully magic square of nine distinct squares over Q(sqrt3, sqrt133).
-    The square is Bremner's (BRE99; the degree-4 realization recorded in
+    The square is Bremner's (BRE01; the degree-4 realization recorded in
     the project state of the art); arithmetic in Q(sqrt3) is exact pairs
     (a, b) = a + b*sqrt(3)."""
     def mul(x, y):
@@ -640,7 +777,7 @@ def family1_quartic_witness(emit) -> dict:
          "nine distinct squares over Q(sqrt3, sqrt133), all eight lines "
          "sum 1596, centre 532 = (2 sqrt133)^2")
     return {
-        "attribution": "Bremner (BRE99); exact replay only",
+        "attribution": "Bremner (BRE01); exact replay only",
         "field": "Q(sqrt3, sqrt133), biquadratic of degree 4",
         "centre": 532,
         "magic_sum": 1596,
@@ -1041,6 +1178,57 @@ def lift_witness(m: int, P) -> dict:
     }
 
 
+def density_decimal_certificate() -> dict:
+    """Deterministic corroboration of the displayed density decimal.
+
+    The theorem uses the exact Haar-measure/incomplete-beta expression.
+    This routine merely checks its printed decimal after the regularizing
+    substitution t=1-u^2, using two composite-Simpson resolutions.
+    """
+    with localcontext() as ctx:
+        ctx.prec = 60
+        one = Decimal(1)
+        lower_t = (Decimal(840) / Decimal(4225)).sqrt()
+        numerator_endpoint = (one - lower_t).sqrt()
+
+        def integrand(u: Decimal) -> Decimal:
+            u2 = u * u
+            radicand = Decimal(4) - Decimal(6) * u2 \
+                + Decimal(4) * u2 * u2 - u2 * u2 * u2
+            return Decimal(2) / radicand.sqrt()
+
+        def simpson(endpoint: Decimal, panels: int) -> Decimal:
+            require(panels > 0 and panels % 2 == 0,
+                    "Simpson panel count")
+            h = endpoint / Decimal(panels)
+            total = integrand(Decimal(0)) + integrand(endpoint)
+            for k in range(1, panels):
+                total += Decimal(4 if k % 2 else 2) * integrand(h * k)
+            return total * h / Decimal(3)
+
+        values = []
+        for panels in (4096, 8192):
+            values.append(simpson(numerator_endpoint, panels)
+                          / simpson(one, panels))
+        require(abs(values[1] - values[0]) < Decimal("3e-17"),
+                "density quadrature resolutions disagree")
+        require(format(values[1], ".16f") == "0.6585271498271213",
+                "displayed density decimal")
+        beta_argument = Fraction(840, 4225) ** 2
+        require(beta_argument == Fraction(28224, 714025),
+                "density beta argument reduction")
+        return {
+            "exact_expression": "1-I_(28224/714025)(1/4,1/2)",
+            "beta_argument": fstr(beta_argument),
+            "beta_parameters": ["1/4", "1/2"],
+            "decimal_16": format(values[1], ".16f"),
+            "simpson_panels": [4096, 8192],
+            "coarse_decimal": format(values[0], ".20f"),
+            "fine_decimal": format(values[1], ".20f"),
+            "logical_role": "numerical corroboration only",
+        }
+
+
 def family2_lift(emit) -> dict:
     # doubling identities (EL-1), reduced modulo v^2 = u^3 - 840^2 u
     n = 2
@@ -1115,14 +1303,21 @@ def family2_lift(emit) -> dict:
         if D < xm < 65 ** 2:
             in_window.append(m)
     require(in_window == [1, 3, 5, 7, 9, 11], "bounded window diagnostic")
+    density = density_decimal_certificate()
     emit("family2: elliptic-orbit witnesses m=1 and m=3 recomputed exactly "
-         f"(lambda_3 = {w3['lambda']}); window indices {in_window}")
+         f"(lambda_3 = {w3['lambda']}); window indices {in_window}; "
+         f"density decimal {density['decimal_16']} corroborated")
     return {
         "doubling_identities": True,
         "lutz_nagell": {"divisor": ln, "support": [2, 3, 5, 7],
                         "orders": {"11": 12, "13": 20}, "gcd_bound": 4},
         "witnesses": [w1, w3],
         "window_indices_m_le_12": in_window,
+        "return_density": {
+            "counting_law": "A(N)=delta*N+o(N)",
+            "window": [840, 4225],
+            **density,
+        },
     }
 
 
@@ -1376,7 +1571,7 @@ def family4(emit) -> dict:
 
     # frozen transcript + machine-readable certificate
     tr = parse_transcript(load_frozen(
-        "e840_bielliptic_fibre_magma_v2_29_8.txt").decode("utf-8"))
+        "centre841_bielliptic_fibre_magma_v2_29_8.txt").decode("utf-8"))
     require(t_value(tr, "MAGMA_VERSION") == "2 29 8", "magma version")
     require(t_value(tr, "RANK_BOUNDS") == "0 0" and t_value(tr, "RANK") == "0"
             and t_value(tr, "RANK_PROVED") == "true", "rank 0 proved")
@@ -1391,7 +1586,7 @@ def family4(emit) -> dict:
             and t_value(tr, "STATUS") == "PASS_INDEPENDENT_MAGMA_REPLAY",
             "transcript status")
     cert = json.loads(load_frozen(
-        "e840_bielliptic_fibre_magma_certificate.json").decode("utf-8"))
+        "centre841_magma_certificate.json").decode("utf-8"))
     require(cert["output"]["rank_bounds"] == [0, 0]
             and cert["output"]["rank"] == 0
             and cert["output"]["rank_proved"] is True
@@ -1399,15 +1594,28 @@ def family4(emit) -> dict:
             and cert["output"]["nonzero_torsion_x"]
             == [707281, 2825761, 1998607065841], "certificate output")
     require(cert["transcript_artifact"]["sha256"]
-            == FROZEN_FILES["e840_bielliptic_fibre_magma_v2_29_8.txt"][0],
+            == FROZEN_FILES["centre841_bielliptic_fibre_magma_v2_29_8.txt"][0],
             "certificate pins the shipped transcript")
     require(cert["input_artifact"]["sha256"]
-            == FROZEN_FILES["e840_bielliptic_fibre.m"][0],
+            == FROZEN_FILES["centre841_bielliptic_fibre.m"][0],
             "certificate pins the shipped calculator input")
     require(all(v is False for v in cert["boundary"].values()),
             "certificate non-claim boundary flags")
+    pari = parse_transcript(load_frozen(
+        "centre841_first_quotient_pari_v2_17_4.txt").decode("utf-8"))
+    require(t_value(pari, "PARI_VERSION") == "[2, 17, 4]",
+            "PARI version")
+    require(t_value(pari, "CURVE_A_INVARIANTS")
+            == "[0,3533043,0,1998610598883,1998607065841]",
+            "first quotient coefficients")
+    require(t_value(pari, "RANK_RESULT").startswith("[3, 3, 0,"),
+            "first quotient rank bounds 3,3")
+    require(t_value(pari, "TORSION_RESULT").startswith("[4, [2, 2],"),
+            "first quotient torsion")
+    require(t_value(pari, "STATUS") == "PASS_CORROBORATION_ONLY",
+            "PARI corroboration status")
     emit("family4: x0=841 fibre algebra exact; t-list {0,+-1,+-841,+-1681}; "
-         "rank-0 transcript digest and assertions verified")
+         "rank-0 transcript and contextual PARI rank-3 record verified")
     return {
         "curve": "w^2=(1-t^2)(841^2-t^2)(1681^2-t^2)",
         "quotient": "v^2=(u-841^2)(u-1681^2)(u-841^2*1681^2)",
@@ -1416,11 +1624,144 @@ def family4(emit) -> dict:
         "admissible_t": admissible,
         "transcript": {"rank": 0, "rank_proved": True,
                        "torsion_invariants": [2, 2]},
+        "contextual_first_quotient": {
+            "rank_bounds": [3, 3],
+            "engine": "PARI/GP 2.17.4",
+            "load_bearing": False,
+        },
     }
 
 
 # --------------------------------------------------------------------------
-# family 5 -- Section 5.3: the half-class stop
+# family 4b -- Section 5.3: the fixed Bremner shadow
+# --------------------------------------------------------------------------
+
+def family4b_bremner_shadow(emit) -> dict:
+    B = ((88, -153, 65), (-23, 0, 23), (-65, 153, -88))
+    lines = (
+        B[0], B[1], B[2],
+        (B[0][0], B[1][0], B[2][0]),
+        (B[0][1], B[1][1], B[2][1]),
+        (B[0][2], B[1][2], B[2][2]),
+        (B[0][0], B[1][1], B[2][2]),
+        (B[0][2], B[1][1], B[2][0]),
+    )
+    require(all(sum(line) == 0 for line in lines), "B is zero-sum magic")
+    require(sorted(abs(v) for row in B for v in row if v)
+            == [23, 23, 65, 65, 88, 88, 153, 153],
+            "Bremner-shadow coefficients")
+
+    # If 1+-23t and 1+-65t are squares, their two products give
+    # Y^2=(1-23^2 t^2)(1-65^2 t^2).  Under x=1/t^2, y=Y/t^3 this is E.
+    n = 3
+    tv, Yv, xv = (Poly.var(n, i) for i in range(n))
+    cover_rhs = (1 - 23 ** 2 * tv ** 2) * (1 - 65 ** 2 * tv ** 2)
+    curve_poly = xv * (xv - 529) * (xv - 4225)
+
+    def reciprocal_square_cubic_pullback(poly: Poly) -> Poly:
+        """Return t^6*f(1/t^2) by transforming the terms of a cubic f(x)."""
+        require(poly.deg_in(2) == 3, "shadow quotient is a cubic in x")
+        out = Poly.const(n, 0)
+        for powers, coefficient in poly.c.items():
+            require(powers[0] == powers[1] == 0 and powers[2] <= 3,
+                    "shadow cubic uses x only")
+            out += coefficient * tv ** (2 * (3 - powers[2]))
+        return out
+
+    curve_pullback_cleared = reciprocal_square_cubic_pullback(curve_poly)
+    require((curve_pullback_cleared - cover_rhs).is_zero(),
+            "shadow quotient map after denominator clearing")
+    require((Yv ** 2 - curve_pullback_cleared)
+            .reduce_square(1, cover_rhs).is_zero(),
+            "shadow double-cover maps to the elliptic curve")
+
+    raw = load_frozen(
+        "bremner_shadow_pair_quotients_pari_v2_17_4.txt"
+    ).decode("utf-8")
+    rows = [line.split("|") for line in raw.splitlines() if "|" in line]
+    one = {}
+    for row in rows:
+        one.setdefault(row[0], []).append(row[1:])
+    require(raw.startswith("BREMNER_SHADOW_PARI_BEGIN\n")
+            and raw.rstrip().endswith("BREMNER_SHADOW_PARI_DONE"),
+            "shadow transcript sentinels")
+    require(one["PARI_VERSION"] == [["[2, 17, 4]"]], "shadow PARI version")
+    curve_coefficients = {
+        powers[2]: coefficient for powers, coefficient in curve_poly.c.items()
+    }
+    require(curve_coefficients.get(3) == 1, "shadow curve is monic cubic")
+    original_ainvs = [[
+        "0", fstr(curve_coefficients.get(2, Fraction(0))), "0",
+        fstr(curve_coefficients.get(1, Fraction(0))),
+        fstr(curve_coefficients.get(0, Fraction(0))),
+    ]]
+    require(one["SELECTED_ORIGINAL_AINVS"] == original_ainvs,
+            "shadow original model")
+    require(one["SELECTED_MIN_AINVS"] == [["1", "0", "0", "-331155", "-69042600"]],
+            "shadow minimal model")
+    require(one["SELECTED_CONDUCTOR"] == [["345345"]]
+            and one["SELECTED_CREMONA"] == [["345345r4"]],
+            "shadow catalogue identity")
+    require(one["SELECTED_RANK"] == [["[0, 0, 0, []]"]],
+            "shadow unconditional rank interval")
+    require(one["SELECTED_TORSION"][0][0].startswith("[4, [2, 2],"),
+            "shadow transcript torsion")
+
+    def count_points(prime: int) -> int:
+        total = 1
+        for xval in range(prime):
+            rhs = int(curve_poly.eval_at((0, 0, xval)))
+            total += 1 + legendre(rhs, prime)
+        return total
+
+    counts = {17: count_points(17), 41: count_points(41)}
+    require(counts == {17: 16, 41: 40}, "shadow finite-field counts")
+    require(one["SELECTED_CARD"] == [["17", "16"], ["41", "40"]],
+            "shadow transcript finite-field counts")
+    require(math.gcd(*counts.values()) == 8, "shadow torsion order bound")
+
+    roots = (0, 529, 4225)
+    halving = {}
+    for root in roots:
+        diffs = [Fraction(root - other) for other in roots if other != root]
+        sq = [rational_sqrt(value) is not None for value in diffs]
+        halving[str(root)] = sq
+        require(not all(sq), f"2-torsion point at x={root} is not halved")
+
+    candidates = (Fraction(1, 23), Fraction(-1, 23),
+                  Fraction(1, 65), Fraction(-1, 65))
+    rejected = {}
+    for parameter in candidates:
+        forms = [1 + sign * a * parameter
+                 for a in (23, 65) for sign in (1, -1)]
+        require(Fraction(2) in forms, "candidate has a form equal to 2")
+        require(any(rational_sqrt(value) is None for value in forms),
+                "candidate rejected by original square conditions")
+        rejected[fstr(parameter)] = [fstr(value) for value in forms]
+    zero_forms = [Fraction(1) + sign * a * Fraction(0)
+                  for a in (23, 65, 88, 153) for sign in (1, -1)]
+    require(zero_forms == [Fraction(1)] * 8
+            and all(rational_sqrt(value) is not None for value in zero_forms),
+            "t=0 survives all eight original square conditions")
+
+    emit("family4b: fixed Bremner shadow closed -- rank 0, torsion (Z/2)^2, "
+         "and every nonzero pulled-back parameter rejected exactly")
+    return {
+        "coefficient_matrix": [list(row) for row in B],
+        "curve": "y^2=x(x-529)(x-4225)",
+        "quotient_map": "x=1/t^2, y=Y/t^3",
+        "cremona_label": "345345r4",
+        "rank_bounds": [0, 0],
+        "finite_field_counts": {str(p): value for p, value in counts.items()},
+        "torsion_invariants": [2, 2],
+        "halving_tests": halving,
+        "rejected_nonzero_parameters": rejected,
+        "admissible_parameter": "0",
+    }
+
+
+# --------------------------------------------------------------------------
+# family 5 -- Section 5.4: the half-class stop
 # --------------------------------------------------------------------------
 
 def kummer_delta(P) -> tuple:
@@ -1971,7 +2312,7 @@ def family8(emit) -> dict:
 
     # central double-balanced fibre: transcript
     tr = parse_transcript(load_frozen(
-        "parker_balanced_core6_fibre_magma_v2_29_8.txt").decode("utf-8"))
+        "balanced_core6_fibre_magma_v2_29_8.txt").decode("utf-8"))
     require(t_value(tr, "MAGMA_VERSION") == "2 29 8", "core6 magma version")
     require(t_value(tr, "RANK_BOUNDS") == "0 0" and t_value(tr, "RANK") == "0"
             and t_value(tr, "RANK_PROVED") == "true", "core6 rank 0")
@@ -1999,7 +2340,7 @@ def family8(emit) -> dict:
     require((f24(25 + 2 * tp) - (25 + 2 * tp) * (2 * tp + 1) * (2 * tp + 49))
             .is_zero(), "outer factor 2")
     tro = parse_transcript(load_frozen(
-        "parker_po104_outer_core6_gate_magma_v2_29_8.txt").decode("utf-8"))
+        "outer_core6_gate_magma_v2_29_8.txt").decode("utf-8"))
     require(t_value(tro, "PROVED") == "true"
             and t_value(tro, "NUMBER_POINTS") == "8", "outer proved complete")
     rat_t = parse_int_list(t_value(tro, "RATIONAL_T"))
@@ -2037,7 +2378,7 @@ def family8(emit) -> dict:
     require(diff.is_zero(), "secant addition identity")
 
     trc = parse_transcript(load_frozen(
-        "parker_po104_central_mw_gate_magma_v2_29_8.txt").decode("utf-8"))
+        "central_addition_curves_magma_v2_29_8.txt").decode("utf-8"))
     order = trc["__order__"]
     blocks = {}
     cur = None
@@ -2089,15 +2430,21 @@ def family8(emit) -> dict:
 
     # singleton fake two-Selmer sets for areas 30 and 60 (untruncated)
     selmer = {}
-    for area, name in ((30, "parker_po105_full_class_a30_magma_v2_29_8.txt"),
-                       (60, "parker_po105_full_class_a60_magma_v2_29_8.txt")):
+    for area, name in ((30, "area30_magma.txt"),
+                       (60, "area60_magma.txt")):
         trs = parse_transcript(load_frozen(name).decode("utf-8"))
+        require(t_value(trs, "MAGMA_VERSION") == "2 29 8",
+                f"Magma version A{area}")
         require(t_value(trs, "SELMER_SIZE") == "1", f"selmer size A{area}")
         require(t_value(trs, "SELMER_SET").replace(" ", "") == "{0}",
                 f"selmer set A{area}")
         require(t_value(trs, "DELTA_IMAGE") == "0", f"delta image A{area}")
         require(t_value(trs, "STATUS") == "DONE", f"selmer status A{area}")
-        selmer[str(area)] = {"size": 1, "set": [0]}
+        selmer[str(area)] = {
+            "engine": "Magma V2.29-8",
+            "size": 1,
+            "set": [0],
+        }
     emit("family8: edge identity, both fixtures, seven balanced cores, both "
          "closed core-6 fibres and the six addition curves verified "
          "(Jacobian ranks 2,2,3,3,4,5; fake Selmer singletons)")
@@ -2147,14 +2494,16 @@ def family9_census(emit) -> dict:
     fulls = [ap for ap in aps47 if ap[1] ** 2 - ap[0] ** 2 == 840]
     require(fulls == [(1, 29, 41), (23, 37, 47)], "the two full progressions")
 
-    partials = []
-    for a in range(1, 530):
+    partial_candidates = []
+    for a in range(1, 1370):
         trip = (a, a + 840, a + 1680)
         squares = [v for v in trip if is_square(v)]
         if len(squares) == 2 and max(sqrt_exact(v) for v in squares) <= 47:
-            partials.append(trip)
-    require(partials == [(121, 961, 1801), (169, 1009, 1849),
-                         (256, 1096, 1936)], f"partials {partials}")
+            partial_candidates.append(trip)
+    require(partial_candidates == [
+        (121, 961, 1801), (169, 1009, 1849), (256, 1096, 1936),
+        (841, 1681, 2521), (1369, 2209, 3049),
+    ], f"partial candidates {partial_candidates}")
 
     def grid(x0, x1, x2):
         return ((x1, x2 + 840, x0 - 840),
@@ -2162,17 +2511,20 @@ def family9_census(emit) -> dict:
                 (x0 + 840, x1 - 840, x2))
 
     arrays = set()
-    for part in partials:
+    usable_partials = []
+    for part in partial_candidates:
+        arrays_from_part = set()
         cents = [841, 1369, part[1]]
         for i0 in range(3):
             rest = [c for j, c in enumerate(cents) if j != i0]
             for x1, x2 in (tuple(rest), tuple(rest[::-1])):
                 g = grid(cents[i0], x1, x2)
                 entries = [v for row in g for v in row]
-                require(all(v > 0 for v in entries), "census positivity")
-                require(len(set(entries)) == 9, "census distinctness")
-                require(sum(1 for v in entries if is_square(v)) == 8,
-                        "census eight squares")
+                if (not all(v > 0 for v in entries)
+                        or len(set(entries)) != 9
+                        or sum(1 for v in entries if is_square(v)) != 8
+                        or max(sqrt_exact(v) for v in entries if is_square(v)) > 47):
+                    continue
                 total = cents[i0] + x1 + x2
                 lines = ([sum(row) for row in g]
                          + [sum(col) for col in zip(*g)]
@@ -2181,9 +2533,13 @@ def family9_census(emit) -> dict:
                         "census seven common lines")
                 require(g[0][2] + g[1][1] + g[2][0] == 3 * cents[i0] != total,
                         "census failed antidiagonal")
-                require(max(sqrt_exact(v) for v in entries
-                            if is_square(v)) == 47, "census height 47")
-                arrays.add(g)
+                arrays_from_part.add(g)
+        if arrays_from_part:
+            usable_partials.append(part)
+            arrays.update(arrays_from_part)
+    require(usable_partials == [(121, 961, 1801), (169, 1009, 1849),
+                                (256, 1096, 1936)],
+            f"distinct compatible partials {usable_partials}")
     require(len(arrays) == 18, f"{len(arrays)} labelled arrays")
 
     def d4_canonical(g):
@@ -2202,14 +2558,16 @@ def family9_census(emit) -> dict:
     nonsq_centre = [c for c in classes if not is_square(c[1][1])]
     require(len(nonsq_centre) == 2, "two centre-nonsquare classes")
     emit("family9: Appendix-A census replayed from scratch -- 12/13 full "
-         "progressions at heights 46/47, difference 840 unique, 3 partials, "
+         "progressions at heights 46/47, difference 840 unique, 5 raw / "
+         "3 distinct-compatible partials, "
          "18 arrays = 9 D4 classes (2 centre-nonsquare)")
     return {
         "full_progressions_h46": len(aps46),
         "full_progressions_h47": len(aps47),
         "doubled_difference": 840,
         "full_pair_roots": [[1, 29, 41], [23, 37, 47]],
-        "partial_progressions": [list(t) for t in partials],
+        "partial_progression_candidates": [list(t) for t in partial_candidates],
+        "partial_progressions": [list(t) for t in usable_partials],
         "labelled_arrays": 18,
         "d4_classes": 9,
         "centre_nonsquare_classes": 2,
@@ -2225,6 +2583,12 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--output", required=True, type=Path)
     ap.add_argument("--log", required=True, type=Path)
+    ap.add_argument(
+        "--refresh-expected",
+        action="store_true",
+        help=("maintainer-only: rewrite the frozen expected JSON, but only "
+              "after the live digest matches the source-pinned constant"),
+    )
     args = ap.parse_args()
 
     started = time.perf_counter()
@@ -2241,9 +2605,10 @@ def main() -> int:
         sha, size = FROZEN_FILES[name]
         frozen[name] = {"sha256": sha, "bytes": size}
     emit(f"frozen layer: {len(frozen)} files digest-verified "
-         "(transcripts + calculator inputs)")
+         "(external-CAS records + inputs)")
 
     families = {
+        "family0_line_sum_lattice": family0_line_sum_lattice(emit),
         "family1_quartic_witness": family1_quartic_witness(emit),
         "family2_infinite_families": {
             "retraction": family2_retraction(emit),
@@ -2252,6 +2617,7 @@ def main() -> int:
         },
         "family3_interaction_surface": family3(emit),
         "family4_fibre_stop": family4(emit),
+        "family4b_bremner_shadow": family4b_bremner_shadow(emit),
         "family5_half_class_stop": family5(emit),
         "family6_support_law": family6(emit),
         "family7_three_prime_exclusion": family7(emit),
@@ -2260,18 +2626,20 @@ def main() -> int:
     }
 
     payload = {
-        "schema": "FCIG-P41-NEARMISS-SUPPORT-CERTIFICATES-v1",
+        "schema": "FCIG-NEARMISS-SUPPORT-CERTIFICATES-v1",
         "status": "PASS",
-        "terminal": "P41_MAIN_PAPER_EXACT_CERTIFICATES_PASS",
+        "terminal": "MAIN_PAPER_EXACT_CERTIFICATES_PASS",
         "claim_scope": ("exact finite certificates and frozen-transcript "
                         "digests for the theorems of the main paper; no "
                         "novelty or firstness claim; nothing here proves or "
                         "refutes the existence of a 3x3 magic square of "
                         "squares"),
         "engine_policy": ("python standard library only; exact integer and "
-                          "rational arithmetic; commercial computer algebra "
-                          "enters only as hash-verified frozen transcripts "
-                          "and is never executed"),
+                          "rational arithmetic, plus deterministic Decimal "
+                          "quadrature used only to corroborate a displayed "
+                          "decimal; external computer algebra "
+                          "enters only as hash-verified frozen records and "
+                          "is never executed"),
         "families": families,
         "frozen_files": frozen,
     }
@@ -2281,6 +2649,8 @@ def main() -> int:
             f"live output digest {digest} differs from the pinned constant "
             "(fail closed)")
     expected = CERT / "expected_verification.json"
+    if args.refresh_expected:
+        expected.write_text(text, encoding="utf-8", newline="\n")
     require(expected.exists(),
             "certificates/expected_verification.json is missing (fail closed)")
     require(text.encode("utf-8") == expected.read_bytes(),
