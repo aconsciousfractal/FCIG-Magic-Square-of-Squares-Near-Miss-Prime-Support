@@ -158,7 +158,10 @@ tectonic --keep-logs main.tex
 mv main.pdf Near-Miss_Constructions_Interaction_Surfaces_and_Prime-Support_Obstructions_for_the_3x3_Magic_Square_of_Squares.pdf
 ```
 
+`main.pdf` is only Tectonic's temporary default output and must not be retained;
+the repository ships only the title-named PDF above.
+
 Its SHA-256 is
-`DA3D8AC5B45F90C35BC8657EB23D72F5CE75E3014FAC2AC72E4A9272954072AE`.
+`C43F7CC70B8CD8B83871B18421A440A2EDF778A431F5FA6443B00DB66F043AA8`.
 The PDF is not part of the source manifest because different conforming TeX
 engines may produce different bytes.
