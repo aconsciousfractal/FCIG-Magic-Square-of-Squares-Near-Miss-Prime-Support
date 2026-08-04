@@ -27,9 +27,8 @@ review of (i) the retraction/least-shift proofs together with the bounded
 Appendix-A census on which they rely, (ii) the elliptic-orbit lift and its
 certificate lineage, and (iii) the specialization of the imported
 fixed-difference finiteness theorem. The manuscript therefore keeps cautious
-claim-use wording throughout. Exact replays, independent implementations and
-adversarial agent audits support that wording but do not substitute for those
-specialist reviews.
+claim-use wording throughout. Exact replays and independent implementations
+support that wording but do not substitute for those specialist reviews.
 
 The public paper is ready for mathematical circulation, but claims of
 priority or journal submission should still receive ordinary independent

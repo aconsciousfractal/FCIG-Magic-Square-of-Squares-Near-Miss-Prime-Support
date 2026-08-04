@@ -6,8 +6,9 @@ Companion package for the paper
 > obstructions for the 3x3 magic square of squares**
 > Oleksiy Babanskyy, 2026.
 
-PDF: [`paper/`](paper/) (title-named, built from `paper/main.tex` +
-`paper/sections/`; see [`REPRODUCE.md`](REPRODUCE.md)).
+PDF: [`Near-Miss_Constructions_Interaction_Surfaces_and_Prime-Support_Obstructions_for_the_3x3_Magic_Square_of_Squares.pdf`](paper/Near-Miss_Constructions_Interaction_Surfaces_and_Prime-Support_Obstructions_for_the_3x3_Magic_Square_of_Squares.pdf)
+(built from `paper/main.tex` + `paper/sections/`; see
+[`REPRODUCE.md`](REPRODUCE.md)).
 
 Whether a `3x3` magic square of nine distinct positive integer squares
 exists (LaBar's problem) is open in both directions. This paper works on
@@ -120,8 +121,7 @@ certificates/  expected_verification.json + 17 frozen external-CAS files
 results/       verification.json (+ .log), regenerated on replay
 dossiers/      residual_cover/  odd_lift_n5/  degree90_sclass/
                EXHAUSTED_ROUTES.md
-docs/          CLAIM_LEDGER.md, PUBLIC_CLAIM_BOUNDARY.md, SOURCE_LOCK.md,
-               RED_TEAM_REPORT.md, GATE_HISTORY.md
+docs/          CLAIM_LEDGER.md, PUBLIC_CLAIM_BOUNDARY.md, SOURCE_LOCK.md
 LICENSE (MIT), LICENSE_SCOPE.md, CITATION.cff, MANIFEST_SHA256.txt,
 requirements.txt
 ```

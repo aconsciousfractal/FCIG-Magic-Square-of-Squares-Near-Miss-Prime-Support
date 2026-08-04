@@ -6,7 +6,7 @@ randomness, network access or commercial software. Independent auditing of
 the Magma-dependent ranks, point lists and Selmer sets requires Magma or a
 separate implementation of those calculations.
 
-1. **Read the paper**: the title-named PDF in `paper/`. The spine: the
+1. **Read the paper**: [`Near-Miss_Constructions_Interaction_Surfaces_and_Prime-Support_Obstructions_for_the_3x3_Magic_Square_of_Squares.pdf`](paper/Near-Miss_Constructions_Interaction_Surfaces_and_Prime-Support_Obstructions_for_the_3x3_Magic_Square_of_Squares.pdf). The spine: the
    seven-line normal form and integral Smith form (Thm 1, §2); the three
    infinite `(8,7)` mechanisms with the complete least-shift law and the
    positive-density elliptic-orbit lift (Thm 2, §3, interval

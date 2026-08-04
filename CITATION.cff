@@ -3,7 +3,7 @@ message: "If you use this package, please cite it as below."
 title: "Near-miss constructions, interaction surfaces, and prime-support obstructions for the 3x3 magic square of squares"
 type: software
 version: "1.0.0"
-date-released: "2026-08-01"
+date-released: "2026-08-04"
 authors:
   - family-names: Babanskyy
     given-names: Oleksiy

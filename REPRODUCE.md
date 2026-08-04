@@ -148,8 +148,9 @@ pdflatex -interaction=nonstopmode -halt-on-error -jobname="$job" main.tex
 pdflatex -interaction=nonstopmode -halt-on-error -jobname="$job" main.tex
 ```
 
-The checked-in PDF was last rebuilt with Tectonic 0.16.9 (which performs
-the necessary reruns automatically), then renamed to the title target:
+The checked-in PDF was last rebuilt with MiKTeX-pdfTeX 4.23
+(MiKTeX 25.12) using the three-pass `pdflatex` route above. A conforming
+Tectonic build can instead be produced and renamed to the title target:
 
 ```bash
 cd paper
@@ -162,6 +163,6 @@ mv main.pdf Near-Miss_Constructions_Interaction_Surfaces_and_Prime-Support_Obstr
 the repository ships only the title-named PDF above.
 
 Its SHA-256 is
-`C43F7CC70B8CD8B83871B18421A440A2EDF778A431F5FA6443B00DB66F043AA8`.
+`41F760B744CC9621A7054D71164A8F7A31474CACE2B43271183324618AD0BC43`.
 The PDF is not part of the source manifest because different conforming TeX
 engines may produce different bytes.
