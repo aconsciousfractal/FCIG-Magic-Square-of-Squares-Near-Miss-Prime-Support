@@ -27,6 +27,7 @@ paper and owned by their authors.
 | input | owner |
 |---|---|
 | problem statement (1984) and the \$100 offer | LaBar; Gardner (history as recorded in `BRE99` §0) |
+| “Parker” terminology used for this paper's common-difference configurations | The label recalls Matt Parker's widely known *Parker Square*, documented by Numberphile and Brady Haran at `https://www.numberphile.com/videos/the-parker-square` and `https://www.bradyharanblog.com/the-parker-square`, both accessed 2026-08-14. This is a naming/history source only: it does not transfer authorship of LaBar's problem to Parker and does not identify Parker's particular near miss with the configurations studied here. |
 | the 7-of-9-squares fully magic record and degree-27 full solution | Bremner, *Acta Arith.* 88 (1999) `BRE99`, pp. 289–290 |
 | degree-four witness over `Q(sqrt3,sqrt133)`, its rational/anti-invariant decomposition, and the fixed coefficient line used in Proposition BB | Bremner, *Acta Arith.* 99 (2001) `BRE01`, display (2), p. 289 and equations (28)–(29), pp. 306–307; DOI `10.4064/aa99-3-6`; family and formulas are Bremner's, while this paper contributes only the fixed-line deduction |
 | elliptic quotient in Proposition BB: `y^2=x(x-529)(x-4225)`, minimal label `345345r4`, rank interval `[0,0]` | Cremona elliptic-curve data, `https://johncremona.github.io/ecdata/`; PARI/GP 2.17.4 `ellsearch`, `ellrank`, `elltors`; catalogued data, not a novelty claim |

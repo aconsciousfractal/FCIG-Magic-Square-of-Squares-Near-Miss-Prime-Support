@@ -163,6 +163,6 @@ mv main.pdf Near-Miss_Constructions_Interaction_Surfaces_and_Prime-Support_Obstr
 the repository ships only the title-named PDF above.
 
 Its SHA-256 is
-`41F760B744CC9621A7054D71164A8F7A31474CACE2B43271183324618AD0BC43`.
+`C7CF1AF7FD2704467586E80A49795C217168F6F9355FBE01A64445DC38D89E7F`.
 The PDF is not part of the source manifest because different conforming TeX
 engines may produce different bytes.

@@ -18,6 +18,12 @@ seven theorem families there. Elementary and symbolic computations have
 exact Python replays; external-CAS results are supplied as hash-pinned inputs
 and normalized output records that the verifier authenticates and parses.
 
+**Terminology note.** The paper's label “Parker configuration” recalls Matt
+Parker's widely known *Parker Square*, a near miss devised while attempting
+this problem. It does not attribute the original problem to Parker: the
+problem was posed by LaBar and popularised by Gardner, and Parker's particular
+square is not one of the configurations classified in the paper.
+
 ## What the paper proves
 
 - **Normal form** (Thm 1). Every seven-line array is three same-difference
@@ -78,7 +84,7 @@ appendix adds the Brown provenance correction.
 
 The classical ingredients are attributed in the paper and in
 [`docs/SOURCE_LOCK.md`](docs/SOURCE_LOCK.md) — Bremner; Sallows; Robertson;
-Gardner/LaBar (history); Lucas; Fituvalu (type taxonomy and tables); Boyer
+Gardner/LaBar (history); Parker/Haran (terminology); Lucas; Fituvalu (type taxonomy and tables); Boyer
 and Brown (catalogue records); Rabern, Woll, Labruna, Weisenberg (the
 entry-side lineage); Houston; Cowan; Coumbe; Harrison–Mudgal–Schmidt;
 Caro–García-Fritz; Evertse–Schlickewei–Schmidt;
