@@ -1,11 +1,13 @@
 # License scope
 
-Everything authored in this repository is released under the single MIT
-`LICENSE`:
+Everything authored in this repository remains available under the MIT
+`LICENSE`. The original manuscript is additionally available under CC BY 4.0,
+as specified in [LICENSE_MANUSCRIPT.md](LICENSE_MANUSCRIPT.md):
 
 | Paths | License |
 |---|---|
-| `paper/**`, `scripts/**`, `tests/**`, `docs/**`, `dossiers/**`, `results/**` | MIT |
+| `paper/**` (original manuscript source and PDF) | MIT or CC BY 4.0 |
+| `scripts/**`, `tests/**`, `docs/**`, `dossiers/**`, `results/**` | MIT |
 | `certificates/**` (verifier certificate and authored Magma/PARI inputs and normalized transcripts) | MIT |
 | `README.md`, `README_REVIEWER.md`, `REPRODUCE.md`, `CITATION.cff` | MIT |
 | `MANIFEST_SHA256.txt`, `requirements.txt`, `.gitignore`, `.gitattributes` | MIT |

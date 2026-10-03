@@ -122,7 +122,8 @@ dossiers/      residual cover, lift tower, degree-90 class and exhausted routes
 docs/          claim/evidence map, limits, source records and catalogue documentation
 ```
 
-[LICENSE_SCOPE.md](LICENSE_SCOPE.md) records the MIT license scope and
+[LICENSE_SCOPE.md](LICENSE_SCOPE.md) records the MIT scope, the additional
+[CC BY 4.0 manuscript licence](LICENSE_MANUSCRIPT.md), and
 citation-only third-party material. Fituvalu's tables, external data files
 and third-party papers are cited rather than redistributed. The bibliography
 is inline LaTeX. `MANIFEST_SHA256.txt` covers shipped source bytes, including
