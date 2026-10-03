@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this package, please cite it as below."
 title: "Near-miss constructions, interaction surfaces, and prime-support obstructions for the 3x3 magic square of squares"
 type: software
-version: "1.0.1"
-date-released: "2026-08-14"
+version: "1.1.0"
+date-released: "2026-10-03"
 authors:
   - family-names: Babanskyy
     given-names: Oleksiy
@@ -31,9 +31,11 @@ abstract: >-
   surface for the eighth line, its saturation and full S5 cone monodromy;
   imported fixed-difference finiteness with one completely closed fibre
   and a finite-Kummer-class stop; a five-term S-unit support law with an
-  exact mod-8 endpoint/interior table and, for primitive positive
-  configurations, the complete exclusion of the supports {2,3} and
-  {2,3,p}; and the four-prime frontier stated exactly and left open.
+  exact mod-8 endpoint/interior table; an Aebi-derived uniqueness result
+  for differences with at most three prime factors; and a complete S-unit
+  catalogue excluding full magic for differences supported on primes at most
+  19, with 384 primitive nine-square/seven-line classes and a sharp relative
+  defect bound. Arbitrary four-prime supports remain open.
   Elementary and symbolic computations have exact standard-library Python
   replays. External-CAS ranks, point lists, and Selmer sets enter as
   hash-pinned inputs and normalized output records; the verifier
@@ -48,5 +50,5 @@ preferred-citation:
       given-names: Oleksiy
       orcid: "https://orcid.org/0009-0001-6176-6208"
   year: 2026
-  version: "1.0.1"
+  version: "1.1.0"
   repository-code: "https://github.com/aconsciousfractal/FCIG-Magic-Square-of-Squares-Near-Miss-Prime-Support"

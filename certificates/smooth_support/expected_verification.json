@@ -1,0 +1,213 @@
+{
+  "status": "PASS",
+  "claim_boundary": "Exact finite replay; global completeness uses imported von Kaenel--Matschke Theorem A, n=8. Not a re-proof of the imported computation.",
+  "source": "arXiv:1605.06079v1, Theorem A, printed p. 7",
+  "sections": [
+    {
+      "cutoff": 7,
+      "primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "abc": 63,
+      "primitive_triangles": 12,
+      "squarefree_classes": 9,
+      "class_size_histogram": {
+        "1": 7,
+        "2": 1,
+        "3": 1
+      },
+      "midpoint_pair_tests": 4,
+      "midpoint_hits": 0,
+      "unordered_triples": 1,
+      "degenerate_triples": 0,
+      "root_primitive_D4_arrays_9_7": 3,
+      "minimum_relative_defect": [
+        1727,
+        1120
+      ],
+      "minimum_D4_class_count": 1,
+      "minimum_witnesses": [
+        {
+          "roots": [
+            46,
+            82,
+            113,
+            127,
+            74,
+            2,
+            58,
+            97,
+            94
+          ],
+          "d": 3360,
+          "kernel": 210,
+          "euclid": [
+            [
+              5,
+              2
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              8,
+              7
+            ]
+          ],
+          "common_sum": 21609,
+          "failed_sum": 16428,
+          "delta": 5181,
+          "relative_defect": [
+            1727,
+            1120
+          ]
+        }
+      ]
+    },
+    {
+      "cutoff": 13,
+      "primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13
+      ],
+      "abc": 545,
+      "primitive_triangles": 62,
+      "squarefree_classes": 39,
+      "class_size_histogram": {
+        "1": 27,
+        "2": 3,
+        "3": 7,
+        "4": 2
+      },
+      "midpoint_pair_tests": 36,
+      "midpoint_hits": 0,
+      "unordered_triples": 15,
+      "degenerate_triples": 0,
+      "root_primitive_D4_arrays_9_7": 45,
+      "minimum_relative_defect": [
+        347984603,
+        9837828000
+      ],
+      "minimum_D4_class_count": 1,
+      "minimum_witnesses": [
+        {
+          "roots": [
+            87942,
+            140595,
+            157690,
+            186290,
+            132558,
+            9555,
+            99645,
+            122590,
+            165558
+          ],
+          "d": 9837828000,
+          "kernel": 330,
+          "euclid": [
+            [
+              8,
+              3
+            ],
+            [
+              27,
+              22
+            ],
+            [
+              147,
+              22
+            ]
+          ],
+          "common_sum": 52366885489,
+          "failed_sum": 52714870092,
+          "delta": -347984603,
+          "relative_defect": [
+            347984603,
+            9837828000
+          ]
+        }
+      ]
+    },
+    {
+      "cutoff": 19,
+      "primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19
+      ],
+      "abc": 3649,
+      "primitive_triangles": 232,
+      "squarefree_classes": 133,
+      "class_size_histogram": {
+        "1": 85,
+        "2": 15,
+        "3": 23,
+        "4": 5,
+        "5": 3,
+        "6": 1,
+        "7": 1
+      },
+      "midpoint_pair_tests": 180,
+      "midpoint_hits": 0,
+      "unordered_triples": 128,
+      "degenerate_triples": 0,
+      "root_primitive_D4_arrays_9_7": 384,
+      "minimum_relative_defect": [
+        347984603,
+        9837828000
+      ],
+      "minimum_D4_class_count": 1,
+      "minimum_witnesses": [
+        {
+          "roots": [
+            87942,
+            140595,
+            157690,
+            186290,
+            132558,
+            9555,
+            99645,
+            122590,
+            165558
+          ],
+          "d": 9837828000,
+          "kernel": 330,
+          "euclid": [
+            [
+              8,
+              3
+            ],
+            [
+              27,
+              22
+            ],
+            [
+              147,
+              22
+            ]
+          ],
+          "common_sum": 52366885489,
+          "failed_sum": 52714870092,
+          "delta": -347984603,
+          "relative_defect": [
+            347984603,
+            9837828000
+          ]
+        }
+      ]
+    }
+  ]
+}

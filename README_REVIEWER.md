@@ -16,8 +16,9 @@ separate implementation of those calculations.
    Prop. BB, §5); the finite-class stop (Thm 5, §5); the
    `S`-unit support law with the mod-8 endpoint table and the `{2,3}`
    exclusion (Thm 6, §6); the complete three-prime exclusion (Thm 7, §7);
-   the four-prime frontier stated exactly and left open (§8); the program
-   and the three dossiers (§9); census and provenance (App. A);
+   the complete smooth-support result and `(9,7)` atlas (Thm 8, §8);
+   the arbitrary four-prime frontier (§9); the program
+   and the three dossiers (§10); census and provenance (App. A);
    certificates (App. B); reproducibility and data policy (App. C).
 
 2. **Replay the certificates** (Python 3.10+, standard library
@@ -84,10 +85,24 @@ separate implementation of those calculations.
 
 6. **Boundary** (read before citing): `docs/PUBLIC_CLAIM_BOUNDARY.md` and
    the what-this-paper-does-not-claim block of the front matter. In
-   particular: no four-prime exclusion, no effectivity, no novelty or
-   firstness anywhere, and three claim-use obligations deliberately
+   particular: the exclusion for primes at most 19 does not settle arbitrary
+   four-prime supports; no novelty or firstness is asserted, and three claim-use obligations deliberately
    carried with open human-review gates.
 
 7. **The open objects**: `dossiers/` declares the three terminal states
    exactly (with digest-pinned evidence) and catalogues every exhausted
    route with its boundary.
+
+8. **Check the new complete-support deduction**:
+
+   ```bash
+   python -B scripts/verify_smooth_support.py
+   python -B -O scripts/verify_smooth_support.py
+   python -B -m unittest discover -s tests -v
+   ```
+
+   Read `docs/SMOOTH_SUPPORT.md` and the imported Theorem A alongside the
+   proof. The checker reconstructs the three triangle/array lists and every
+   midpoint test. It requires the frozen expected receipt, rejects damaged
+   or incomplete ABC lists, and compares JSON types strictly. This exact
+   finite replay does not re-prove the imported completeness theorem.

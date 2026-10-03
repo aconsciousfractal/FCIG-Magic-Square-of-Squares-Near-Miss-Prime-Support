@@ -6,7 +6,8 @@ structured objects along three axes. Call a $3\times3$ integer array an
 \emph{$(8,7)$ array} if its nine entries are positive and pairwise distinct,
 exactly eight of them are perfect squares, and exactly seven of its eight
 ordinary lines (rows, columns, long diagonals) share one common sum; every
-use of ``near miss'' below refers to this metric and to no other. First, we
+use of ``$(8,7)$ near miss'' below refers to this metric. We also classify
+specified $(9,7)$ arrays, with all nine entries square. First, we
 give a self-contained normal form --- every seven-line array is three
 arithmetic progressions with one common difference --- together with the
 integral Smith form of its line-sum map, and construct infinite $(8,7)$
@@ -23,8 +24,12 @@ of Caro and Garc\'ia-Fritz, and the route through finite Kummer classes
 alone is provably insufficient. Third, an $S$-unit law for the common
 difference $d$ of the three progressions bounds the number of
 configurations for every fixed prime support and excludes whole support
-classes, including every support $\supp(2d)=\{2,3,p\}$. The four-prime
-structure is developed to an explicit frontier and left open. The companion
+classes. A consequence of Aebi's classification gives at most one positive
+square progression for any difference with at most three prime factors.
+Using the complete $S$-unit totals of von K\"anel--Matschke, an exact
+catalogue excludes fully magic squares whose transversal difference has
+only primes at most $19$, and classifies the $384$ associated primitive
+$(9,7)$ classes. Arbitrary four-prime supports remain open. The companion
 repository supplies exact Python replays for the elementary and symbolic
 computations, and hash-pinned inputs and normalized output records for the
 external computer-algebra computations.
@@ -32,13 +37,18 @@ external computer-algebra computations.
 
 \section*{Setting and objects}
 
-Three objects recur and are never interchanged. An \emph{$(8,7)$ array} is
-as in the abstract. A \emph{six-square carrier} is a fully magic $3\times3$
+The following objects are kept distinct. An \emph{$(8,7)$ array} is
+as in the abstract; a \emph{$(9,7)$ array} has nine distinct positive square
+entries and exactly seven equal ordinary line sums. A \emph{six-square carrier} is a fully magic $3\times3$
 array of six squares and three non-squares from the catalogued classical
 families. A \emph{Parker configuration} is a triple of pairwise-distinct
 three-term progressions of perfect squares with one \emph{common}
 difference $d$, the structure forced on the three transversals of a carrier
-by the completion problem; its support statements concern $\supp(2d)$ ---
+by the completion problem. In the finiteness and support-law statements,
+the configuration additionally satisfies the full-magic interaction
+$s_1^2+s_2^2=2s_0^2$, with the positive, distinct-entry open locus imposed.
+A general $(9,7)$ array does not satisfy this interaction. The support
+statements concern $\supp(2d)$ ---
 the prime support of the common difference --- and never the prime factors
 of the entries of a hypothetical completed square, which is the object
 studied by Rabern, Woll, Labruna and Weisenberg. The label recalls Matt
@@ -144,28 +154,36 @@ most
 \[
 \exp\bigl(30^{15}(3|\mathcal S|+1)\bigr).
 \]
-This is a counting bound that is \textbf{not effective} and produces no
-enumeration. At every odd
+This counting theorem by itself produces no enumeration; the separate
+fixed-support route is given in Section~\ref{sec:smoothsupport}. At every odd
 prime the largest of $|v_p(z_i)|$ occurs at least twice; the admissible
 endpoint pairs obey the explicit $(-1/p),(2/p)$ table; and
 $\supp(2d)\subseteq\{2,3\}$ is impossible for a primitive configuration.
 \end{theorem}
 
 \begin{theorem}[Complete three-prime exclusion]\label{main:threeprime}
-There is no primitive positive Parker configuration --- three
-pairwise-distinct square progressions of common difference $d$ --- with
-\[
-\supp(2d)=\{2,3,p\}\qquad\text{for any prime } p\neq3 .
-\]
-The endpoint law of Theorem~\ref{main:supportlaw} produces two distinct
-primitive equal-area Pythagorean triangles whose block factorizations are
-incompatible: the pair equations collapse through $W(W^2-1)=4x(x^2-1)$ to
-$W=2x-1$, $x=2$, and then to a unit block. \emph{Attribution boundary:}
-Aebi's classification of primitive Pythagorean triangles with exactly three
-area primes independently yields a stronger triangle-level statement and
-owns that layer; the contribution here is exactly the join of that
-factorization layer with the endpoint law, and no priority for the join is
-asserted.
+\textbf{Consequence of Aebi's classification.} For any positive integer
+$d$ with at most three distinct prime divisors, there is at most one
+positive integer triple $r<s<t$ such that
+$s^2-r^2=t^2-s^2=d$. No primitivity assumption is required. In particular,
+neither a $(9,7)$ array nor a fully magic square of nine distinct positive
+integer squares can have such a transversal difference. The primitive
+Pythagorean-triangle classification is Aebi's; this statement is its
+squareclass consequence, without a priority claim.
+\end{theorem}
+
+\begin{theorem}[Smooth differences and a complete $(9,7)$ atlas]\label{main:smoothsupport}
+\textbf{Computer-assisted, using imported complete $S$-unit totals.}
+Let $S_B$ be the primes at most $B$. \emph{(i)} There is no fully magic
+$3\times3$ square of nine distinct positive integer squares whose
+transversal difference $d$ satisfies $\supp(d)\subseteq S_{19}$.
+\emph{(ii)} The $(9,7)$ arrays with $\supp(|D|)\subseteq S_B$, modulo
+$D_4$ and common rational-square scaling, have exactly $3,45,384$ classes
+for $B=7,13,19$, respectively, represented by primitive positive roots.
+\emph{(iii)} For $B=19$, the sharp lower bound for
+$\eta=|A+P-2E|/|D|$ is $347984603/9837828000$, attained by exactly one
+class, already present for $B=13$. These are unbounded-exponent statements:
+completeness uses Theorem~A of von K\"anel--Matschke, not a search cutoff.
 \end{theorem}
 
 \subsection*{The four-prime frontier}
@@ -175,14 +193,16 @@ endpoint-incidence classification and edge identity $F_{10}=F_{02}$, the
 balanced-branch reduction to seven fixed primitive cores, and the complete
 exclusion of the outer double-balanced core-area-6 branch.
 Aebi-core central genus-two fibres, outer fixed cores and persistent
-unbalanced cores remain open, and their exact residual states are part of
-the statement of Section~8.
+unbalanced cores remain open beyond the finite-support exclusions of
+Theorem~\ref{main:smoothsupport}; their residual states are in
+Section~\ref{sec:frontier}.
 
 \subsection*{What this paper does not claim}
 
 No existence or nonexistence of a $3\times3$ magic square of nine distinct
-positive squares; no global Parker impossibility; no effective enumeration
-in any squareclass or support; no support-size bound; no exact ranks or
+positive squares in general; no global Parker impossibility; no effective
+enumeration in an unrestricted squareclass; no arbitrary four-prime
+exclusion or support-size bound; no exact ranks or
 point lists beyond the certified ones; no decision of any object in the
 companion dossiers (the residual cover $q_R(K)$, the $n\ge5$ lift tower, the
 degree-90 class $[A_R]$ --- all open there); and \textbf{no novelty,
@@ -193,46 +213,24 @@ deliberately closed, and every no-hit search is reported as
 \section*{Detailed plan of the paper}
 
 \begin{itemize}
-\item[\S1] \textbf{Introduction.} The problem from Lucas through LaBar,
-Gardner, Boyer and Parker; the entry-side state of the art (Rabern's six
-residue results; Woll's three-consecutive-residue criterion; Labruna;
-Weisenberg's seven-arrangement list and centre-signature proposal) kept
-disjoint from the difference-side questions of this paper; the $(8,7)$
-metric; summary of results and of what is not claimed.
-\item[\S2] \textbf{The seven-line normal form.} Retraction bookkeeping
-(Lemma~\ref{lem:retraction}), the integral line-sum Smith form and
-Theorem~\ref{main:normalform}; the two-progressions-plus-one structure of
-every $(8,7)$ array.
-\item[\S3] \textbf{Infinite families.} Theorem~\ref{main:families}: the
-retraction family and least-shift law; the bridge completion; and the
-positive-density elliptic-orbit lift with two frozen exact witnesses.
-\item[\S4] \textbf{The interaction surface.} Theorem~\ref{main:surface}:
-the transversal equation on $\Esn^{3}$, saturation, irreducibility and
-the $S_5$ cone.
-\item[\S5] \textbf{Finiteness, the closed fibre, the finite-class stop.}
-Theorem~\ref{main:finiteness} and Theorem~\ref{main:kummerstop}, each with
-its boundary visible.
-\item[\S6] \textbf{The support law.} Theorem~\ref{main:supportlaw}:
-the torus equation, the endpoint/interior table, the $\{2,3\}$ exclusion;
-non-effectivity stated in the theorem.
-\item[\S7] \textbf{Three-prime exclusion.} Theorem~\ref{main:threeprime}
-with its technical propositions; the Aebi attribution boundary
-in the statement itself.
-\item[\S8] \textbf{The four-prime frontier.} The exact list
-of what remains open; no exclusion claimed.
-\item[\S9] \textbf{Conclusions and the computational program.} The
-interior-vertex taxonomy, the all-support compiler and the outer-primitive
-Gaussian reduction in summary, with the entry-side lineage
-cited as counterpart; pointers to the companion repository and its three
-dossiers (residual cover; odd lift at $n=5$; degree-90 $S$-class problem)
-and the exhausted-routes catalogue.
-\item[A] \textbf{Census and provenance.} The bounded $(8,7)$ census at its
-frozen default bound; the Brown-derived provenance of the seven
-centre-true arrays, presented as completions of catalogued data, not as
-discoveries.
-\item[B] \textbf{Certificates and frozen records.} The theorem-to-evidence
-map consumed by \texttt{verify.py}; external-CAS evidence only as
-hash-pinned inputs and normalized output records.
-\item[C] \textbf{Reproducibility.} Engines, versions, hashes, and the
-manifest discipline.
+\item[\S1] Introduction, historical sources and entry-side versus
+difference-side questions.
+\item[\S2] The seven-line normal form, retraction bookkeeping and integral
+line-sum lattice.
+\item[\S3] The three infinite $(8,7)$ constructions, least-shift law and
+elliptic-orbit density.
+\item[\S4] The interaction surface, saturation and $S_5$ cone map.
+\item[\S5] Imported finiteness, the closed centre-$841$ fibre, fixed
+Bremner shadow and finite Kummer-class stop.
+\item[\S6] The five-term $S$-unit law, valuation restrictions and
+$\{2,3\}$ exclusion.
+\item[\S7] Three-prime uniqueness from Aebi's classification and the
+alternative endpoint proof for primitive configurations.
+\item[\S8] Complete small-support catalogues: the imported $S$-unit total,
+triangle correspondence, exclusion, $(9,7)$ atlas and sharp defect ratio.
+\item[\S9] The arbitrary four-prime frontier and its residual open branches.
+\item[\S10] The computational program and the three open research dossiers.
+\item[A] The bounded $(8,7)$ census and catalogue provenance.
+\item[B] The theorem-to-certificate map and frozen external-CAS records.
+\item[C] Reproducibility, source dependencies, data policy and AI assistance.
 \end{itemize}

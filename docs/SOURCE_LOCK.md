@@ -91,3 +91,35 @@ system is required to run the packaged
 integrity replay. Exploratory computations additionally used SageMath 10.9 for
 exploration. The MIT license covers only the author's code and documentation
 here.
+
+## Smooth-support extension (source check 2026-10-03)
+
+- **Aebi:** DOI `10.4171/EM/563`, *Elemente der Mathematik* 81 (2026),
+  71–72, theorem and concluding remark, publisher full text read. The six
+  primitive triangles with exactly three area primes have areas
+  30, 60, 180, 84, 504, 1224; the sole triangle with fewer area primes is
+  (3,4,5), area 6. The seven squarefree parts 6,30,15,5,21,14,34 are
+  distinct. Our uniqueness statement is the squareclass consequence of
+  this classification, with `d/4 = area * root_gcd^2`.
+- **von Känel–Matschke:** [arXiv:1605.06079v1](https://arxiv.org/abs/1605.06079v1),
+  Theorem A, printed p. 7; version dated 2016-05-19. The imported totals
+  for the first 4, 6 and 8 primes are 63, 545 and 3649. These count symmetry
+  orbits of rational `x+y=1`, not ordered signed solutions. The unique
+  representative `0 < x <= 1/2` identifies each orbit with a primitive
+  positive `a+b=c`, `a<=b`; (1,1,2) is counted once.
+  The PDF SHA-256 read was
+  `3890fe77150fd7ca94eb6e3dd36e1f648809e3684ac9a8ad5ec7e13e2f91f1c2`.
+  Only these totals are imported. No unproved conjecture about all supports
+  of a fixed cardinality is used. The earlier n<=6 computations are credited
+  by the source to de Weger; we do not claim to repeat either original sieve.
+- The [authors' data page](https://www.math.u-bordeaux.fr/~bmatschke/data/)
+  confirms the same normalization and counts. Its S19 text file was compared
+  read-only with our independently regenerated witnesses: all 3649 agree.
+  That third-party file (CC BY-NC 3.0) is **not bundled**; its checked SHA-256
+  is `e0a3e69866745312a6f891795156a197dabfc6abed3861a620d73cd3f89e9212`.
+  Shipped certificates are locally produced exact integer witnesses and
+  derived triangle/array catalogues, with no copied source implementation.
+
+The import-to-target proof and all scale, parity and D4 conversions are in
+Section 8 and `SMOOTH_SUPPORT.md`. The catalogue gives exclusions for
+subsets of the first eight primes, not for arbitrary eight-prime supports.

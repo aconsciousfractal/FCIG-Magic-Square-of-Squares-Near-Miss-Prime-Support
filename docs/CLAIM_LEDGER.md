@@ -13,8 +13,10 @@ claim and does not rely on documents outside this repository.
 | fixed Bremner shadow | proof plus frozen PARI/GP rank record | one rational line only; computer-assisted |
 | finite Kummer-class stop | explicit countercertificate in Section 5 | excludes only obstructions using the separate finite classes |
 | support law and `{2,3}` exclusion | self-contained proof and exact replay | necessary support conditions, not a global support bound |
-| three-prime exclusion | self-contained proof with Aebi's cited classification | exact support `{2,3,p}` only |
-| four-prime frontier | identities, fixtures and frozen rank/Selmer records | no four-prime exclusion is claimed |
+| three-prime uniqueness/exclusion | Aebi classification, distinct area squareclasses, proof in Section 7 | at most one positive square progression for any fixed integer difference with at most three prime factors; no primitivity assumption; classification attributed to Aebi |
+| smooth-difference full-magic exclusion | von Känel–Matschke Theorem A + checked complete ABC catalogue + triangle/midpoint proof in Section 8 | primes at most 19, arbitrary exponents; imports global completeness; does not close arbitrary four-prime supports |
+| complete `(9,7)` atlases and sharp defect ratio | separate producer/checker, exact reconstruction and D4/scale normalization | 3/45/384 classes for primes at most 7/13/19; minimum for `S19` is 347984603/9837828000; not an unrestricted near-miss record |
+| four-prime frontier | identities, fixtures and frozen rank/Selmer records | arbitrary four-prime supports remain open outside the new finite-support exclusions |
 | height-47 census | two public enumerators and frozen representatives | finite bound only: 0 classes through 46 and 9 through 47 |
 
 External computer-algebra records are digest-pinned and parsed. The Python

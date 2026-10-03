@@ -1,6 +1,38 @@
 
 \section{Three-prime exclusion}\label{sec:threeprime}
 
+\begin{proof}[Proof of Theorem~\ref{main:threeprime}]
+Divide the roots of a positive square progression by their gcd $g$.
+The primitive roots $r',s',t'$ are all odd (reduce modulo $4$), and
+$U=(t'-r')/2$, $V=(t'+r')/2$, $s'$ form a primitive right triangle:
+$U^2+V^2=s'^2$, $\gcd(U,V)=1$. Its area $A=UV/2$ satisfies
+$d/4=Ag^2$, so its prime support has at most three elements.
+
+Aebi's theorem and closing remark~\cite{AEB26} classify all such
+primitive triangles, up to exchanging the legs. Their areas and
+squarefree parts are, respectively,
+\[
+\begin{array}{c|rrrrrrr}
+A&6&30&60&180&84&504&1224\\\hline
+\operatorname{sf}(A)&6&30&15&5&21&14&34
+\end{array}
+\]
+and each area has exactly one primitive triangle. The squarefree parts
+are distinct. If two positive progressions had the same $d$, the ratio
+of their primitive areas would be a rational square, forcing the same
+area and the same $g$. The triangle then recovers the unique roots
+$g|U-V|,gs',g(U+V)$, so the progressions coincide. This proves the
+statement and its array consequences. The bound on the number of primes
+cannot be raised to four for this uniqueness statement: at $d=840$ the
+two triples $(1,29,41)$ and $(23,37,47)$ are distinct examples.
+\end{proof}
+
+\subsection{The elementary endpoint route}
+
+For comparison, we retain the local endpoint argument and valuation
+restrictions. In the rest of this section the configuration is primitive
+and satisfies the full-magic interaction.
+
 Throughout, $\supp(2d)=\{2,3,p\}$ with $p\neq3$ prime, and
 $d/2=XYZ$ with $X=2^{\alpha}$, $Y=3^{\beta}$, $Z=p^{\gamma}$. The two
 technical stages are stated first; the headline
@@ -52,7 +84,7 @@ The nine residual branches of Proposition~\ref{prop:oneinterior} need not
 be analyzed one by one: the headline theorem closes every case, including
 $p\equiv1\bmod8$, at once.
 
-\begin{proof}[Proof of Theorem~\ref{main:threeprime}]
+\begin{proof}[An elementary proof for primitive exact support $\{2,3,p\}$]
 By the endpoint table, every index is an endpoint at $3$ and at least two
 indices are endpoints at $p$. Those two indices give two \emph{distinct
 primitive} Pythagorean triangles of the same area $d/4$, whose area has
@@ -76,19 +108,13 @@ positive Parker configuration has $\supp(2d)=\{2,3,p\}$ for any prime
 $p\neq3$.
 \end{proof}
 
-\begin{remark}[Attribution boundary, restated]
-Aebi~\cite{AEB26} classifies the primitive Pythagorean triangles with
-exactly three area primes, a statement at the triangle level stronger than
-what the proof above extracts, and that classification layer is his. The
-content proved here is exactly the \emph{join} of that factorization layer
-with the endpoint law of Section~\ref{sec:supportlaw}; no priority is
-asserted for the join, and the general firstness boundary of the front
-matter applies verbatim.
-\end{remark}
-
-\begin{remark}[What does not follow]
-Nothing here extends to $|\supp(2d)|=4$: Section~\ref{sec:frontier} shows
-exactly how the four-prime structure resists, and no four-prime exclusion
-is claimed anywhere in this paper. Effective enumeration within a support
-and global support-size control equally do not follow.
+\begin{remark}[Attribution and scope]
+The headline theorem is the squareclass consequence of Aebi's complete
+triangle classification proved at the start of this section. The endpoint
+argument gives another proof of its primitive full-magic consequence,
+without a priority claim. The uniqueness assertion fails already at four
+primes, as the difference-$840$ example shows. Section~\ref{sec:smoothsupport}
+nevertheless closes particular four-prime supports by a separate complete
+catalogue; arbitrary four-prime supports and global support-size control
+remain open.
 \end{remark}

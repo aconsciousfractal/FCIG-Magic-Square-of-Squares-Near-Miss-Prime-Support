@@ -24,6 +24,17 @@ three-pass \texttt{pdflatex} route at the fixed
 documented in the companion repository. It is distributed as a public
 preprint companion artifact.
 
+\subsection{The smooth-support certificates}
+
+The complete total $3649$ in Theorem~\ref{main:smoothsupport} is imported
+from von K\"anel--Matschke~\cite{VKM16}; the corresponding witnesses and
+all downstream triangles, midpoint tests and $(9,7)$ arrays are rebuilt
+locally. The producer and verifier do not import each other's code: one
+enumerates $k+(m-k)=m$ and tests $m+k$, while the other starts with
+$k+m=m+k$ and joins the other additive record. Their $D_4$
+canonicalizations are also separate. These checks validate the finite
+deduction, not the source theorem's original height bounds or sieve.
+
 \subsection{Data policy}
 
 Catalogued third-party data is cited and, where licensing is unresolved,
@@ -44,7 +55,20 @@ every shipped source byte of the public package --- scripts, certificates,
 transcripts, documentation and this manuscript's sources; the compiled PDF
 (a deterministic function of the pinned sources on a fixed TeX
 distribution) and the regenerated results directory are deliberately
-unpinned --- together with a single verifier entry point whose expected
-output is itself frozen and whose digest is pinned inside the verifier. A
-verification run requires the frozen expectation, compares the live output
-against it byte for byte, and fails closed on any drift or on its absence.
+unpinned. The original verifier has a frozen expected output whose
+digest is pinned inside the verifier. A separate exact verifier covers
+the smooth-support catalogue and its own frozen expected receipt. The
+original verifier compares its output with the frozen expectation byte for
+byte. The smooth-support verifier compares exact JSON values, types and
+structure, independently of whitespace and object-key order. Both require
+their expected receipt and fail on its absence or on a failed comparison.
+
+\subsection{AI assistance}
+
+The author used OpenAI Codex with substantial assistance in mathematical exploration, proposed arguments,
+code, exact computational checks, manuscript preparation and adversarial
+review. The author selected the research direction and is responsible for
+the submitted claims. Specific historical model versions are not reliably
+documented here and are not inferred from dates. AI-assisted reviews and
+computational replays are not independent specialist review or an
+end-to-end formal verification of the manuscript.

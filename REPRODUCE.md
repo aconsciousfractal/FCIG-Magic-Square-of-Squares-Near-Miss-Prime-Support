@@ -51,7 +51,7 @@ The run prints one progress line per certificate family and ends in `PASS`
    from quadratic residues, the `{2,3}` exclusion replay, the three-block
    and one-interior identities, and the `W = 2x-1` forcing whose only
    cubic hit is `(x, W) = (2, 3)`;
-7. family 8 (§8): the edge-factorization identity, both fixtures (area
+7. family 8 (§9): the edge-factorization identity, both fixtures (area
    210, mixed 30600), the seven balanced cores with their sextic/quotient
    identities and frozen integer models, both closed core-6 fibres with
    their parsed transcripts, the generic secant addition identity, and the
@@ -166,3 +166,38 @@ Its SHA-256 is
 `C7CF1AF7FD2704467586E80A49795C217168F6F9355FBE01A64445DC38D89E7F`.
 The PDF is not part of the source manifest because different conforming TeX
 engines may produce different bytes.
+
+## Complete smooth-support catalogue (Theorem 8)
+
+Run both verifiers for the whole manuscript. The original command above
+covers its original certificate families; the following covers Section 8.
+
+```bash
+python -B scripts/verify_smooth_support.py
+python -B -O scripts/verify_smooth_support.py
+python -B -m unittest discover -s tests -v
+python -B -O -m unittest discover -s tests -v
+```
+
+Expected: `PASS`; 3649 ABC witnesses; 12/62/232 primitive triangles;
+9/39/133 area squareclasses; zero midpoint hits in 4/36/180 pair tests;
+3/45/384 primitive D4 classes. The 22 tests include deliberate certificate
+corruptions and the Aebi squareclass arithmetic. Normal and optimized modes
+produce the same exact result. The default expected receipt under
+`certificates/smooth_support/` is required; absence or type/value drift fails.
+
+To regenerate every witness independently (about half a minute, machine
+and Python dependent), use a separate output directory:
+
+```bash
+python -B scripts/produce_smooth_support.py --out <scratch-directory>
+python -B scripts/verify_smooth_support.py --certificates <scratch-directory>
+```
+
+The producer and verifier use different triangle-enumeration directions
+and different D4 implementations. No downloaded dataset or external CAS is
+needed. Global completeness imports von Känel–Matschke, Theorem A, p. 7;
+the `10^10` generation bound is not a global height proof. See
+`docs/SMOOTH_SUPPORT.md` and `docs/SOURCE_LOCK.md` for the normalization and
+source boundary. The new exact finite replay does not repeat the source's
+original sieve or constitute independent specialist review of the paper.

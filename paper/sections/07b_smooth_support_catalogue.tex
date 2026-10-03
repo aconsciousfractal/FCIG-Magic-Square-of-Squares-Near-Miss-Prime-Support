@@ -1,0 +1,179 @@
+\section{Complete catalogues for small prime supports}\label{sec:smoothsupport}
+
+The counting theorem of Section~\ref{sec:supportlaw} is not itself an
+enumeration algorithm. A different, effective route is available for a
+\emph{fixed} support: solve a two-term $S$-unit equation, reconstruct
+primitive right triangles, and test their normalized centres. We execute
+this route for $S_B=\{p\text{ prime}:p\le B\}$ with $B=7,13,19$.
+Completeness depends explicitly on an imported computer-assisted theorem;
+the finite calculations below do not re-prove that theorem.
+
+\subsection{The imported total and its normalization}
+
+Let $\mathcal A(S)$ be the set of integer triples
+\[
+0<a\le b<c,\qquad a+b=c,\qquad \gcd(a,b)=1,
+\qquad \supp(abc)\subseteq S.
+\]
+Theorem~A of von K\"anel and Matschke~\cite{VKM16}, printed p.~7,
+counts solutions of $x+y=1$ in rational $S$-units modulo the six usual
+symmetries. Each orbit has exactly one representative $0<x\le1/2$;
+writing it as $x=a/c$, $1-x=b/c$ gives exactly one element of
+$\mathcal A(S)$. The exceptional orbit represented by $(1,1,2)$ is counted
+once. Thus their entries for the first four, six and eight primes give
+\[
+|\mathcal A(S_7)|=63,\qquad |\mathcal A(S_{13})|=545,\qquad
+|\mathcal A(S_{19})|=3649.
+\]
+The first two totals were already obtained by de Weger, as credited in
+\cite{VKM16}. We import only these three totals, not a conjecture comparing
+different supports of the same size.
+
+The supplied producer finds $3649$ distinct valid triples with
+$c\le10^{10}$. The separate verifier checks integrality, positivity,
+ordering, coprimality, addition and prime support for every row, and checks
+the imported total. A subset of a finite set with the same cardinality is
+the entire set: this is the completeness argument, with \emph{no remaining
+height restriction}. The production bound alone would prove no such claim.
+The witnesses are regenerated locally, not copied from the authors' data
+files; their source theorem remains a mathematical dependency.
+
+\subsection{From additive triples to square progressions}
+
+\begin{lemma}[Exact triangle reconstruction]\label{lem:trianglecatalogue}
+Primitive positive integer right triangles, up to swapping the legs, whose
+area is supported on $S$ correspond bijectively to pairs $m>k>0$ with
+$\gcd(m,k)=1$, $m+k$ odd, and
+\[
+(\min(k,m-k),\max(k,m-k),m)\in\mathcal A(S),\qquad
+(k,m,m+k)\in\mathcal A(S).
+\]
+Their legs, hypotenuse and area are
+\[
+\{a,b\}=\{2mk,m^2-k^2\},\qquad c=m^2+k^2,
+\qquad A=mk(m-k)(m+k).
+\]
+\end{lemma}
+\begin{proof}
+Euclid's parametrization is unique with these coprimality and parity
+conditions. Its area is supported on $S$ exactly when all four positive
+factors $m,k,m-k,m+k$ are supported on $S$. The two displayed additive
+triples express precisely these conditions; their coprimality follows
+from $\gcd(m,k)=1$. Conversely, membership and odd $m+k$ give Euclid's
+conditions and the required area. This proves both directions, not just
+a procedure for generating examples.
+\end{proof}
+
+Write $A=n h^2$ with $n$ squarefree. The corresponding normalized square
+progression has positive rational roots
+\[
+\left(\frac{|a-b|}{h},\frac c h,\frac{a+b}{h}\right),
+\qquad d=4n,\qquad \sigma=\frac{c^2}{h^2}>4n.
+\]
+Conversely, divide any positive integer-root square progression by the gcd
+$g$ of its roots. Write the divided roots as $r',s',t'$; they are odd,
+and $((t'-r')/2,(t'+r')/2,s')$ is a primitive right triangle of area
+$d/(4g^2)$.
+Thus $d/4=n(hg)^2$. Progressions of the same difference necessarily have
+the same $n$ and common scale $\lambda=hg$, so their actual centres are
+$\lambda^2\sigma$. Consequently the full-magic interaction is exactly
+\[
+\sigma_1+\sigma_2=2\sigma_0.
+\]
+All denominators of the normalized roots divide $h$ and are supported on
+$S$. Clearing them and dividing by the common root gcd therefore gives
+every root-primitive integral array without introducing a prime outside
+$S$ into its difference.
+
+\subsection{The complete finite tests}
+
+\begin{proof}[Proof of Theorem~\ref{main:smoothsupport}]
+The complete additive lists and Lemma~\ref{lem:trianglecatalogue} give the
+following exact counts. A midpoint test checks one unordered pair of
+distinct centres within the same squarefree area class and asks whether
+their average is another centre in that class.
+\[
+\begin{array}{c|rrrrrr}
+B & |\mathcal A(S_B)| & \text{triangles} & \text{classes} &
+\text{pairs} & \text{hits} & (9,7)/D_4\text{ classes}\\\hline
+7  & 63   & 12  & 9   & 4   & 0 & 3\\
+13 & 545  & 62  & 39  & 36  & 0 & 45\\
+19 & 3649 & 232 & 133 & 180 & 0 & 384
+\end{array}
+\]
+Every number in this table is recomputed with integer and rational
+arithmetic by the companion's exact checker:
+\begin{center}\texttt{scripts/verify\_smooth\_support.py}.\end{center}
+In particular,
+the normalized centres within each class are distinct and no midpoint
+test succeeds. By the preceding equivalence, no fully magic square in
+the stated domain exists. This establishes part~(i).
+
+For part~(ii), group the triangles by $n$ and select three distinct
+triangles in one group. The three normalized progressions give nine
+candidate entries. Reject nonpositive or repeated entries; for these
+catalogues none of the $1,15,128$ unordered triples is rejected. Choose
+one of the three centres as the central cell $E$, use the other two as
+$A,P$ in the normal form, and set $D=4n$. The absence of midpoint hits
+ensures exactly seven equal line sums. Clear root denominators, divide
+by the root gcd, and take the lexicographically least positive-root array
+in its eight-element $D_4$ orbit.
+
+These operations are exhaustive by the normal form, which also holds
+when all eight lines agree. For an array with exactly one failed line,
+orienting that diagonal as the antidiagonal leaves precisely the choices
+of interchanging $A,P$ and changing the sign of $D$. Those choices are
+already identified by $D_4$; the central cell is fixed by every grid
+symmetry. Therefore the three choices of $E$ are inequivalent. The unique
+primitive normalization of a positive rational-root array also removes
+all common rational-square scaling. The verifier reconstructs and compares
+all $3,45,384$ representatives, establishing the classification.
+
+Finally, for each representative compute the seven-line sum $M$, the
+failed sum $F$, and
+\[
+\eta=\frac{|M-F|}{|D|}=\frac{|A+P-2E|}{|D|}.
+\]
+This quotient is invariant under $D_4$ and common square scaling. Exact
+comparison over the complete lists gives minima
+$1727/1120$ for $S_7$ and $347984603/9837828000$ for both $S_{13}$ and
+$S_{19}$, each attained by one class. For the latter, a primitive root
+representative (the \emph{entries of the array are its squares}) is
+\[
+\begin{pmatrix}
+87942&140595&157690\\
+186290&132558&9555\\
+99645&122590&165558
+\end{pmatrix}.
+\]
+It has $|D|=9837828000$, $M=52366885489$, $F=52714870092$, and
+$M-F=-347984603$. These identities and uniqueness are checked from the
+full atlas, proving part~(iii). No floating-point comparison is used.
+\end{proof}
+
+For $S_7$ the unique unordered triple, after common root-primitive
+normalization, has roots $(2,58,82)$, $(46,74,94)$ and $(97,113,127)$ and common
+difference $3360$. Its three choices of the central progression account
+for the three classes. The atlas is for $(9,7)$ arrays; it is separate
+from the bounded $(8,7)$ census of Appendix~A. Also, $\eta$ is normalized
+by the progression difference, not by the magic sum: it is not a percentage
+error or a comparison with unrestricted near-miss records.
+
+\subsection{Consequences and limits}
+
+Every hypothetical fully magic square of distinct positive integer
+squares must have a prime at least $23$ in each of its two transversal
+differences. Indeed, write its normal form as
+$M(E-t,E,E+t;d)$, where $M$ denotes the matrix in
+Theorem~\ref{main:normalform}. A clockwise quarter-turn gives
+$M(E+d,E,E-d;t)$. Both differences are nonzero, and applying part~(i) in
+each orientation proves the assertion. The two large primes need not be
+different. These are primes of the \emph{differences}, not of the entries.
+
+In particular, the fifteen supports consisting of $2,3$ and two distinct
+primes chosen from $S_{19}\setminus\{2,3\}$ are excluded. This does not close arbitrary
+four-prime supports, bound the number of support primes, or settle the
+general magic-square-of-squares problem. The general fixed-squareclass
+finiteness result of Section~\ref{sec:finiteness} remains non-effective;
+the present enumeration is obtained through the separate fixed-support
+route and has been executed only for the declared catalogues.

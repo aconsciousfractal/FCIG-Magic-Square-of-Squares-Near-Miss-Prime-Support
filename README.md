@@ -14,7 +14,7 @@ Whether a `3x3` magic square of nine distinct positive integer squares
 exists (LaBar's problem) is open in both directions. This paper works on
 the **difference side** of the problem — the common difference `d` of the
 three square progressions forced by the completion problem — and proves
-seven theorem families there. Elementary and symbolic computations have
+eight theorem families there. Elementary and symbolic computations have
 exact Python replays; external-CAS results are supplied as hash-pinned inputs
 and normalized output records that the verifier authenticates and parses.
 
@@ -63,15 +63,25 @@ square is not one of the configurations classified in the paper.
   `S`-unit equation with a nondegeneracy table, a counting bound (imported:
   Evertse–Schlickewei–Schmidt), an exact mod-8 endpoint/interior valuation
   table, and the complete exclusion of support `{2,3}`.
-- **Three-prime exclusion** (Thm 7). No primitive positive configuration
-  has `supp(2d) = {2,3,p}` for any prime `p != 3` — the join of the
-  endpoint law with the equal-area triangle layer (that classification
-  layer is Aebi's). Both fibre closures above and the rank layer of §8 are
-  computer-assisted through the frozen transcripts.
-- **The four-prime frontier** (§8, open). Edge factorization, two
-  anti-overreach fixtures, seven balanced cores, two closed core-6 fibres,
-  and six addition curves with proved Jacobian ranks `2,2,3,3,4,5` —
-  stated exactly and **left open; no four-prime exclusion is claimed**.
+- **Three-prime exclusion** (Thm 7). A consequence of Aebi's classification:
+  for every positive integer difference with at most three distinct prime
+  factors, there is at most one positive integer-root square progression.
+  No primitivity assumption is needed. This is an attributed consequence,
+  not a new classification of primitive Pythagorean triangles.
+- **Smooth differences and a complete `(9,7)` atlas** (Thm 8, §8).
+  Using the complete S-unit totals of von Känel–Matschke, exact reconstruction
+  excludes a fully magic square whose transversal difference has only primes
+  at most 19, with no exponent bound. The complete primitive `(9,7)` atlases
+  have 3, 45 and 384 classes modulo grid symmetry for primes at most 7, 13
+  and 19. For the last atlas the exact minimum of `|defect|/|difference|` is
+  `347984603/9837828000`, attained by one class. The imported completeness
+  theorem is essential; a bounded witness search alone is insufficient.
+- **The four-prime frontier** (§9, open in general). Edge factorization,
+  seven balanced cores, two closed core-6 fibres and six addition curves
+  with certified Jacobian ranks `2,2,3,3,4,5`. The fifteen supports
+  `{2,3,p,q}` with `p,q` distinct in `{5,7,11,13,17,19}` are now excluded.
+  Arbitrary four-prime supports and the general magic-square problem remain
+  open. The rank/fibre layer uses frozen external-CAS records.
 
 The census appendix records the frozen `(8,7)` height census (0 classes at
 height 46, exactly 9 at 47, unique difference 840). The public repository
@@ -88,7 +98,8 @@ Gardner/LaBar (history); Parker/Haran (terminology); Lucas; Fituvalu (type taxon
 and Brown (catalogue records); Rabern, Woll, Labruna, Weisenberg (the
 entry-side lineage); Houston; Cowan; Coumbe; Harrison–Mudgal–Schmidt;
 Caro–García-Fritz; Evertse–Schlickewei–Schmidt;
-Pierrat–Thiriet–Zimmermann; Aebi; Flynn–Wetherell; Bruin. **No priority,
+Pierrat–Thiriet–Zimmermann; Aebi; von Känel–Matschke (and their credit to
+de Weger); Flynn–Wetherell; Bruin. **No priority,
 novelty, or firstness is claimed for any statement**; where no exact
 antecedent was located, that is reported as a dated negative search. Three
 manuscript claim-use obligations are deliberately left with their
@@ -108,6 +119,19 @@ packaged integrity replay requires no commercial software; independently
 recomputing the Magma-dependent claims does. See
 [`REPRODUCE.md`](REPRODUCE.md).
 
+The additional verifier `scripts/verify_smooth_support.py` checks all 3,649
+ABC witnesses against the imported total, reconstructs the triangles by a
+different route from the producer, checks every relevant midpoint, and
+rebuilds all three atlases using exact fractions. It also requires the
+frozen expected receipt. `tests/test_smooth_support.py` includes deliberate
+corruptions and exact checks of the Aebi squareclass consequence. Commands
+and the import boundary are in `REPRODUCE.md` and
+[`docs/SMOOTH_SUPPORT.md`](docs/SMOOTH_SUPPORT.md).
+
+The manuscript discloses substantial AI assistance in mathematics, code,
+writing and review. Computational replay and AI review do not establish
+independent specialist acceptance.
+
 ## Where the open objects live
 
 [`dossiers/`](dossiers/README.md) carries the three research dossiers with
@@ -120,10 +144,13 @@ catalogue.
 
 ```text
 paper/         main.tex, macros.tex, sections/00..12+99, <title>.pdf
-scripts/       verify.py (stdlib-only verifier, single integrity entry point)
+scripts/       verify.py (original exact integrity verifier)
                census_reference.py (independent centre/difference census)
+               verify_smooth_support.py, produce_smooth_support.py
 certificates/  expected_verification.json + 17 frozen external-CAS files
                (Magma records/inputs + 2 PARI/GP input/output pairs)
+               smooth_support/ (ABC witnesses, triangles, arrays, receipt)
+tests/         test_smooth_support.py
 results/       verification.json (+ .log), regenerated on replay
 dossiers/      residual_cover/  odd_lift_n5/  degree90_sclass/
                EXHAUSTED_ROUTES.md

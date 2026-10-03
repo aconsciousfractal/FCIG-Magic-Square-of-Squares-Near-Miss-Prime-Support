@@ -5,8 +5,8 @@ The paper and repository do **not** claim:
 - existence or nonexistence of a `3 x 3` magic square of nine distinct
   positive rational or integer squares;
 - a global Parker impossibility theorem;
-- an effective enumeration in a squareclass or prime support;
-- a four-prime exclusion or a global support-size bound;
+- an effective enumeration in an unrestricted squareclass;
+- an exclusion of arbitrary four-prime supports or a global support-size bound;
 - closure of any open object described in `dossiers/`;
 - novelty, priority or firstness for a family, curve, catalogue entry or
   computational method.
@@ -33,3 +33,23 @@ support that wording but do not substitute for those specialist reviews.
 The public paper is ready for mathematical circulation, but claims of
 priority or journal submission should still receive ordinary independent
 human review.
+
+## Exact scope of the smooth-support extension
+
+Theorem 8 excludes full magic only when the common transversal difference
+is supported on primes at most 19. Each of the two transversal differences
+of a hypothetical fully magic square must therefore have a prime at least
+23; these need not be different primes. This concerns differences, not
+entry factors, and is not an upper or lower bound on support cardinality.
+
+The `(9,7)` atlas (384 classes for that support) has nine square entries
+and exactly seven equal line sums; it is distinct from the original `(8,7)`
+families and their bounded height census. Its sharp defect ratio is divided
+by the progression difference, not by the common sum.
+
+Completeness imports von Känel–Matschke's Theorem A. The original source
+computation is not independently reproduced here. Local checks verify all
+witnesses and the downstream deduction; the 10^10 production bound is not
+the reason the list is complete. The new proof, like the manuscript as a
+whole, has not received independent specialist review. No new formal-proof
+or priority claim follows from the extension.
