@@ -1,5 +1,23 @@
+\section{Prime-support exclusions and exact catalogues}\label{sec:smoothsupport}
 
-\section{Three-prime exclusion}\label{sec:threeprime}
+We first deduce a support-size exclusion from Aebi's classification, then
+give an effective classification for three specified prime sets. Both
+arguments use primitive right triangles, but their completeness inputs
+are different. Neither depends on the elliptic interaction model or the
+five-term equation developed later.
+
+\subsection{At most three prime factors}\label{sec:threeprime}
+
+\begin{theorem}[Complete three-prime exclusion]\label{main:threeprime}
+\textbf{Consequence of Aebi's classification.} For any positive integer
+$d$ with at most three distinct prime divisors, there is at most one
+positive integer triple $r<s<t$ such that
+$s^2-r^2=t^2-s^2=d$. No primitivity assumption is required. In particular,
+neither a $(9,7)$ array nor a fully magic square of nine distinct positive
+integer squares can have such a transversal difference. The primitive
+Pythagorean-triangle classification is Aebi's; the conclusion follows by
+comparing its area squareclasses.
+\end{theorem}
 
 \begin{proof}[Proof of Theorem~\ref{main:threeprime}]
 Divide the roots of a positive square progression by their gcd $g$.
@@ -26,95 +44,3 @@ statement and its array consequences. The bound on the number of primes
 cannot be raised to four for this uniqueness statement: at $d=840$ the
 two triples $(1,29,41)$ and $(23,37,47)$ are distinct examples.
 \end{proof}
-
-\subsection{The elementary endpoint route}
-
-For comparison, we retain the local endpoint argument and valuation
-restrictions. In the rest of this section the configuration is primitive
-and satisfies the full-magic interaction.
-
-Throughout, $\supp(2d)=\{2,3,p\}$ with $p\neq3$ prime, and
-$d/2=XYZ$ with $X=2^{\alpha}$, $Y=3^{\beta}$, $Z=p^{\gamma}$. The two
-technical stages are stated first; the headline
-Theorem~\ref{main:threeprime} subsumes both by a different global
-argument, and its proof is independent of theirs.
-
-\begin{proposition}[All-endpoint case, $p\equiv3\bmod8$]\label{prop:threeblock}
-There is no primitive positive Parker configuration with
-$\supp(2d)=\{2,3,p\}$ and $p\equiv3\pmod8$.
-\end{proposition}
-
-\begin{proof}
-By the endpoint table of Section~\ref{sec:supportlaw}, $p\equiv3\bmod8$
-forces all three indices to be endpoints at $p$, at $3$ (same residue
-argument), and --- by the opposite-parity mechanism at $2$ --- at the
-$2$-power as well. Each progression's equal-area Pythagorean triangle is
-then primitive, and its legs are a unitary partition of the three whole
-blocks $X,Y,Z$. Apart from the impossible split $\{1,XYZ\}$, only
-$\{X,YZ\}$, $\{Y,XZ\}$, $\{Z,XY\}$ remain, and three pairwise-distinct
-progressions must use all three. Factoring the hypotenuse equations of the
-last two gives
-\[
-Y^2-1=2XZ,\qquad Z^2-1=2XY ,
-\]
-whose difference factors as $(Y-Z)(Y+Z+2X)=0$. Positivity forces $Y=Z$,
-after which $Y(Y-2X)=1$, impossible for positive prime-power blocks.
-\end{proof}
-
-\begin{proposition}[One-interior law, $p\equiv5,7\bmod8$]\label{prop:oneinterior}
-Let $\supp(2d)=\{2,3,p\}$ with $p\equiv5$ or $7\pmod8$. The all-endpoint
-branch is impossible by the three-block argument, so $\gamma=1$ is
-excluded, and for $\gamma\ge2$ exactly one index is interior at $p$. If
-$p\equiv5\pmod8$ the centre progression is the interior one and exactly one
-of
-\[
-v_p(X^2+Y^2)=2h,\qquad v_p(1+Y^2)=2h,\qquad v_p(1+X^2)=2h
-\]
-holds, with $h=v_p(s_0)\ge1$; if $p\equiv7\pmod8$ one outer progression is
-interior and exactly one of the six ordered differences
-\[
-v_p(2X^2-Y^2),\; v_p(2Y^2-X^2),\; v_p(2-Y^2),\;
-v_p(2-X^2),\; v_p(2Y^2-1),\; v_p(2X^2-1)
-\]
-equals $2h$, with $h=\min(a,\gamma-a)$. These are necessary branch laws,
-not contradictions; their exact certificate covers all nine identities.
-\end{proposition}
-
-The nine residual branches of Proposition~\ref{prop:oneinterior} need not
-be analyzed one by one: the headline theorem closes every case, including
-$p\equiv1\bmod8$, at once.
-
-\begin{proof}[An elementary proof for primitive exact support $\{2,3,p\}$]
-By the endpoint table, every index is an endpoint at $3$ and at least two
-indices are endpoints at $p$. Those two indices give two \emph{distinct
-primitive} Pythagorean triangles of the same area $d/4$, whose area has
-exactly three distinct prime factors. Writing $X=2^{\alpha}=2x$, the three
-endpoint types satisfy
-\[
-YZ=x^2-1,\qquad Y^2-1=4xZ,\qquad Z^2-1=4xY .
-\]
-Combining the first with each of the others reduces both mixed pairs to
-one equation
-\[
-W(W^2-1)=4x(x^2-1),
-\]
-where $W$ is the remaining odd block. The $2$-adic valuation of the right
-side forces $W\equiv\pm1\pmod{2x}$, while monotonicity of $W(W^2-1)$ gives
-$x<W<2x$; the only residue in that window is $W=2x-1$, which forces
-$x=2$, $W=3$, and then the third block equals $1$ --- not a prime power in
-the support. The remaining pair of endpoint types forces an equality of
-powers of two distinct primes, equally impossible. Hence no primitive
-positive Parker configuration has $\supp(2d)=\{2,3,p\}$ for any prime
-$p\neq3$.
-\end{proof}
-
-\begin{remark}[Attribution and scope]
-The headline theorem is the squareclass consequence of Aebi's complete
-triangle classification proved at the start of this section. The endpoint
-argument gives another proof of its primitive full-magic consequence,
-without a priority claim. The uniqueness assertion fails already at four
-primes, as the difference-$840$ example shows. Section~\ref{sec:smoothsupport}
-nevertheless closes particular four-prime supports by a separate complete
-catalogue; arbitrary four-prime supports and global support-size control
-remain open.
-\end{remark}

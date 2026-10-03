@@ -1,138 +1,113 @@
-
 \section{Introduction}\label{sec:intro}
 
-\subsection{The problem and its records}
+Does there exist a $3\times3$ magic square whose nine entries are distinct
+positive integer squares? LaBar posed this question in 1984; Gardner
+popularised it and offered \$100 for an example (see the historical account
+in Bremner~\cite{BRE99}, \S0). Two classical near misses approach the
+question in different ways: Bremner's fully magic array has seven square
+entries~\cite{BRE99}, whereas Sallows's nine-square array has seven equal
+ordinary line sums~\cite{SAL97}. Here an ordinary line means a row, column,
+or long diagonal. We call an array an \emph{$(8,7)$ array} if its nine
+entries are positive and pairwise distinct, exactly eight are integer
+squares, and exactly seven ordinary lines have one common sum. A
+\emph{$(9,7)$ array} satisfies the same conditions with all nine entries
+square.
 
-Whether a $3\times3$ magic square whose nine entries are distinct positive
-integer squares exists was posed by LaBar in 1984 and popularised by Gardner,
-who offered \$100 for an example; the problem also appears in Guy's
-\emph{Unsolved Problems in Number Theory} (this history is recorded in
-Bremner~\cite{BRE99}, \S0). It remains open in both directions. The two
-record objects are dual, and both have stood since 1997: a fully magic
-square with \emph{seven} of nine entries square, due to
-Bremner~\cite{BRE99}, and Sallows's array of \emph{nine} distinct squares
-with seven of its eight lines sharing one sum~\cite{SAL97}. Bremner states
-in the same place that an example with eight distinct square entries is
-unknown. Euler had already produced
-an order-$4$ magic square of distinct squares in 1770, so order three is
-exactly where the problem lives.
+The common structure is elementary but arithmetically useful: an array
+with seven equal line sums consists of three arithmetic progressions
+with one common difference. Closing its eighth line asks that their three
+centres form another arithmetic progression. This separates two questions:
+how to construct near misses, and which differences can support a fully
+magic interaction. The prime support in this paper belongs to the
+\emph{difference}, not to the nine entries.
 
-Matt Parker later made one celebrated near miss, now known as the Parker
-Square~\cite{PARKER}. The terminology ``Parker configuration'' used below
-recalls that public connection with the problem; it does not suggest that
-Parker posed the problem, and it does not identify his particular square
-with the common-difference configurations defined in this paper.
+\subsection{Contributions and their dependencies}
 
-\subsection{A rationality filter}
+\paragraph{Complete fixed-support results.}
+Our most concrete classification is Theorem~\ref{main:smoothsupport}.
+Using the complete $S$-unit totals of von K\"anel--Matschke~\cite{VKM16},
+we give a bidirectional reconstruction of the relevant primitive right
+triangles and square progressions, test every possible centre interaction,
+and classify the resulting $(9,7)$ arrays. For primes at most $19$ this
+gives no fully magic interaction, exactly $384$ classes modulo the
+dihedral group and common rational-square scaling, and the unique minimum
+\[
+\eta=\frac{|\text{common line sum}-\text{failed line sum}|}
+{|\text{transversal difference}|}
+=\frac{347984603}{9837828000}.
+\]
+The imported total certifies completeness beyond the finite production
+bound. The reconstruction, classification and optimization are the finite
+deductions proved here. In particular, the small-support example already
+displayed by Houston~\cite{HOU16B} is credited as such; the atlas
+classifies the entire stated domain. Separately, the seven triangles in
+Aebi's classification~\cite{AEB26} have distinct area squareclasses. We
+deduce that a difference with at most three prime factors supports at most
+one positive square progression (Theorem~\ref{main:threeprime}).
 
-A fully magic square of nine distinct squares \emph{does exist} over a
-number field of degree four. Bremner displayed the underlying magic square
-with eight entries square in $\Q(\sqrt3)$ and centre $532$, which is not a
-square in that field~\cite{BRE01}; adjoining $\sqrt{133}$ makes the centre
-$532=(2\sqrt{133})^{2}$. Thus the degree-four completion is the elementary
-field extension of Bremner's displayed object, not an additional
-construction attributed to him. The companion repository replays it as an
-exact verified witness. Bremner~\cite{BRE99},
-\S3, separately constructs an example over a field of degree $27$. The
-consequence deserves emphasis: there is no
-combinatorial or shape-only obstruction to the Parker problem. The only
-property that can fail is rationality over $\Q$, so any impossibility
-argument must use an invariant that separates $\Q$ from a quartic field.
-This filter shapes the whole paper: the positive constructions of
-Section~\ref{sec:families} show how close the rational story comes, and the
-support laws of Sections~\ref{sec:supportlaw}--\ref{sec:threeprime} are
-genuinely rational-arithmetic statements, invisible over a larger field.
+\paragraph{Constructive results.}
+We determine the integral image lattice of the line-sum map and prove its
+Smith form, refining the classical normal form
+(Proposition~\ref{prop:linesumsnf}). Starting with catalogued
+Bremner--Wesolowski carriers, we then prove a uniform retraction formula,
+classify every pair-closing shift and determine the least one. A second
+infinite construction lifts an elliptic orbit to pairwise inequivalent
+primitive $(8,7)$ arrays; applying Cowan's equidistribution
+theorem~\cite{COW20} gives the density of the admissible \emph{orbit
+indices}. A finite classification of the difference-$840$ bridge supplies
+a further explicit construction. These results form
+Theorem~\ref{main:families}: two infinite mechanisms and one finite bridge,
+with the classical carriers and elliptic ingredients attributed at use.
 
-\subsection{The entry side: what is known about a hypothetical solution}
+\paragraph{The interaction and its arithmetic restrictions.}
+We develop the centre-interaction condition in two settings. For fixed
+difference $840$ it is a relation on three doubled elliptic points.
+Allowing the difference to vary and dividing out the common root scale
+gives a different, explicitly related surface. We prove that this
+normalized surface is irreducible and that its degree-five reconstruction
+over the square-progression cone has generic Galois group $S_5$
+(Theorem~\ref{main:surface}). For a prescribed
+difference an additional rational-square condition on the scale is
+essential. We specialize Caro--Garc\'ia-Fritz's theorem~\cite{CGF25} to
+obtain non-effective fixed-squareclass finiteness, close the centre-$841$
+fibre and a fixed Bremner shadow by explicit elliptic quotients, and give
+a countercertificate to deciding the ambient interaction from the three
+separate finite Kummer classes alone. Finally we derive a nondegenerate
+five-term $S$-unit equation, local valuation restrictions and precise
+reductions of the remaining four-prime branches. The finite-support
+catalogue above is a separate effective argument; it does not depend on
+the non-effective finiteness bound.
 
-A hypothetical rational solution is constrained through the prime factors of
-its \emph{entries}; throughout this paragraph the square is taken in the
-primitive normalization (unit gcd of the nine entries).
-Rabern~\cite{RAB03} proved --- Weisenberg's restatement in~\cite{WEI23},
-\S2.1, matches the primary on all six results --- that every prime factor of
-an entry is odd; that a prime dividing the centre is $1 \bmod 4$; that a
-prime $p\equiv3,5 \pmod 8$ dividing a non-centre entry also divides the
-centre and the third entry of that line; that no $p\equiv3\pmod 8$ divides
-any entry; that no $p\equiv5\pmod8$ divides a middle-side entry; and that a
-$p\equiv3\pmod4$ dividing a corner divides the two non-adjacent middle-side
-entries. Woll~\cite{WOL18} proved that a prime $p$ dividing only the centre
-forces $p$ to possess three consecutive nonzero quadratic residues, and
-counted the resulting residue classes; Labruna~\cite{LAB18} studied the
-order-three analogue over finite fields, where in characteristic greater
-than three a nontrivial magic square of squares attains exactly $3$, $5$,
-$7$ or $9$ distinct entries, each degree realized over infinitely many
-prime fields. Weisenberg~\cite{WEI23} added the
-order bookkeeping (a prime dividing exactly three entries attains its
-minimum order at least twice), the restriction $p\equiv1\pmod{24}$ for a
-prime dividing exactly two entries, consecutive-residue patterns for
-single-entry primes, a complete seven-arrangement list of the ways a prime
-factor can appear, and a proposal --- not executed there --- to organize
-searches by the Gaussian prime signature of the centre. A recent preprint
-of Hill~\cite{HILL26} announces a nonexistence proof; it is unrefereed,
-and nothing in this paper depends on it.
-Coumbe~\cite{COU24} develops a Pell-transform approach and claims that the
-smallest entry cannot be unity or a prime square. We do not import that
-exclusion: the unrestricted difference-set statement used in its proof has
-the literal instance $120+120=240$, coming from the two primitive
-progressions $(7^2,13^2,17^2)$ and $(7^2,17^2,23^2)$. This does not refute
-a repaired distinct-summand statement or the final exclusion itself, but it
-prevents the published proof from being used here without repair.
+\subsection{Relation to earlier work and organization}
 
-All of these statements constrain \emph{entries of a completed square}.
-The present paper works on a different quantity --- the common difference
-of the three square progressions forced by the completion problem --- and
-Section~\ref{sec:supportlaw} depends on none of the entry-side results;
-the two layers meet only in the classical toolbox of quadratic residues
-and sums of two squares.
+The normal form and its interpretation by square progressions occur in
+Houston~\cite{HOU16A,HOU16B}, following Lucas~\cite{LUC76,LUC91}; the
+equal-area triangle correspondence is classical and is used by
+Robertson~\cite{ROB96}. Bremner~\cite{BRE99,BRE01}, Boyer's
+survey and catalogue~\cite{BOY05,BOYWEB}, and Fituvalu's
+tables~\cite{FIT} supply the carrier context. The support law uses the
+unit-equation theorem of Evertse--Schlickewei--Schmidt~\cite{ESS02}.
+These inputs are distinguished from the refinements, constructions and
+applications proved in this paper. Results restricting the prime factors
+of the \emph{entries}, due to Rabern, Woll, Labruna and
+Weisenberg~\cite{RAB03,WOL18,LAB18,WEI23}, concern a complementary
+quantity; Appendix~\ref{app:literature} records their scope and further
+bibliographic comparisons. It also explains the elementary quartic-field
+completion of Bremner's example, which shows why a shape-only obstruction
+cannot settle the rational problem. The historical label ``Parker'' in
+some companion records recalls Parker's popular near miss~\cite{PARKER};
+it neither attributes LaBar's problem to him nor identifies his particular
+array with the configurations studied here.
 
-\subsection{The difference side: what this paper proves}
-
-The objects and the eight main theorems are stated in full in the front
-matter. In one paragraph: every seven-line array is three same-difference
-arithmetic progressions and its integral line-sum cokernel is
-$\mathbb Z\oplus\mathbb Z/3\mathbb Z$
-(Theorem~\ref{main:normalform} and Proposition~\ref{prop:linesumsnf}); three explicit
-mechanisms produce infinite $(8,7)$ families, with a complete least-shift
-law for the first and a positive-density orbit law for the third
-(Theorem~\ref{main:families}); completing the eighth line
-of the transversal frame is a single equation on $\Esn^{3}$, whose
-saturated model is one irreducible surface with an $S_5$ cone
-(Theorem~\ref{main:surface}); the recent preprint of
-Harrison--Mudgal--Schmidt~\cite{HMS26} gives uniform rank-dependent bounds
-for progressions inside one elliptic coordinate set, a complementary result
-which does not decide this three-coordinate interaction. For fixed
-difference the relevant points are
-finite by a theorem imported from Caro and Garc\'ia-Fritz~\cite{CGF25}, one
-fibre is closed completely, and finite Kummer classes alone can never
-decide the interaction (Theorems~\ref{main:finiteness}
-and~\ref{main:kummerstop}); additionally, the rational shadow line extracted
-from Bremner's degree-four example has no nonconstant all-rational-square
-member (Proposition~\ref{prop:bremnershadow}); the common difference obeys a five-term
-$S$-unit law with an endpoint/interior valuation table
-(Theorem~\ref{main:supportlaw}, resting on the subspace theorem of Evertse,
-Schlickewei and Schmidt and on the classical equal-area correspondence
-recorded by Robertson~\cite{ROB96}); Aebi's classification~\cite{AEB26}
-implies uniqueness of the square progression for every difference with at
-most three prime divisors (Theorem~\ref{main:threeprime}). Finally, the
-complete $S$-unit totals of von K\"anel--Matschke~\cite{VKM16}, followed by
-an exact finite reconstruction, exclude full-magic interactions for
-differences supported on the primes at most $19$ and classify $384$
-$(9,7)$ classes with a sharp difference-normalized defect bound
-(Theorem~\ref{main:smoothsupport}). The arbitrary four-prime problem
-remains at the explicit frontier of Section~\ref{sec:frontier}.
-
-\subsection{Method, certificates, and what is not claimed}
-
-The companion repository supplies exact Python replays for the elementary
-and symbolic computations. Results depending on external computer algebra
---- ranks, complete point lists and Selmer sets --- ship instead as
-hash-pinned inputs and normalized output records: the public verifier
-authenticates and parses those records but does not independently recompute
-the underlying calculations. Bounded censuses corroborate statements but
-never prove an unbounded one. Catalogued web data (Boyer's
-pages~\cite{BOY05,BOYWEB},
-Fituvalu's tables, Brown's centre records) is used under explicit
-provenance locks, with the corrections recorded in Appendix~A. The
-what-this-paper-does-not-claim block of the front matter is part of the
-paper's contract: in particular, no novelty or priority is asserted for any
-statement, and every no-hit prior-art search is reported as exactly that.
+Section~\ref{sec:normalform} fixes the normal form and conventions.
+Section~\ref{sec:smoothsupport} proves the support exclusions and exact
+atlas, followed by the constructions in Section~\ref{sec:families}.
+Sections~\ref{sec:surface} and~\ref{sec:finiteness} treat the interaction
+geometry and specific arithmetic obstructions.
+Sections~\ref{sec:supportlaw} and~\ref{sec:frontier} develop the local
+support laws and four-prime frontier; Section~\ref{sec:program} identifies
+the remaining questions. The appendices retain the bounded census,
+least-shift details, supplementary reductions, source comparisons and
+reproducibility information. External rank and point-list computations
+are identified where they enter a proof; their archived output records
+are distinct from the exact computations rerun by the public verifiers.

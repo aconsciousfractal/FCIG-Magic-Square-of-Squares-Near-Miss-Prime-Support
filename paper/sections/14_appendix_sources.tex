@@ -1,0 +1,107 @@
+\section{Bibliographic comparisons}\label{app:literature}
+
+These notes record the scope of related constructions and restrictions.
+They complement the attributions attached directly to the results above.
+
+
+\subsection{A rationality filter}
+
+A fully magic square of nine distinct squares \emph{does exist} over a
+number field of degree four. Bremner displayed the underlying magic square
+with eight entries square in $\Q(\sqrt3)$ and centre $532$, which is not a
+square in that field~\cite{BRE01}; adjoining $\sqrt{133}$ makes the centre
+$532=(2\sqrt{133})^{2}$. Thus the degree-four completion is the elementary
+field extension of Bremner's displayed object, not an additional
+construction attributed to him. The companion repository replays it as an
+exact verified witness. Bremner~\cite{BRE99},
+\S3, separately constructs an example over a field of degree $27$. The
+consequence deserves emphasis: there is no
+combinatorial or shape-only obstruction to the rational magic-square problem. Thus the obstruction to a rational solution must use arithmetic
+information that distinguishes $\Q$ from the displayed quartic field.
+This filter shapes the whole paper: the positive constructions of
+Section~\ref{sec:families} show how close the rational story comes, and the
+support laws of Sections~\ref{sec:threeprime} and~\ref{sec:supportlaw} are
+genuinely rational-arithmetic statements, invisible over a larger field.
+
+\subsection{The entry side: what is known about a hypothetical solution}
+
+A hypothetical rational solution is constrained through the prime factors of
+its \emph{entries}; throughout this paragraph the square is taken in the
+primitive normalization (unit gcd of the nine entries).
+Rabern~\cite{RAB03} proved --- Weisenberg's restatement in~\cite{WEI23},
+\S2.1, matches the primary on all six results --- that every prime factor of
+an entry is odd; that a prime dividing the centre is $1 \bmod 4$; that a
+prime $p\equiv3,5 \pmod 8$ dividing a non-centre entry also divides the
+centre and the third entry of that line; that no $p\equiv3\pmod 8$ divides
+any entry; that no $p\equiv5\pmod8$ divides a middle-side entry; and that a
+$p\equiv3\pmod4$ dividing a corner divides the two non-adjacent middle-side
+entries. Woll~\cite{WOL18} proved that a prime $p$ dividing only the centre
+forces $p$ to possess three consecutive nonzero quadratic residues, and
+counted the resulting residue classes; Labruna~\cite{LAB18} studied the
+order-three analogue over finite fields, where in characteristic greater
+than three a nontrivial magic square of squares attains exactly $3$, $5$,
+$7$ or $9$ distinct entries, each degree realized over infinitely many
+prime fields. Weisenberg~\cite{WEI23} added the
+order bookkeeping (a prime dividing exactly three entries attains its
+minimum order at least twice), the restriction $p\equiv1\pmod{24}$ for a
+prime dividing exactly two entries, consecutive-residue patterns for
+single-entry primes, a complete seven-arrangement list of the ways a prime
+factor can appear, and a proposal --- not executed there --- to organize
+searches by the Gaussian prime signature of the centre. A recent preprint
+of Hill~\cite{HILL26} announces a nonexistence proof; it is unrefereed,
+and nothing in this paper depends on it.
+Coumbe~\cite{COU24} develops a Pell-transform approach and claims that the
+smallest entry cannot be unity or a prime square. We do not import that
+exclusion: the unrestricted difference-set statement used in its proof has
+the literal instance $120+120=240$, coming from the two primitive
+progressions $(7^2,13^2,17^2)$ and $(7^2,17^2,23^2)$. This does not refute
+a repaired distinct-summand statement or the final exclusion itself, but it
+prevents the published proof from being used here without repair.
+
+All of these statements constrain \emph{entries of a completed square}.
+The present paper works on a different quantity --- the common difference
+of the three square progressions forced by the completion problem --- and
+Section~\ref{sec:supportlaw} depends on none of the entry-side results;
+the two layers meet only in the classical toolbox of quadratic residues
+and sums of two squares.
+
+
+
+\subsection{Provenance of the centre-true eight-square arrays}
+
+A related catalogued family must not be confused with the $(8,7)$ metric:
+the \emph{centre-true} arrays with a nonsquare centre $g$, eight distinct
+square entries around it, magic sum $3g$, and \textbf{six} magic lines
+(three rows, middle column, both diagonals; the outer columns fail). Seven
+such arrays with centres
+\[
+157441,\;411625,\;786361,\;1199809,\;2033641,\;12138289,\;19953649
+\]
+appear in Brown's note on automedian triangles and magic
+squares~\cite{BRO} which lists the six roots of the top and bottom rows for each centre.
+The square middle-pair completion gives the six-line arrangement below.
+We include it to distinguish this catalogued construction from our
+$(8,7)$ metric, without treating the centres or their outer rows as new. For example, at $g=157441$:
+\[
+\begin{pmatrix}
+421^2 & 49^2 & 541^2\\
+481^2 & g & 289^2\\
+149^2 & 559^2 & 371^2
+\end{pmatrix},
+\]
+whose six stated lines each sum to $3g=472323$. Brown also states that a
+Parker centre root needs more than two distinct primes $1\bmod4$; that
+statement is non-refereed, its proof scope has not been established here,
+and it is not an input to any of our proofs.
+
+
+
+\subsection{Progressions in elliptic coordinate sets}
+
+Harrison--Mudgal--Schmidt~\cite{HMS26} give uniform rank-dependent bounds
+for progressions inside one elliptic coordinate set. This is complementary
+to the three-coordinate interaction studied here and does not decide its
+positive distinct-entry locus. The fixed-squareclass finiteness proof in
+Section~\ref{sec:finiteness} instead applies the explicit classification
+of elliptic curves in a linear $x$-coordinate relation due to
+Caro--Garc\'ia-Fritz~\cite{CGF25}.

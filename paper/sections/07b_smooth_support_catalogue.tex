@@ -1,12 +1,24 @@
-\section{Complete catalogues for small prime supports}\label{sec:smoothsupport}
+\subsection{The fixed-support classification}
 
-The counting theorem of Section~\ref{sec:supportlaw} is not itself an
-enumeration algorithm. A different, effective route is available for a
-\emph{fixed} support: solve a two-term $S$-unit equation, reconstruct
-primitive right triangles, and test their normalized centres. We execute
-this route for $S_B=\{p\text{ prime}:p\le B\}$ with $B=7,13,19$.
-Completeness depends explicitly on an imported computer-assisted theorem;
-the finite calculations below do not re-prove that theorem.
+For $S_B=\{p\text{ prime}:p\le B\}$, with $B=7,13,19$, we solve a
+two-term $S$-unit problem, reconstruct the primitive triangles and their
+normalized square progressions, and test every centre interaction.
+The result is a complete classification for the specified supports,
+with unrestricted exponents.
+
+\begin{theorem}[Smooth differences and a complete $(9,7)$ atlas]\label{main:smoothsupport}
+\textbf{Computer-assisted, using imported complete $S$-unit totals.}
+Let $S_B$ be the primes at most $B$. \emph{(i)} There is no fully magic
+$3\times3$ square of nine distinct positive integer squares whose
+transversal difference $d$ satisfies $\supp(d)\subseteq S_{19}$.
+\emph{(ii)} The $(9,7)$ arrays with $\supp(|D|)\subseteq S_B$, modulo
+$D_4$ and common rational-square scaling, have exactly $3,45,384$ classes
+for $B=7,13,19$, respectively, represented by primitive positive roots.
+\emph{(iii)} For $B=19$, the sharp lower bound for
+$\eta=|A+P-2E|/|D|$ is $347984603/9837828000$, attained by exactly one
+class, already present for $B=13$. These are unbounded-exponent statements:
+completeness uses Theorem~A of von K\"anel--Matschke, not a search cutoff.
+\end{theorem}
 
 \subsection{The imported total and its normalization}
 
@@ -153,7 +165,10 @@ full atlas, proving part~(iii). No floating-point comparison is used.
 
 For $S_7$ the unique unordered triple, after common root-primitive
 normalization, has roots $(2,58,82)$, $(46,74,94)$ and $(97,113,127)$ and common
-difference $3360$. Its three choices of the central progression account
+difference $3360$. Houston~\cite{HOU16B} already displays exactly these
+three progressions: his elliptic parameter has difference $210$, and the
+displayed integral roots give difference $3360$. The contribution here is
+their place in the complete fixed-support classification. Their three choices of the central progression account
 for the three classes. The atlas is for $(9,7)$ arrays; it is separate
 from the bounded $(8,7)$ census of Appendix~A. Also, $\eta$ is normalized
 by the progression difference, not by the magic sum: it is not a percentage

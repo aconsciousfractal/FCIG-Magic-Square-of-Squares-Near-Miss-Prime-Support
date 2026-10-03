@@ -17,8 +17,8 @@ python scripts/verify.py \
 
 ## Expected result
 
-The run prints one progress line per certificate family and ends in `PASS`
-(~0.1 s). It verifies, with exact integer and rational arithmetic:
+The run prints one progress line per certificate family and ends in `PASS`.
+It verifies, with exact integer and rational arithmetic:
 
 1. the digest layer: all 17 frozen external-CAS files under `certificates/`
    match their
@@ -26,7 +26,7 @@ The run prints one progress line per certificate family and ends in `PASS`
 2. family 0 (§2): the integral line-sum matrix, its primitive free relation,
    exceptional mod-3 relation, determinant witnesses `-1` and `-3`, Smith
    form `diag(1,1,1,1,1,1,3,0)`, and modular ranks;
-3. family 2 (§3 + App. B): the retraction identities as polynomial
+3. family 2 (§4 and Appendix B): the retraction identities as polynomial
    identities modulo the family invariant, the complete interval-analysis
    identity set, the factor-pair census for `n = 1..6` against the frozen
    table (`t_min = 9`, then `6z^2`), the `(23,37,47)`/`(79,65,89)` bridge
@@ -34,32 +34,36 @@ The run prints one progress line per certificate family and ends in `PASS`
    `m = 1` and `m = 3` recomputed from the group law with denominator
    clearing, together with deterministic high-precision `Decimal`
    corroboration of the printed orbit density `0.6585271498271213`;
-4. family 3 (§4): the transversal interaction equation, the LMFDB
-   Mordell–Weil lock transport, the saturation premises (including
+4. family 3 (§5): the transversal interaction equation, the LMFDB
+   Mordell–Weil basis transport, the variable-difference signed-root
+   surface's saturation premises (including
    `p_C - 2 p_A = -N_B` as an exact identity and the 30 saturated
-   factors), and the `S5` monodromy certificate (irreducible mod 7,
+   factors), and the associated quintic's generic `S5` Galois-group
+   certificate (irreducible mod 7,
    pattern `[2,1,1,1]` mod 29, discriminant `-24364389070416096000`);
-5. families 4–5 (§5): the `x0 = 841` bielliptic quotient identity, the
+5. families 4–5 (§6): the `x0 = 841` bielliptic quotient identity, the
    pulled-back t-list `{0, ±1, ±841, ±1681}`, the parsed rank-zero
    transcript; the fixed Bremner-shadow rank-zero quotient, finite-field
    counts, torsion-halving test and exact rejection of every nonzero
    parameter; and the half-class countercertificate
    `delta(Q + 2^n R) = delta(Q) = (7,10,70)` against distinct doubled
    centres;
-6. families 6–7 (§§6–7): the torus identity (abstract and on-surface), the
+6. families 6–7 (§7 and Appendix C): the torus identity (abstract and
+   on-surface), the
    14-subsum table, the endpoint pigeonhole to `e = 12`, the mod-8 table
    from quadratic residues, the `{2,3}` exclusion replay, the three-block
    and one-interior identities, and the `W = 2x-1` forcing whose only
    cubic hit is `(x, W) = (2, 3)`;
-7. family 8 (§9): the edge-factorization identity, both fixtures (area
+7. family 8 (§8): the edge-factorization identity, both fixtures (area
    210, mixed 30600), the seven balanced cores with their sextic/quotient
    identities and frozen integer models, both closed core-6 fibres with
    their parsed transcripts, the generic secant addition identity, and the
    six `H_{n,a}` curves whose parsed proved rank pairs sum to
    `2,2,3,3,4,5`, with the two singleton fake-Selmer sets.
 
-plus, as family 1, the Section-1 rationality-filter witness — Bremner's
-fully magic square of nine distinct squares over `Q(sqrt3, sqrt133)`
+plus, as family 1, the quartic witness discussed in Appendix D — the
+degree-four completion of Bremner's displayed array, giving a fully magic
+square of nine distinct squares over `Q(sqrt3, sqrt133)`
 (centre `532 = (2 sqrt133)^2`, all eight lines summing 1596), replayed in
 exact quadratic-field arithmetic with a biquadratic degree certificate —
 and, as family 9, the Appendix-A height census replayed from scratch as a
@@ -69,6 +73,13 @@ exact `D4` classes with 2 centre-nonsquare, and the nine canonical
 representatives frozen in the expected output). The separately shipped
 `scripts/census_reference.py` supplies the first, centre/difference-based
 census implementation; it can be run independently in a few seconds.
+
+Certificate-family identifiers and historical section numbers inside code
+comments remain unchanged. The locations above refer to the reorganized
+manuscript. The `S5` assertion concerns the degree-five reconstruction over
+`Q(cone)`; the full signed cover has degree 40. Fixing `d=840` requires the
+additional rational-square lift `L^2=1680W/(RS)`, and no Galois-group claim
+for that fixed-difference model follows from the certificate.
 
 The output JSON is byte-identical across runs and under `python -O`. The
 run **fails closed**: it requires the live output to hash to the digest
@@ -94,22 +105,33 @@ hard failure. The certificate SHA-256 is
   `https://magma.maths.usyd.edu.au/calc/` byte-exact and compares the
   **asserted values** (ranks, torsion, point lists, Selmer sets) rather
   than raw transcript bytes. One PARI/GP 2.17.4 input/output pair concerns
-  only the contextual rank-three quotient in §5; it is reproducible with
+  only the contextual rank-three quotient in §6; it is reproducible with
   `gp -q -f certificates/centre841_first_quotient_pari.gp` and is not used to
   prove the fibre closure. The second pair is reproducible with
   `gp -q -f certificates/bremner_shadow_pair_quotients.gp` and supplies the
-  unconditional rank interval used by Proposition BB; all surrounding
+  unconditional rank interval used by the fixed Bremner-shadow proposition
+  (`prop:bremnershadow`); all surrounding
   quotient, torsion and parameter-elimination steps are replayed in Python.
 - **Imported theorems.** Cowan's natural-density formulation for real
-  elliptic multiples, the Caro–García-Fritz finiteness core (Thm 4),
-  the Evertse–Schlickewei–Schmidt subspace-theorem count (Thm 6), the
+  elliptic multiples, the Caro–García-Fritz finiteness core (§6),
+  the Evertse–Schlickewei–Schmidt subspace-theorem count (§7), the
   Pierrat–Thiriet–Zimmermann `1 mod 24` input, and Aebi's equal-area triangle
-  classification (Thm 7) are cited, never re-proved; see
-  `docs/SOURCE_LOCK.md`.
+  classification (§3) are cited, never re-proved; see
+  `docs/SOURCE_LOCK.md`. The complete S-unit totals of von Känel–Matschke
+  are an additional dependency of the smooth-support result below.
 - **Third-party data.** Nothing is bundled. Fituvalu's tables are
   referenced by locator and digest in the paper's appendix; the entry-side
   PDFs (Rabern, Woll, Labruna, Weisenberg) are cited with their public
   locators and were verified against the cited primary sources.
+
+The continuation dossiers are status summaries, not complete
+reproducibility packages. Appendix C supplies ordinary proofs of the
+incidence count, matching criterion and outer-factor reduction; these
+are not computations checked by the public verifier. `scripts/verify.py` reaches the
+main-paper support identities, fixed-core calculations and area-30/60
+singleton fake-Selmer records; it does not reproduce the taxonomy,
+residual `q_R`, higher-lift lattice or degree-90 calculations. No new
+external-CAS calculation is supplied by this reorganization.
 
 ## Check the manifest
 
@@ -131,9 +153,9 @@ python -c "import hashlib; \
 ## Build the paper
 
 Multi-file LaTeX: `paper/main.tex` inputs `paper/macros.tex` and
-`paper/sections/00..12` plus the inline bibliography (`99_references.tex`
-— **no `bibtex`/`biber` pass**). Three `pdflatex` passes provide a clean
-cross-reference log and resolve the table of contents. `main.tex` sets
+`paper/sections/` plus the inline bibliography (`99_references.tex`
+— **no `bibtex`/`biber` pass**). Three `pdflatex` passes resolve the
+cross-references. `main.tex` sets
 `\pdfinfoomitdate=1`, `\pdfsuppressptexinfo=-1` and `\pdftrailerid{}`, so
 the build uses the fixed `SOURCE_DATE_EPOCH` below and is byte-stable on a
 fixed TeX distribution.
@@ -148,9 +170,9 @@ pdflatex -interaction=nonstopmode -halt-on-error -jobname="$job" main.tex
 pdflatex -interaction=nonstopmode -halt-on-error -jobname="$job" main.tex
 ```
 
-The checked-in PDF was last rebuilt with MiKTeX-pdfTeX 4.23
-(MiKTeX 25.12) using the three-pass `pdflatex` route above. A conforming
-Tectonic build can instead be produced and renamed to the title target:
+The three-pass route is supported by MiKTeX-pdfTeX 4.23 (MiKTeX 25.12).
+A conforming Tectonic build can instead be produced and renamed to the
+title target:
 
 ```bash
 cd paper
@@ -162,15 +184,18 @@ mv main.pdf Near-Miss_Constructions_Interaction_Surfaces_and_Prime-Support_Obstr
 `main.pdf` is only Tectonic's temporary default output and must not be retained;
 the repository ships only the title-named PDF above.
 
+The version-1.2.0 PDF has 34 pages and 412690 bytes.
 Its SHA-256 is
-`C7CF1AF7FD2704467586E80A49795C217168F6F9355FBE01A64445DC38D89E7F`.
-The PDF is not part of the source manifest because different conforming TeX
-engines may produce different bytes.
+`3f1ee5f4af8757b25ec4bd908ffca3224f87a84d4e546111519c714b195121f7`.
 
-## Complete smooth-support catalogue (Theorem 8)
+The PDF is not part of the source manifest because different conforming
+TeX engines may produce different bytes.
+
+## Complete smooth-support catalogue
 
 Run both verifiers for the whole manuscript. The original command above
-covers its original certificate families; the following covers Section 8.
+covers its original certificate families; the following covers the
+smooth-support theorem (`main:smoothsupport`) in Section 3.
 
 ```bash
 python -B scripts/verify_smooth_support.py
@@ -199,5 +224,5 @@ and different D4 implementations. No downloaded dataset or external CAS is
 needed. Global completeness imports von Känel–Matschke, Theorem A, p. 7;
 the `10^10` generation bound is not a global height proof. See
 `docs/SMOOTH_SUPPORT.md` and `docs/SOURCE_LOCK.md` for the normalization and
-source boundary. The new exact finite replay does not repeat the source's
+source boundary. The exact finite replay does not repeat the source's
 original sieve or constitute independent specialist review of the paper.

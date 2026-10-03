@@ -2,7 +2,8 @@
 
 ## Origin
 
-For the area-30 and area-60 addition curves in Section 9, the shipped Magma
+For the area-30 and area-60 addition curves in Section 8 (with the continuation
+summarized in Appendix C), the shipped Magma
 records leave one fake two-Selmer class on each curve. Further explicit
 descent reduces the live arithmetic to a residual cover `q_R` over
 `K = Q(sqrt(218))`.

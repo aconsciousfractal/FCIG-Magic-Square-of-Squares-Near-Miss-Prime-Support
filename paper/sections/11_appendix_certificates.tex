@@ -1,5 +1,4 @@
-
-\section{The least-shift interval analysis, and certificates}\label{app:certificates}
+\section{Least-shift details and computational certificates}\label{app:certificates}
 
 \subsection{The complete case analysis for Proposition~\ref{prop:leastshift}}
 
@@ -63,8 +62,8 @@ smaller than the uniform $6z^2=96$.
 
 \subsection{Certificate discipline}
 
-The companion repository distinguishes two verification layers. Its single
-verifier entry point, implemented in Python, re-derives the elementary and
+The companion repository distinguishes two verification layers. Its original
+Python verifier re-derives the elementary and
 symbolic witnesses (the integral line-sum Smith data; the recurrence
 identities and least shifts; the bridge divisor check and the $(79,65,89)$
 completion; the elliptic-orbit witnesses with denominator clearing; the
@@ -77,7 +76,7 @@ high-precision decimal quadrature corroborates only the printed decimal of
 the exact Haar-measure density formula; it is not a logical input to the
 density proof. Computations
 performed using external computer algebra (the rank, torsion, complete
-point-list and Selmer gates attributed in the text to the official Magma
+point-list and Selmer computations attributed in the text to the official Magma
 Calculator V2.29-8, plus two PARI/GP quotient records) enter as
 \emph{hash-pinned inputs and normalized output records}. These frozen
 transcripts and records are authenticated by the verifier, which checks

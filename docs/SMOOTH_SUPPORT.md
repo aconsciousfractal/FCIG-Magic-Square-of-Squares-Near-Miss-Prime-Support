@@ -1,6 +1,7 @@
 # Complete smooth-support certificates
 
-Theorem 8 uses a complete S-unit catalogue to make an unbounded statement
+The smooth-support theorem (`main:smoothsupport`, §3) uses a complete
+S-unit catalogue to make an unbounded statement
 about a specified set of support primes. The producer's height cutoff is
 not its completeness argument.
 
@@ -40,6 +41,14 @@ atlas is `347984603/9837828000`, attained by one class, already in the
 prime-13 atlas. It is not a percentage error or an unrestricted record.
 These arrays have nine squares; the original `(8,7)` census is different.
 
+The unique unordered `S7` triple is already displayed by Houston in
+*Almost-magic squares of squares* (18 July 2016, `HOU16B`): its integer
+roots are `(46,74,94)`, `(2,58,82)`, `(97,113,127)`, with common difference
+3360. Houston's elliptic calculation uses difference 210. The complete
+catalogue proves that there is no other unordered triple for this support
+and identifies the three inequivalent choices of central progression.
+It does not present the known triple as a newly discovered example.
+
 ## Files and replay
 
 - `certificates/smooth_support/abc_S19.json`: locally generated witnesses.
@@ -71,5 +80,7 @@ hypothetical fully magic square must therefore have a prime at least 23.
 This does not concern entry factors or require two different large primes.
 Fifteen specific four-prime supports are excluded; arbitrary four-prime
 supports and the general problem remain open. The unrestricted
-fixed-squareclass finiteness theorem is still non-effective. No novelty,
-priority, independent specialist review or formal-proof status follows.
+fixed-squareclass finiteness theorem is still non-effective. Exact local
+replay supports the reconstruction and classification; it is not independent
+specialist review or end-to-end formal verification. The source comparison
+and the catalogue do not establish exhaustive bibliographic priority.

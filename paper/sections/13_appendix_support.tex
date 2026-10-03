@@ -1,0 +1,230 @@
+\section{Supplementary support reductions and continuations}\label{app:supplementary}
+
+The first subsection gives an elementary counterpart to the Aebi-based
+exclusion. The later subsections distinguish necessary incidence data and
+computational organization from the unresolved Diophantine questions.
+
+
+\subsection{The elementary endpoint route}
+
+For comparison, we retain the local endpoint argument and valuation
+restrictions. In this subsection the configuration is primitive
+and satisfies the full-magic interaction.
+
+Throughout, $\supp(2d)=\{2,3,p\}$ with $p\neq3$ prime, and
+$d/2=XYZ$ with $X=2^{\alpha}$, $Y=3^{\beta}$, $Z=p^{\gamma}$. The two
+technical stages are stated first; the headline
+Theorem~\ref{main:threeprime} subsumes both by a different global
+argument, and its proof is independent of theirs.
+
+\begin{proposition}[All-endpoint case, $p\equiv3\bmod8$]\label{prop:threeblock}
+There is no primitive positive full-magic transversal configuration with
+$\supp(2d)=\{2,3,p\}$ and $p\equiv3\pmod8$.
+\end{proposition}
+
+\begin{proof}
+By the endpoint table of Section~\ref{sec:supportlaw}, $p\equiv3\bmod8$
+forces all three indices to be endpoints at $p$, at $3$ (same residue
+argument), and --- by the opposite-parity mechanism at $2$ --- at the
+$2$-power as well. Each progression's equal-area Pythagorean triangle is
+then primitive, and its legs are a unitary partition of the three whole
+blocks $X,Y,Z$. Apart from the impossible split $\{1,XYZ\}$, only
+$\{X,YZ\}$, $\{Y,XZ\}$, $\{Z,XY\}$ remain, and three pairwise-distinct
+progressions must use all three. Factoring the hypotenuse equations of the
+last two gives
+\[
+Y^2-1=2XZ,\qquad Z^2-1=2XY ,
+\]
+whose difference factors as $(Y-Z)(Y+Z+2X)=0$. Positivity forces $Y=Z$,
+after which $Y(Y-2X)=1$, impossible for positive prime-power blocks.
+\end{proof}
+
+\begin{proposition}[One-interior law, $p\equiv5,7\bmod8$]\label{prop:oneinterior}
+Let $\supp(2d)=\{2,3,p\}$ with $p\equiv5$ or $7\pmod8$. The all-endpoint
+branch is impossible by the three-block argument, so $\gamma=1$ is
+excluded, and for $\gamma\ge2$ exactly one index is interior at $p$. If
+$p\equiv5\pmod8$ the centre progression is the interior one and exactly one
+of
+\[
+v_p(X^2+Y^2)=2h,\qquad v_p(1+Y^2)=2h,\qquad v_p(1+X^2)=2h
+\]
+holds, with $h=v_p(s_0)\ge1$; if $p\equiv7\pmod8$ one outer progression is
+interior and exactly one of the six ordered differences
+\[
+v_p(2X^2-Y^2),\; v_p(2Y^2-X^2),\; v_p(2-Y^2),\;
+v_p(2-X^2),\; v_p(2Y^2-1),\; v_p(2X^2-1)
+\]
+equals $2h$, with $h=\min(a,\gamma-a)$. These are necessary branch laws,
+not contradictions; their exact certificate covers all nine identities.
+\end{proposition}
+
+The nine residual branches of Proposition~\ref{prop:oneinterior} need not
+be analyzed one by one: the headline theorem closes every case, including
+$p\equiv1\bmod8$, at once.
+
+\begin{proof}[An elementary proof for primitive exact support $\{2,3,p\}$]
+By the endpoint table, every index is an endpoint at $3$ and at least two
+indices are endpoints at $p$. Those two indices give two \emph{distinct
+primitive} Pythagorean triangles of the same area $d/4$, whose area has
+exactly three distinct prime factors. Writing $X=2^{\alpha}=2x$, the three
+endpoint types satisfy
+\[
+YZ=x^2-1,\qquad Y^2-1=4xZ,\qquad Z^2-1=4xY .
+\]
+Combining the first with each of the others reduces both mixed pairs to
+one equation
+\[
+W(W^2-1)=4x(x^2-1),
+\]
+where $W$ is the remaining odd block. The $2$-adic valuation of the right
+side forces $W\equiv\pm1\pmod{2x}$, while monotonicity of $W(W^2-1)$ gives
+$x<W<2x$; the only residue in that window is $W=2x-1$, which forces
+$x=2$, $W=3$, and then the third block equals $1$ --- not a prime power in
+the support. The remaining pair of endpoint types forces an equality of
+powers of two distinct primes, equally impossible. Hence no primitive
+positive full-magic transversal configuration has $\supp(2d)=\{2,3,p\}$ for any prime
+$p\neq3$.
+\end{proof}
+
+\begin{remark}[Attribution and scope]
+The headline theorem is the squareclass consequence of Aebi's complete
+triangle classification proved in Section~\ref{sec:threeprime}. The endpoint
+argument gives another proof of its primitive full-magic consequence,
+using only the stated endpoint restrictions. The uniqueness assertion fails already at four
+primes, as the difference-$840$ example shows. Section~\ref{sec:smoothsupport}
+nevertheless closes particular four-prime supports by a separate complete
+catalogue; arbitrary four-prime supports and global support-size control
+remain open.
+\end{remark}
+
+
+\subsection{The difference-side taxonomy}
+
+Consider a root-primitive positive full-magic transversal configuration.
+For each progression put
+\[
+U_i=(t_i-r_i)/2,\qquad V_i=(t_i+r_i)/2,
+\]
+so $U_iV_i=d/2$ and $U_i^2+V_i^2=s_i^2$. Call its AP triangle
+\emph{primitive} when $\gcd(U_i,V_i)=1$, and let $I$ be the set of vertices
+whose triangles are not primitive. A prime is interior at $i$ precisely
+when it divides both $U_i$ and $V_i$. By the support law in
+Section~\ref{sec:supportlaw}, neither $2$ nor $3$ is interior, and each
+other support prime is interior at at most one vertex. Thus
+\[
+\#\{\text{primitive AP triangles}\}
+ =3-|I|\ge\max\{0,5-\omega(2d)\}.
+\]
+Indeed, each occupied vertex requires a distinct prime outside $\{2,3\}$.
+The eight subsets of $\{0,1,2\}$ give eight labelled incidence cases,
+without asserting that any case is realized by a configuration.
+
+The allowed interior vertices for an odd prime are $\{0,1,2\}$,
+$\varnothing$, $\{0\}$ and $\{1,2\}$ for residues $1,3,5,7\bmod8$,
+respectively. An interior prime also requires $v_p(d)\ge2$. For a fixed
+$d$, let $n_j$ count the primes $p\notin\{2,3\}$ with this exponent
+condition and $p\equiv j\bmod8$. In the relaxation that retains only
+these residue and exponent conditions, assigning distinct primes to all
+three vertices is possible exactly when
+\[
+n_1+n_5\ge1,\qquad n_1+n_7\ge2,\qquad n_1+n_5+n_7\ge3.
+\]
+To see this, apply Hall's matching criterion to the vertices and eligible
+primes. The displayed inequalities are its conditions for the central
+singleton, the pair of outer vertices, and all three vertices. The two
+outer vertices have identical neighbor sets, and every remaining subset
+condition follows from those three. This is an equivalence for the
+matching relaxation only; the Pythagorean and full-magic interaction
+equations still have to hold.
+
+\subsection{The outer-primitive reduction}
+
+A valuation record organizes possible branches but does not produce the
+required triangles. A further elementary reduction applies when the two
+outer triangles are both primitive. Set
+\[
+G=\gcd(U_1,U_2),\qquad R=U_1/G,\qquad S=U_2/G.
+\]
+Since $\gcd(R,S)=1$ and $U_1V_1=U_2V_2$, there is a positive integer $B$
+such that
+\[
+(U_1,V_1)=(GR,BS),\qquad (U_2,V_2)=(GS,BR).
+\]
+The two primitive gcd conditions make $G,B,R,S$ pairwise coprime.
+Exactly one factor is even, and it is divisible by four because the even
+leg of a primitive Pythagorean triangle is divisible by four.
+
+Put $A=G^2+B^2$ and $C=R^2+S^2$. Exactly one of these norms is twice an
+odd integer; divide that norm by two to obtain odd integers $A_0,C_0$.
+The full-magic interaction gives
+\[
+2s_0^2=s_1^2+s_2^2
+ =(G^2+B^2)(R^2+S^2),\qquad A_0C_0=s_0^2.
+\]
+Hence $A_0$ and $C_0$ have the same unique positive squarefree kernel.
+Moreover, if an odd prime $q$ divides both, pairwise coprimality permits
+division by $B,S$ modulo $q$, giving
+\[
+(G/B)^2\equiv(R/S)^2\equiv-1,\qquad
+(s_1/(BS))^2\equiv2\pmod q.
+\]
+The last congruence uses $s_1^2=G^2R^2+B^2S^2$. Thus both $-1$ and $2$
+are quadratic residues modulo $q$, and $q\equiv1\pmod8$.
+
+The common-kernel conclusion uses the central interaction as well as the
+two primitive outer triangles. Conversely, a common kernel does not
+supply the two outer-square equations. These necessary reductions leave
+the nondegenerate rational and integral point problems open.
+
+\subsection{Where the open objects live}
+
+The companion repository records three continuation boundaries in
+\texttt{dossiers/README.md}. These are status summaries of further
+arithmetic work. The shipped \texttt{scripts/verify.py} checks exact
+main-paper identities and the integrity and content of specified frozen
+computer-algebra outputs; it does not reproduce the deeper models and
+computations summarized in these dossiers. The mathematical conclusions
+depend on the proofs and the completeness statements of the imported
+computations, not on successful output checks alone.
+
+\begin{itemize}
+\item \textbf{Residual cover}
+(\texttt{dossiers/}\allowbreak\texttt{residual\_cover/README.md}).
+The continuation from the area-$30/60$ covering classes of
+Section~\ref{sec:frontier} records a residual cover $q_R$ over
+$K=\Q(\sqrt{218})$. Neither a $K$-point nor emptiness is established.
+The recorded alternatives for the associated elliptic curve are rank two
+if a point exists, and rank one
+with a nontrivial divisible Tate--Shafarevich class if the cover is empty.
+
+\item \textbf{Odd lift}
+(\texttt{dossiers/}\allowbreak\texttt{odd\_lift\_n5/README.md}).
+The coefficient-$3$ result excludes nondegenerate rational
+specializations of the known generic coefficient-$3$ family satisfying
+both base reconstructions; it does not classify specialized
+Mordell--Weil points outside the generic subgroup.
+For coefficient $5$, the reduction has two genus-two covers over
+$\Q(\sqrt2)$. One is empty on the required real component; the surviving
+cover has a complete fake two-Selmer set of four classes, none eliminated.
+The associated degree-$30$ pair-field computation gives a rank-two
+lattice saturated at $2,3,5,7$, without a proved rank upper bound or finite
+index in the full Mordell--Weil group. A complete list of points with the
+required rational coordinate and a uniform result for larger odd
+coefficients remain open.
+
+\item \textbf{Degree-$90$ $S$-class}
+(\texttt{dossiers/}\allowbreak\texttt{degree90\_sclass/README.md}).
+The marked ideal class $[A_R]$ in a degree-$90$ $S$-class group remains
+undecided. The dossier records a field construction and structural
+reductions, but bounded short-vector and elementary-unit searches
+produced no witness. Their failure does not prove that the class is
+nontrivial; the remaining decision requires a global witness or a
+rigorous obstruction.
+\end{itemize}
+
+The limits of earlier approaches are recorded in
+\texttt{dossiers/}\allowbreak\texttt{EXHAUSTED\_ROUTES.md}.
+These continuations do not decide every branch as the prime support
+varies. For a fixed support, the two-term $S$-unit route of
+Section~\ref{sec:smoothsupport} gives a finite reduction; the uniform
+all-support problem remains open.

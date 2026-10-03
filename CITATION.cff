@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this package, please cite it as below."
 title: "Near-miss constructions, interaction surfaces, and prime-support obstructions for the 3x3 magic square of squares"
 type: software
-version: "1.1.0"
+version: "1.2.0"
 date-released: "2026-10-03"
 authors:
   - family-names: Babanskyy
@@ -23,25 +23,25 @@ keywords:
   - reproducibility
   - verified-exhibit
 abstract: >-
-  Difference-side arithmetic of the 3x3 magic square of squares problem:
-  a seven-line normal form (three same-difference square progressions on a
-  transversal frame) with its integral Smith form; three explicit mechanisms
-  producing infinite (8,7) near-miss families with a complete least-shift
-  law and a positive-density elliptic-orbit lift; the interaction
-  surface for the eighth line, its saturation and full S5 cone monodromy;
-  imported fixed-difference finiteness with one completely closed fibre
-  and a finite-Kummer-class stop; a five-term S-unit support law with an
-  exact mod-8 endpoint/interior table; an Aebi-derived uniqueness result
-  for differences with at most three prime factors; and a complete S-unit
-  catalogue excluding full magic for differences supported on primes at most
-  19, with 384 primitive nine-square/seven-line classes and a sharp relative
-  defect bound. Arbitrary four-prime supports remain open.
-  Elementary and symbolic computations have exact standard-library Python
-  replays. External-CAS ranks, point lists, and Selmer sets enter as
-  hash-pinned inputs and normalized output records; the verifier
-  authenticates and parses those records but does not independently
-  recompute the underlying calculations. Classical ingredients are
-  attributed; no priority or firstness is claimed.
+  Constructions and arithmetic restrictions for the 3x3 magic square of
+  squares through its common-difference transversal frame. Using Aebi's
+  primitive-triangle classification, the paper derives uniqueness of a
+  positive square progression for each difference with at most three prime
+  factors. Using the complete S-unit totals of von Känel and Matschke, it
+  excludes full magic for differences supported on primes at most 19,
+  classifies 384 primitive nine-square/seven-line arrays modulo grid symmetry
+  and square scaling, and determines their sharp difference-normalized
+  defect minimum. Two infinite eight-square/seven-line constructions and a
+  finite difference-840 bridge classification accompany an integral line-sum
+  calculation, fixed-difference interaction and finiteness results, and a
+  variable-difference signed-root surface whose associated degree-five
+  reconstruction over Q(cone) has generic Galois group S5. The full signed
+  cover has degree 40. Fixing the difference requires an additional
+  rational-square lift; the Galois-group statement is not asserted for
+  that fixed-difference model. Local support laws
+  describe an arbitrary four-prime frontier that remains open. Exact Python
+  replays cover the elementary and symbolic computations; external-CAS
+  records are authenticated and parsed, not independently recomputed.
 preferred-citation:
   type: generic
   title: "Near-miss constructions, interaction surfaces, and prime-support obstructions for the 3x3 magic square of squares"
@@ -50,5 +50,5 @@ preferred-citation:
       given-names: Oleksiy
       orcid: "https://orcid.org/0009-0001-6176-6208"
   year: 2026
-  version: "1.1.0"
+  version: "1.2.0"
   repository-code: "https://github.com/aconsciousfractal/FCIG-Magic-Square-of-Squares-Near-Miss-Prime-Support"

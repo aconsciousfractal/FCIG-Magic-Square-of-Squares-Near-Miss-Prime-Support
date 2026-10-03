@@ -1,5 +1,21 @@
-
 \section{Finiteness, the closed fibre, and the finite-class stop}\label{sec:finiteness}
+
+\begin{theorem}[Finiteness and one closed fibre]\label{main:finiteness}
+\emph{(i)} \textbf{Derived from an imported theorem} (Caro--Garc\'ia-Fritz,
+Thms.~1.2--1.3): for fixed $d>0$, the points of $(2E_d(\Q))^{3}$ satisfying
+the interaction, after removing points at infinity, nonpositive and
+repeated $x$-coordinates, form a finite set, with the imported bound of shape
+$C^{3r+1}$, $r=\operatorname{rank}E_d(\Q)$; hence for every fixed
+squareclass of $d$ only finitely many positive distinct full-magic transversal
+configurations exist modulo rational-square scaling. The bound is
+non-effective. \emph{(ii)} \textbf{Computer-assisted} (the decisive rank
+and torsion enter as a hash-verified frozen transcript of the official
+Magma Calculator): the fibre $x_0=841$ is closed completely --- its
+necessary genus-two curve has a complementary bielliptic quotient of rank
+zero and full two-torsion, whose four rational points pull back to
+$t\in\{0,\pm1,\pm841,\pm1681\}$, and positivity leaves only $t=0$, so
+the fibre contains no positive nonconstant three-transversal completion.
+\end{theorem}
 
 \subsection{Fixed difference and fixed squareclass}
 
@@ -14,7 +30,7 @@ Both are imported; nothing below re-proves them.
 \textbf{Exact specialization.} Over $\mathbb C$ every $E_d$ has $j=1728$,
 $\operatorname{End}(E_d)=\Z[i]$, unit squares $\pm1$; take
 $(c_0,c_1,c_2)=(-2,1,1)$. Type (a) has two coordinates at infinity, so no
-finite Parker centre. In type (b) the cancellation $c_i+u^2c_j=0$ forces
+finite progression centre. In type (b) the cancellation $c_i+u^2c_j=0$ forces
 the moving pair to be the equal-coefficient pair $(1,1)$ with $u^2=-1$, and
 the constant coordinate (the $-2$ slot) satisfies, in the Weierstrass
 convention of~\cite{CGF25} with quadratic coefficient $A=0$,
@@ -26,9 +42,9 @@ $x$-coordinates --- the repeated diagonal. Type (d) is absent twice over:
 its exceptional curve has CM by $\Z[\sqrt{-2}]$ while $E_d$ has CM by
 $\Z[i]$, and no permutation of $(-2,1,1)$ satisfies $c_1=2c_2=2c_3$.
 Hence every classified curve inside $X_d$ avoids the positive distinct
-Parker locus, and applying the imported Theorem~1.3 to
+full-magic transversal locus, and applying the imported Theorem~1.3 to
 $\Gamma=\Gamma_d^{3}$ of rank $3r$ gives finiteness with the stated
-$D^{3r+1}$ shape. The bound is non-effective and yields no enumeration.
+$C^{3r+1}$ shape. The bound is non-effective and yields no enumeration.
 
 \textbf{Squareclass passage.} Writing $d=q^2k$, the isomorphism
 $E_k\to E_d$, $(X,Y)\mapsto(q^2X,q^3Y)$ commutes with doubling and scales
@@ -54,10 +70,7 @@ This is only a necessary condition, and that is enough: we close the
 superset. The even sextic makes $C$ bielliptic. The quotient by
 $(t,w)\mapsto(-t,w)$ has rank $3$, as independently corroborated by the
 PARI/GP record shipped in the companion repository; this contextual
-calculation is not used in the proof and does not close the fibre. Thus the
-naive ``compute this rank, then elliptic Chabauty'' route was
-under-specified. The
-complementary quotient by $(t,w)\mapsto(-t,-w)$ is decisive: for $t\neq0$
+calculation is not used in the proof and does not close the fibre. The complementary quotient by $(t,w)\mapsto(-t,-w)$ is decisive: for $t\neq0$
 set $X=1/t^2$, $Y=w/t^3$, then with $A=841^2$, $B=1681^2$, $L=AB$,
 $u=LX$, $v=LY$ the monic model is
 \[
@@ -127,7 +140,19 @@ $t=\pm1/23$ or $t=\pm1/65$. In each case one of the original four linear
 forms is $2$, not a rational square. Thus no nonzero $t$ is possible.
 \end{proof}
 
-\subsection{The finite-class stop}
+\subsection{Limits of the separate finite classes}
+
+\begin{theorem}[The finite-class stop]\label{main:kummerstop}
+Half classes $\lambda_n(P)=[Q]\in E_d(\Q)/(2^nE_d(\Q)+E_d(\Q)[2])$ are well
+defined for $P\in2E_d(\Q)$. On $\Esn$, neither $P\mapsto x(P)$ nor the
+interaction of Theorem~\ref{main:surface} factors through the finite class
+triple for any $n\ge1$: the explicit pair $Q$, $Q+2^nR$ has equal classes
+and unequal doubled $x$-coordinates. Hence no obstruction retaining only
+the three individual finite Kummer/2-Selmer classes can characterize the
+interaction. The certified true witness is the repeated triple $(Q,Q,Q)$;
+a stronger statement whose hypotheses first impose the positive
+pairwise-distinct open locus is \emph{not} excluded.
+\end{theorem}
 
 \begin{proof}[Proof of Theorem~\ref{main:kummerstop}]
 Well-definedness: if $2Q'=P=2Q''$ then $Q'-Q''\in E_d(\Q)[2]$, so the class
@@ -135,7 +160,7 @@ of a half modulo $2^nE_d(\Q)+E_d(\Q)[2]$ does not depend on the half, and
 the doubling map exhibits the canonical isomorphism with
 $2E_d(\Q)/2^{n+1}E_d(\Q)$ (kernel exactly $2^nE_d(\Q)+E_d(\Q)[2]$).
 
-The countercertificate lives on $\Esn$ with the locked basis $Q,R$ of
+The countercertificate lives on $\Esn$ with the basis $Q,R$ of
 Section~\ref{sec:surface}. The two classical progressions have Kummer
 representatives $\delta(Q)=(7,10,70)$ and $\delta(R)=(14,6,21)$,
 reproducing the rank-two structure. Now put $H=Q+2R$: then
@@ -161,7 +186,7 @@ so the theorem rules out exactly the obstructions that retain only the
 three individual finite Kummer/2-Selmer classes on the ambient
 doubled-point space. It does not exclude representative-level methods ---
 covering curves, heights, valuations, a Mordell--Weil sieve --- nor a
-separate statement whose hypotheses first impose Parker-open positivity
+separate statement whose hypotheses first impose positivity on the distinct-entry locus
 and pairwise distinctness. Sections~\ref{sec:supportlaw}
 and~\ref{sec:threeprime} pursue precisely such finer invariants, along a
 different quantity.

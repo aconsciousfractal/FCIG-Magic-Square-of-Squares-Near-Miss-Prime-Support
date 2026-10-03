@@ -1,44 +1,82 @@
+\section{The seven-line form and square progressions}\label{sec:normalform}
 
-\section{The seven-line normal form}\label{sec:normalform}
+We write $D_4$ for the eight rotations and reflections of the grid. Two
+positive rational arrays are square-scale equivalent if one is a common
+nonzero rational square multiple of the other, possibly followed by an
+element of $D_4$. An all-squares array has a unique positive integral-root
+normalization with root gcd $1$ before taking the grid quotient. For an
+$(8,7)$ array, \emph{root-primitive} refers to the gcd of its eight square
+roots, and \emph{entry-primitive} to the gcd of all nine integral entries.
 
 Houston~\cite{HOU16A,HOU16B}, starting from the classical Lucas
-parametrization, explained this almost-magic normal form and its
-interpretation as three three-term arithmetic progressions of one common
-difference. We retain a self-contained proof because the integral image
-lattice below is needed to identify the exact congruence obstruction.
+parametrization, explains the following normal form and its interpretation
+by three progressions. We include its short proof to fix the conventions;
+the integral image-lattice refinement follows separately.
 
-\begin{lemma}[Retraction bookkeeping]\label{lem:retraction}
-Let a fully magic $3\times3$ array have common line sum $M$.
-\emph{(i)} Subtracting the same $t$ from the three cells of one long
-diagonal leaves the three rows, the three columns and the other diagonal
-with sum $M-t$, while the selected diagonal has sum $M-3t$; the exact line
-defect is $2t$.
-\emph{(ii)} More generally, subtracting $\tau$ from the three cells of a
-permutation transversal $T$ leaves every row and every column with sum
-$M-\tau$; if $T$ meets the two diagonals in $j$ and $k$ cells, their sums
-become $M-j\tau$ and $M-k\tau$.
-\emph{(iii)} Conversely, if exactly one diagonal of a $3\times3$ array
-fails while the other seven lines share a common sum, adding half the
-defect to each cell of the failed diagonal restores a fully magic array.
-\end{lemma}
+
+\begin{theorem}[Seven-line normal form]\label{main:normalform}
+Up to the dihedral symmetry of the grid, every $3\times3$ integer array in
+which exactly seven of the eight ordinary lines share a common sum has the
+antidiagonal as its failed line and is exactly
+\[
+\begin{pmatrix} A & P+D & E-D\\ P-D & E & A+D\\ E+D & A-D & P\end{pmatrix},
+\]
+three arithmetic progressions of one common difference $D$; the seven lines
+sum to $A+E+P$ and the failed diagonal to $3E$. Consequently an $(8,7)$
+array consists of two complete square progressions and one progression
+containing exactly two squares. Conversely, the displayed array has
+exactly seven equal line sums whenever $A+P\ne2E$.
+\end{theorem}
 
 \begin{proof}
-(i) Every row and every column contains exactly one modified cell, and the
-other diagonal contains exactly one modified cell, while the selected
-diagonal contains all three; the sums follow, and the defect is
-$(M-t)-(M-3t)=2t$. Nothing here uses squareness or any property of a
-particular family.
-(ii) A permutation transversal meets every row and every column in exactly
-one cell, and meets the diagonals in $j$ resp.\ $k$ cells by definition of
-$j,k$; the same count gives the sums.
-(iii) By Theorem~\ref{main:normalform} (proved independently below) the
-array is the displayed normal form, with seven-line sum $A+E+P$, failed
-antidiagonal sum $3E$, and defect $\delta=A+P-2E$. Each row and column
-contains exactly one antidiagonal cell, and the principal diagonal contains
-one (the centre), so adding $\delta/2$ to the three antidiagonal cells
-raises all seven line sums to $A+E+P+\delta/2$ and the antidiagonal to
-$3E+3\delta/2$; both equal $\tfrac32(A+P)$, so all eight lines agree.
+The failed line cannot be a row: the three columns already force the total
+$3S$, so if two rows have sum $S$ the third does as well. The same argument
+excludes a failed column. After a grid symmetry the failed line is the
+antidiagonal. Set the principal diagonal entries to $A,E,P$, so the common
+sum is $S=A+E+P$, and write the middle-right entry as $A+D$. The middle
+row and last column give the entries $P-D$ and $E-D$, respectively.
+The first row, first column and middle column then give $P+D$, $E+D$ and
+$A-D$. This is the displayed matrix, with integer $D$ and failed sum
+$3E$. Its entries split into
+\[
+(A-D,A,A+D),\qquad(P-D,P,P+D),\qquad(E-D,E,E+D).
+\]
+Exactly eight square entries therefore leave two full square progressions
+and a third progression containing exactly two squares.
 \end{proof}
+
+For distinct-entry arrays $D\ne0$. We use $d=|D|>0$ for the positively
+oriented difference of a square progression. Reversing the sign of $D$
+is accounted for by a grid symmetry. A \emph{transversal configuration}
+is a triple of positive square progressions of common difference $d$,
+with all nine entries distinct. It is \emph{full-magic} when its centres
+satisfy $s_1^2+s_2^2=2s_0^2$, where index $0$ is the central progression.
+Whenever the finiteness or support laws refer to a configuration, this
+interaction condition is explicitly imposed. Prime supports concern
+$d$ or $2d$, never the prime factors of the nine entries.
+
+
+\begin{remark}[Where full magic lives]\label{rem:fourthAP}
+In the normal form, the array is fully magic if and only if the
+antidiagonal sum equals the common sum, that is $3E=A+E+P$, equivalently
+\[
+A+P=2E:
+\]
+the three centres themselves must form a three-term arithmetic progression.
+For an all-squares array this is a \emph{fourth} square progression, with
+its own common difference $E-A$ --- never equal to $\pm D$, since $E=A+D$
+would repeat the centre at positions $(2,2)$ and $(2,3)$, while $E=A-D$
+would repeat it at $(2,2)$ and $(3,2)$, against nine-way distinctness ---
+and this single extra condition is exactly
+where the elliptic interaction of Section~\ref{sec:surface} lives. The classical
+one-parameter families of nine-square arrays with seven equal sums
+(Lucas~\cite{LUC76}; Sallows's record example~\cite{SAL97}) sit inside this
+normal form, as does the general parametrization of $3\times3$ magic
+squares going back to Lucas~\cite{LUC91}.
+\end{remark}
+
+
+\subsection{The integral image lattice}
 
 \begin{proposition}[Integral line-sum lattice]\label{prop:linesumsnf}
 Let $\Lambda:\mathbb Z^9\to\mathbb Z^8$ send
@@ -89,42 +127,42 @@ $\operatorname{im}\Lambda$, so the two coincide. Reduction of the Smith
 form gives the rank statement.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{main:normalform}]
-The failed line cannot be a row: the three columns already force the total
-$3S$, so if two rows have sum $S$ the third does as well. The same argument
-excludes a failed column. Up to the dihedral action of the grid the failed
-line is therefore the antidiagonal. Proposition~\ref{prop:linesumsnf}
-forces its sum to be divisible by $3$. Solving the seven linear line
-equations then shows that its central cell is one third of that sum and
-gives the displayed universal form; the seven common lines have sum
-$A+E+P$ and the antidiagonal has sum $3E$. The nine entries decompose into
-the three arithmetic progressions
-\[
-(A-D,\,A,\,A+D),\qquad (P-D,\,P,\,P+D),\qquad (E-D,\,E,\,E+D),
-\]
-of one common difference $D$. Consequently an array with exactly eight
-square entries consists of two full three-square progressions and one
-progression containing exactly two squares, which is the last assertion.
+
+\subsection{Retraction bookkeeping}
+
+\begin{lemma}[Retraction bookkeeping]\label{lem:retraction}
+Let a fully magic $3\times3$ array have common line sum $M$.
+\emph{(i)} Subtracting the same $t$ from the three cells of one long
+diagonal leaves the three rows, the three columns and the other diagonal
+with sum $M-t$, while the selected diagonal has sum $M-3t$; the exact line
+defect is $2t$.
+\emph{(ii)} More generally, subtracting $\tau$ from the three cells of a
+permutation transversal $T$ leaves every row and every column with sum
+$M-\tau$; if $T$ meets the two diagonals in $j$ and $k$ cells, their sums
+become $M-j\tau$ and $M-k\tau$.
+\emph{(iii)} Conversely, if exactly one diagonal of a $3\times3$ array
+fails while the other seven lines share a common sum, adding half the
+defect to each cell of the failed diagonal restores a fully magic array.
+\end{lemma}
+
+\begin{proof}
+(i) Every row and every column contains exactly one modified cell, and the
+other diagonal contains exactly one modified cell, while the selected
+diagonal contains all three; the sums follow, and the defect is
+$(M-t)-(M-3t)=2t$. Nothing here uses squareness or any property of a
+particular family.
+(ii) A permutation transversal meets every row and every column in exactly
+one cell, and meets the diagonals in $j$ resp.\ $k$ cells by definition of
+$j,k$; the same count gives the sums.
+(iii) By Theorem~\ref{main:normalform} the
+array is the displayed normal form, with seven-line sum $A+E+P$, failed
+antidiagonal sum $3E$, and defect $\delta=A+P-2E$. Each row and column
+contains exactly one antidiagonal cell, and the principal diagonal contains
+one (the centre), so adding $\delta/2$ to the three antidiagonal cells
+raises all seven line sums to $A+E+P+\delta/2$ and the antidiagonal to
+$3E+3\delta/2$; both equal $\tfrac32(A+P)$, so all eight lines agree.
 \end{proof}
 
-\begin{remark}[Where full magic lives]\label{rem:fourthAP}
-In the normal form, the array is fully magic if and only if the
-antidiagonal sum equals the common sum, that is $3E=A+E+P$, equivalently
-\[
-A+P=2E:
-\]
-the three centres themselves must form a three-term arithmetic progression.
-For an all-squares array this is a \emph{fourth} square progression, with
-its own common difference $E-A$ --- never equal to $\pm D$, since $E=A+D$
-would repeat the centre at positions $(2,2)$ and $(2,3)$, while $E=A-D$
-would repeat it at $(2,2)$ and $(3,2)$, against nine-way distinctness ---
-and this single extra condition is exactly
-where the elliptic wall of Section~\ref{sec:surface} lives. The classical
-one-parameter families of nine-square arrays with seven equal sums
-(Lucas~\cite{LUC76}; Sallows's record example~\cite{SAL97}) sit inside this
-normal form, as does the general parametrization of $3\times3$ magic
-squares going back to Lucas~\cite{LUC91}.
-\end{remark}
 
 \begin{remark}[Census normalization]\label{rem:census}
 The bounded census of Appendix~A quotients by the geometric $D_4$ action

@@ -29,12 +29,13 @@ paper and owned by their authors.
 | problem statement (1984) and the \$100 offer | LaBar; Gardner (history as recorded in `BRE99` §0) |
 | “Parker” terminology used for this paper's common-difference configurations | The label recalls Matt Parker's widely known *Parker Square*, documented by Numberphile and Brady Haran at `https://www.numberphile.com/videos/the-parker-square` and `https://www.bradyharanblog.com/the-parker-square`, both accessed 2026-08-14. This is a naming/history source only: it does not transfer authorship of LaBar's problem to Parker and does not identify Parker's particular near miss with the configurations studied here. |
 | the 7-of-9-squares fully magic record and degree-27 full solution | Bremner, *Acta Arith.* 88 (1999) `BRE99`, pp. 289–290 |
-| degree-four witness over `Q(sqrt3,sqrt133)`, its rational/anti-invariant decomposition, and the fixed coefficient line used in Proposition BB | Bremner, *Acta Arith.* 99 (2001) `BRE01`, display (2), p. 289 and equations (28)–(29), pp. 306–307; DOI `10.4064/aa99-3-6`; family and formulas are Bremner's, while this paper contributes only the fixed-line deduction |
-| elliptic quotient in Proposition BB: `y^2=x(x-529)(x-4225)`, minimal label `345345r4`, rank interval `[0,0]` | Cremona elliptic-curve data, `https://johncremona.github.io/ecdata/`; PARI/GP 2.17.4 `ellsearch`, `ellrank`, `elltors`; catalogued data, not a novelty claim |
+| degree-four witness over `Q(sqrt3,sqrt133)`, its rational/anti-invariant decomposition, and the fixed coefficient line used in the fixed Bremner-shadow proposition | Bremner, *Acta Arith.* 99 (2001) `BRE01`, display (2), p. 289 and equations (28)–(29), pp. 306–307; DOI `10.4064/aa99-3-6`; the displayed eight-square array over `Q(sqrt3)`, family and coefficient formulas are Bremner's. Adjoining `sqrt133` makes the centre square; the present article also proves the fixed-line deduction |
+| elliptic quotient in the fixed Bremner-shadow proposition: `y^2=x(x-529)(x-4225)`, minimal label `345345r4`, rank interval `[0,0]` | Cremona elliptic-curve data, `https://johncremona.github.io/ecdata/`; PARI/GP 2.17.4 `ellsearch`, `ellrank`, `elltors`; catalogued data used as a rank dependency |
 | the 9-squares/7-sums record ("The Lost Theorem") | Sallows, *Math. Intelligencer* 19.4 (1997) |
 | the order-3 parametric normal form lineage | Lucas (1891), cited directly in the bibliography |
-| the seven-line almost-magic normal form, its three-common-difference-AP interpretation, and a nine-square seven-line elliptic construction | Houston, *Bosker Blog*, 13 and 18 July 2016, `https://bosker.wordpress.com/2016/07/13/magic-squares-of-squares/` and `https://bosker.wordpress.com/2016/07/18/almost-magic-squares-of-squares/`; both read 2026-08-01; historical ownership only, with the present integral Smith-form refinement proved independently |
-| classical lemniscatic integral and its Gamma evaluation | NIST Digital Library of Mathematical Functions, §19.20(i), Eq. (19.20.2), `https://dlmf.nist.gov/19.20`; terminology and evaluation only. The Beta push-forward of normalized Haar measure on `E_d(R)^0` is derived directly in the paper and is presented as an explanation of the existing density corollary, not as a novelty claim |
+| the seven-line almost-magic normal form and its three-common-difference-AP interpretation | Houston, *Bosker Blog*, 13 and 18 July 2016, [Part I](https://bosker.wordpress.com/2016/07/13/magic-squares-of-squares/) and [Almost-magic squares of squares](https://bosker.wordpress.com/2016/07/18/almost-magic-squares-of-squares/); both read 2026-08-01. The article attributes this structure and supplies its self-contained proof and integral line-sum calculation. |
+| the exact unordered triple of progressions in the complete `S7` atlas | Houston, *Almost-magic squares of squares*, 18 July 2016, `HOU16B`: roots `(46,74,94)`, `(2,58,82)`, `(97,113,127)` with common integer difference `3360`; the elliptic calculation uses difference `210`. The present catalogue establishes completeness, the three central-role classes modulo `D4` and common square scaling, and their relation to the larger `S13` and `S19` atlases. |
+| classical lemniscatic integral and its Gamma evaluation | NIST Digital Library of Mathematical Functions, §19.20(i), Eq. (19.20.2), `https://dlmf.nist.gov/19.20`; terminology and evaluation only. The Beta push-forward of normalized Haar measure on `E_d(R)^0` is derived directly in the paper and is presented as an explanation of the orbit-density corollary |
 
 ## Entry-side lineage (attributed prior art; disjoint object)
 
@@ -45,7 +46,7 @@ paper and owned by their authors.
 | the finite-field order-three analogue (degrees 3/5/7/9) | Labruna, Montclair State Univ. ETD 138 (2018) |
 | order bookkeeping, `1 mod 24` two-entry restriction, seven-arrangement list, Gaussian-signature proposal | Weisenberg, *Rose-Hulman UMJ* 24 (2023), art. 7 |
 | announced nonexistence preprint — **unrefereed; nothing here depends on it** | Hill, arXiv preprint cited as `HILL26` |
-| Pell-transform approach and smallest-entry exclusion | The unity case is credited by Coumbe to Lee Morgenstern (2006); Coumbe owns the prime-square extension and the audited published statement: *JP J. Algebra Number Theory Appl.* 63(6) (2024), 587–614, DOI `10.17654/0972555524032`, primary PDF `https://pphmjopenaccess.com/jpjana/article/download/2332/1365/5024`. This paper does **not** import the exclusion because the unrestricted intermediate difference-set claim admits the literal repeated-summand instance `120+120=240`; this does not decide a distinct-summand repair or the final exclusion. No independent firstness claim for the unity case is made here. |
+| Pell-transform approach and smallest-entry exclusion | The unity case is credited by Coumbe to Lee Morgenstern (2006); Coumbe owns the prime-square extension and the audited published statement: *JP J. Algebra Number Theory Appl.* 63(6) (2024), 587–614, DOI `10.17654/0972555524032`, primary PDF `https://pphmjopenaccess.com/jpjana/article/download/2332/1365/5024`. This paper does **not** import the exclusion because the unrestricted intermediate difference-set claim admits the literal repeated-summand instance `120+120=240`; this does not decide a distinct-summand repair or the final exclusion. The unity-case attribution to Morgenstern is preserved. |
 
 ## Recent adjacent work (cited, not imported)
 
@@ -59,7 +60,7 @@ paper and owned by their authors.
 |---|---|
 | type taxonomy `6:6` and the search-66 tables (row 340545 carrier) | Fituvalu (`FIT` in the bibliography): `fituvalu.nongnu.org`; dataset `unique-squares.csv`, 166,573,455 bytes, SHA-256 `fa88196c3055d39c8e29ce5f386ba7a1353a027003c28f82d604355919f00117`; source at Savannah, commit `b3063cf8` (2024-02-20). Never bundled (documentation CC BY-SA 4.0, code GPLv3+, dataset terms unresolved) |
 | catalogue pages for the Wesolowski carrier and near-miss records | Boyer (`BOY05`, `BOYWEB`): `https://www.multimagie.com/English/SquaresOfSquares.htm` and `https://www.multimagie.com/English/SquaresOfSquaresSearch.htm`, accessed 2026-07-24; archival snapshots SHA-256 `2a2602ab68a9eb0ed4785eed34292ae5a151a00b5f4d593f7b53db8a217241df` (64,766 bytes) and `d753e84fbd81d04bfa104aff33bb82b83a05a2992d8948443b780399dd91343e` (105,400 bytes), not bundled |
-| centre-true records (the seven completions of Appendix A) | Brown (`BRO`): *Automedian Triangles and Magic Squares*, `https://www.mathpages.com/home/kmath417/kmath417.htm`, accessed 2026-07-24, non-refereed; archival HTML snapshot SHA-256 `17676ac268212fc856ac22d1209939a0030254d368c7806a0e62957f8518b383` (57,631 bytes), not bundled |
+| centre-true records (the seven completions discussed in Appendix D) | Brown (`BRO`): *Automedian Triangles and Magic Squares*, `https://www.mathpages.com/home/kmath417/kmath417.htm`, accessed 2026-07-24, non-refereed; archival HTML snapshot SHA-256 `17676ac268212fc856ac22d1209939a0030254d368c7806a0e62957f8518b383` (57,631 bytes), not bundled |
 
 ## Note on the frozen external-CAS layer
 
@@ -75,9 +76,8 @@ Two additional
 PARI/GP 2.17.4 input/output pairs are shipped. The first independently
 corroborates rank 3 for the first bielliptic quotient of the `x0=841` fibre;
 that contextual rank is not used to close the fibre. The second supplies the
-unconditional rank interval `[0,0]` and catalogue label used in Proposition
-BB. The verifier authenticates and parses both pairs but does not execute
-PARI/GP; for Proposition BB it independently checks the quotient identity,
+unconditional rank interval `[0,0]` and catalogue label used in the fixed Bremner-shadow proposition. The verifier authenticates and parses both pairs but does not execute
+PARI/GP; for the fixed Bremner-shadow proposition it independently checks the quotient identity,
 finite-field counts, torsion-halving obstruction and terminal parameter
 elimination.
 
@@ -86,13 +86,13 @@ elimination.
 Python 3 standard library (the verifier and both census implementations);
 official Magma Calculator V2.29-8 **only as frozen records** with byte-exact
 resubmission inputs; PARI/GP 2.17.4 as two reproducible input/output pairs,
-one contextual and one rank-bearing for Proposition BB. Neither external
+one contextual and one rank-bearing for the fixed Bremner-shadow proposition. Neither external
 system is required to run the packaged
 integrity replay. Exploratory computations additionally used SageMath 10.9 for
 exploration. The MIT license covers only the author's code and documentation
 here.
 
-## Smooth-support extension (source check 2026-10-03)
+## Smooth-support sources and conversions (source check 2026-10-03)
 
 - **Aebi:** DOI `10.4171/EM/563`, *Elemente der Mathematik* 81 (2026),
   71–72, theorem and concluding remark, publisher full text read. The six
@@ -121,5 +121,15 @@ here.
   derived triangle/array catalogues, with no copied source implementation.
 
 The import-to-target proof and all scale, parity and D4 conversions are in
-Section 8 and `SMOOTH_SUPPORT.md`. The catalogue gives exclusions for
+Section 3 (`main:smoothsupport`) and `SMOOTH_SUPPORT.md`. The catalogue gives exclusions for
 subsets of the first eight primes, not for arbitrary eight-prime supports.
+
+The geometric source/evidence map distinguishes the fixed-difference
+elliptic interaction from the variable-difference signed-root model modulo
+scale. The latter carries the irreducibility statement and an associated
+degree-five reconstruction over `Q(cone)` with generic Galois group `S5`.
+The full signed cover has degree 40; its full group is not identified by
+that quintic calculation. Fixing `d=840` additionally imposes `L^2=1680W/(RS)`;
+the generic Galois-group statement is not transferred to that arithmetic lift. This
+coordinate clarification uses the written algebra, not a new external-CAS
+calculation.

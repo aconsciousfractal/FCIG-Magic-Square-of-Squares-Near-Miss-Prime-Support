@@ -1,6 +1,38 @@
 
 \section{The interaction surface}\label{sec:surface}
 
+Houston's formulation~\cite{HOU16B} identifies full magic with three
+same-difference square progressions whose centres themselves form an
+arithmetic progression. We first retain the fixed difference $840$ of the
+preceding construction, then allow the difference to vary and remove the
+common scale of the roots. These are different arithmetic models. The
+general setting of linear coordinate relations in $E^3$ is studied by Caro
+and Garc\'ia-Fritz~\cite{CGF25}; their finiteness theorem is specialized in
+Section~\ref{sec:finiteness}.
+
+\begin{theorem}[The interaction surface]\label{main:surface}
+\emph{(i)} After independent common subtractions $\tau_0,\tau_1,\tau_2$ on
+the three difference-$840$ transversals of the fixed carrier, all rows and
+columns remain equal and the two diagonals agree if and only if
+$\tau_1+\tau_2=2\tau_0$. Requiring square entries gives
+$x_i\in x\bigl(2\Esn(\Q)\bigr)$ and the interaction $x_1+x_2=2x_0$.
+\emph{(ii)} With nonzero common difference $d$ allowed to vary, the
+signed-root interaction model, modulo common scaling of the roots, has
+the irreducible surface $Y^\circ$ defined below as its nonzero,
+distinct-entry locus. Its map to the rational cone $2A^2=B^2+C^2$ has
+generic degree five in squared coordinates and degree forty on the full
+signed cover; the quintic reconstruction over the rational function field
+of the cone has Galois group $S_5$.
+For a prescribed difference $d_0$, recovering the roots additionally
+requires a nonzero scale $L$ satisfying
+\[
+L^2=\frac{2d_0W}{RS}.
+\]
+The irreducibility assertion concerns $Y^\circ$, and the Galois-group
+assertion concerns its quintic reconstruction, without an assertion about
+this fixed-difference scale locus or the group of the full signed cover.
+\end{theorem}
+
 \subsection{The transversal equation}
 
 For arbitrary $x_0,x_1,x_2$ consider
@@ -24,7 +56,7 @@ surface. The diagonal $(P,P,P)$ is not isolated, and the membership
 condition $P_i\in2\Esn(\Q)$ is arithmetic rather than a further geometric
 equation over an algebraic closure.
 
-For later use we record the Mordell--Weil source lock. The minimal model of
+For later use we record the Mordell--Weil data. The minimal model of
 $\Esn$ is recorded as LMFDB \texttt{705600.vn3}~\cite{LMFDB},
 $Y^2=X^3-44100X$, with
 rank $2$, full rational $2$-torsion and free generators $(-84,1764)$,
@@ -40,21 +72,101 @@ used throughout, with
 Since doubling kills the rational two-torsion, $2Q$ and $2R$ generate the
 free part of $2\Esn(\Q)$.
 
-\subsection{Saturation: one surface, not a bundle of components}
+\subsection{Normalizing the model with variable difference}
 
-Normalizing the three same-difference square progressions (the weave
-coordinates of the companion documents) reduces the Parker open locus to
-the affine variety $Y$ cut out by
+Let $(r_i^2,s_i^2,t_i^2)$, $i=0,1,2$, be three progressions of rational
+squares with a common difference $d\ne0$, and retain a choice of their
+root signs. Put
+\[
+u_i=t_i-r_i,\qquad v_i=t_i+r_i.
+\]
+The progression equations and the full-magic interaction become
+\[
+u_iv_i=2d,\qquad u_i^2+v_i^2=4s_i^2,\qquad
+s_1^2+s_2^2=2s_0^2.
+\]
+Conversely these equations recover the roots
+$r_i=(v_i-u_i)/2$, $t_i=(v_i+u_i)/2$. Since $d\ne0$, every $u_i,v_i$
+is nonzero. Define the scalar coordinates
+\[
+\begin{gathered}
+L=u_0,\qquad R=\frac{u_1}{u_0},\qquad
+S=\frac{u_2}{u_0},\qquad W=\frac{u_1u_2}{2d},\\
+(A,B,C)=\frac{u_1u_2}{d\,u_0}(s_0,s_1,s_2).
+\end{gathered}
+\]
+Here the scalar $R$ is unrelated to the elliptic point denoted by $R$
+above. Direct substitution gives the affine variety $Y$:
 \[
 \begin{aligned}
 F&=2R^2S^2-(1+W^2)(R^2+S^2)+2W^2=0,\\
 A^2&=W^2+R^2S^2, & B^2&=W^2R^2+S^2, & C^2&=W^2S^2+R^2.
 \end{aligned}
 \]
-with the Parker open $Y^{\circ}$ removing $RSWABC=0$, the nine zero-cell
-divisors and the $27$ cross-progression collision divisors (30 distinct
-normalized factors in all); positivity stays a real semialgebraic condition
-and is never encoded as a polynomial saturation.
+The inverse map, valid for $RSWL\ne0$, is
+\[
+\begin{aligned}
+d&=\frac{RSL^2}{2W},&
+(u_0,u_1,u_2)&=(L,RL,SL),\\
+(v_0,v_1,v_2)&=\frac L W(RS,S,R),&
+(s_0,s_1,s_2)&=\frac L{2W}(A,B,C).
+\end{aligned}
+\]
+In particular, the three triples of roots are
+\begin{equation}\label{eq:surface-root-map}
+\begin{aligned}
+(r_0,s_0,t_0)&=\frac L{2W}(RS-W,A,RS+W),\\
+(r_1,s_1,t_1)&=\frac L{2W}(S-RW,B,S+RW),\\
+(r_2,s_2,t_2)&=\frac L{2W}(R-SW,C,R+SW).
+\end{aligned}
+\end{equation}
+The radicand equations give the two differences in each progression as
+$d=RSL^2/(2W)$, and $F=0$ gives $2A^2=B^2+C^2$, hence the interaction.
+Substituting in either direction recovers every coordinate. Thus the
+nonzero signed-root model with variable $d$ is isomorphic to the
+corresponding locus of $Y\times\mathbb G_m$, with $L$ the
+$\mathbb G_m$ coordinate. Multiplying all roots by $q\ne0$ multiplies
+$L$ by $q$ and $d$ by $q^2$, leaving $R,S,W,A,B,C$ unchanged.
+
+For a fixed difference $d_0$, this inverse map instead requires
+\begin{equation}\label{eq:surface-fixed-scale}
+L^2=\frac{2d_0W}{RS},\qquad
+(x_0,x_1,x_2)=\frac{d_0}{2WRS}(A^2,B^2,C^2).
+\end{equation}
+When $L$ is rational, \eqref{eq:surface-root-map} supplies rational roots
+of $x_i-d_0,x_i,x_i+d_0$, the square-progression data associated with
+$x\bigl(2E_{d_0}(\Q)\bigr)$. Conversely, these data give the coordinates
+and scale above. For $d_0=840$ the additional equation is
+$L^2=1680W/(RS)$. In particular, an arbitrary rational point of $Y$
+does not supply rational roots at difference $840$: the quantity on the
+right must be a rational square. The normalization retains the
+squareclass $[d]=[RS/(2W)]$ and does not identify all differences with one
+fixed value.
+
+\subsection{The nonzero distinct-entry locus and saturation}
+
+The excluded divisors can be read directly from the progression data.
+Set
+\[
+(\eta_0,\eta_1,\eta_2)=
+\left(\frac{2W}{RS},\frac{2WR}{S},\frac{2WS}{R}\right),
+\qquad f(\eta)=\frac{\eta^2+4}{4\eta}.
+\]
+These satisfy $\eta_i=u_i^2/d$ and $s_i^2/d=f(\eta_i)$, so the nine
+entries divided by $d$ are $f(\eta_i)+\varepsilon$ for
+$i=0,1,2$ and $\varepsilon\in\{-1,0,1\}$. Define $Y^\circ$ by removing
+$RSWABC=0$, the numerators of the nine equations
+$f(\eta_i)+\varepsilon=0$, and those of the $27$ equations
+\[
+f(\eta_i)+\varepsilon=f(\eta_j)+\varepsilon',
+\qquad i<j,\quad \varepsilon,\varepsilon'\in\{-1,0,1\}.
+\]
+Within a progression the entries are already distinct because $d\ne0$.
+The $27$ collision numerators have $30$ distinct normalized factors.
+The coordinate maps preserve these exclusions.
+Positivity remains a real semialgebraic condition: for positive increasing
+roots one takes $L,R,S,W,A,B,C>0$ and
+$RS>W$, $S>RW$, $R>SW$. It is not an additional polynomial saturation.
 
 \begin{proof}[Proof of Theorem~\ref{main:surface}(ii), saturation part]
 As a polynomial in $S$,
@@ -79,14 +191,14 @@ zero/collision polynomials vanishes on it, so saturating the prime ideal by
 their product changes nothing, and $Y^{\circ}$ is one irreducible surface.
 \end{proof}
 
-\subsection{The square-progression cone and its $S_5$ wall}
+\subsection{The square-progression cone and quintic reconstruction}
 
 The four equations imply the exact identity
 \[
 2A^2=B^2+C^2 :
 \]
 the three auxiliary roots themselves form a square progression, and the
-normalized interaction maps $Y$ onto this classical cone. In squared
+normalized interaction maps $Y$ dominantly to this classical cone. In squared
 coordinates $a=rs+w$, $b=rw+s$, $c=sw+r$ (so $2a=b+c$), reconstruction away
 from $r^2=1$ is
 \[
@@ -102,7 +214,8 @@ The quintic has leading coefficient $-1$ and the displayed inverse
 reconstructs $s,w$ from each generic root, so the squared-coordinate map to
 the cone is generically finite of degree five; each squared triple has
 eight sign choices of $(R,S,W)$, giving degree $5\cdot8=40$ on the full
-signed cover. For the monodromy, specialize at the rational cone point
+signed cover. For the Galois group over the rational function field of the
+cone, specialize at the rational cone point
 $(A,B,C)=(5,1,7)$: the reconstruction polynomial
 \[
 -r^5+49r^4+2r^3-123r^2+625r+24
@@ -112,13 +225,17 @@ $[2,1,1,1]$, and has nonzero discriminant $-24364389070416096000$, so the
 specialization is separable. Irreducibility supplies a transitive
 degree-five group containing a five-cycle; the mod-$29$ pattern supplies a
 transposition; among transitive subgroups of $S_5$ this forces the full
-$S_5$, and the generic monodromy contains the specialized one.
+$S_5$, and the generic Galois group contains the specialized one. Since
+the generic group is itself a subgroup of $S_5$, it is exactly $S_5$.
 \end{proof}
 
-\begin{remark}[What the wall does and does not say]
-Generic $S_5$ monodromy proves the cone map has no generic rational
+\begin{remark}[Scope of the quintic obstruction]
+The generic $S_5$ Galois group proves that the cone map has no generic rational
 section and that its quintic cannot be resolved by a tower of quadratic
 radicals. It does \emph{not} prove that $Y$ admits no other useful rational
 map, no height-decreasing correspondence, and no further structure; those
 remain open research directions, not consequences.
+These conclusions concern the normalized model with variable difference.
+No irreducibility or Galois-group conclusion for the fixed-$d_0$ locus
+defined by \eqref{eq:surface-fixed-scale} is inferred here.
 \end{remark}

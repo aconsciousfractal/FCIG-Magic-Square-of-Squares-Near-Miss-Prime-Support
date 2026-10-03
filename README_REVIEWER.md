@@ -1,108 +1,130 @@
-# Reviewer Quickstart
+# Reviewer reading and verification guide
 
-The quick integrity replay is sub-second; mathematical review of the
-theory paper is a separate task. The replay uses no external data,
-randomness, network access or commercial software. Independent auditing of
-the Magma-dependent ranks, point lists and Selmer sets requires Magma or a
-separate implementation of those calculations.
+This guide accompanies version 1.2.0. Start with the
+[paper](paper/Near-Miss_Constructions_Interaction_Surfaces_and_Prime-Support_Obstructions_for_the_3x3_Magic_Square_of_Squares.pdf)
+and its [contribution/evidence map](docs/CLAIM_LEDGER.md).
+The replay checks exact finite evidence; mathematical review of the
+uniform proofs and imported results remains a separate task.
 
-1. **Read the paper**: [`Near-Miss_Constructions_Interaction_Surfaces_and_Prime-Support_Obstructions_for_the_3x3_Magic_Square_of_Squares.pdf`](paper/Near-Miss_Constructions_Interaction_Surfaces_and_Prime-Support_Obstructions_for_the_3x3_Magic_Square_of_Squares.pdf). The spine: the
-   seven-line normal form and integral Smith form (Thm 1, §2); the three
-   infinite `(8,7)` mechanisms with the complete least-shift law and the
-   positive-density elliptic-orbit lift (Thm 2, §3, interval
-   analysis in Appendix B); the interaction surface, its saturation and
-   the `S5` cone wall (Thm 3, §4); imported finiteness and the closed
-   `x0=841` fibre (Thm 4, §5); the fixed Bremner-shadow closure (supporting
-   Prop. BB, §5); the finite-class stop (Thm 5, §5); the
-   `S`-unit support law with the mod-8 endpoint table and the `{2,3}`
-   exclusion (Thm 6, §6); the complete three-prime exclusion (Thm 7, §7);
-   the complete smooth-support result and `(9,7)` atlas (Thm 8, §8);
-   the arbitrary four-prime frontier (§9); the program
-   and the three dossiers (§10); census and provenance (App. A);
-   certificates (App. B); reproducibility and data policy (App. C).
+## Reading path
 
-2. **Replay the certificates** (Python 3.10+, standard library
-   only):
+| Location | Mathematical question and result |
+|---|---|
+| §1 | The problem, the two near-miss metrics and the contributions relative to earlier work |
+| §2 | Seven-line normal form, full-magic interaction and integral line-sum lattice |
+| §3 | Aebi-derived three-prime uniqueness; complete smooth-support exclusion, `3/45/384` atlases and exact defect minima |
+| §4 | Infinite retraction and orbit-lift constructions, finite difference-840 bridge, least shift and orbit density |
+| §5 | Fixed-difference interaction; the distinct variable-difference signed-root surface, saturation and the associated degree-five reconstruction |
+| §6 | Imported finiteness and its specialization; centre-841 fibre, fixed Bremner shadow and finite-Kummer-class stop |
+| §7 | Five-term S-unit law, fixed-support count and local endpoint restrictions |
+| §8 | Arbitrary four-prime frontier, balanced cores and the two closed core-area-6 branches |
+| §9 | Remaining mathematical questions |
+| Appendix A | Exact bounded `(8,7)` census |
+| Appendix B | Full least-shift interval proof and certificate map |
+| Appendix C | Supplementary endpoint arguments, support taxonomy and research continuations |
+| Appendix D | Bibliographic and related-construction notes |
+| Appendix E | Reproducibility, data policy and AI assistance |
 
-   ```bash
-   python scripts/verify.py \
-       --output results/verification.json --log results/verification.log
-   ```
+For the complete-support theorem, read von Känel–Matschke's Theorem A
+alongside [SMOOTH_SUPPORT.md](docs/SMOOTH_SUPPORT.md) and the reconstruction
+proof. The imported total, the bijection and the symmetry normalization
+are distinct logical steps. Houston's 18 July 2016 example is the exact
+unordered `S7` triple with integer difference 3360; the article's claim
+there is the complete classification, not discovery of that triple.
 
-   One entry point re-derives, with exact integer/rational arithmetic:
-   the line-sum Smith data; the retraction identities and the full interval analysis; the
-   factor-pair census (n = 1..6) with `t_min = 9, then 6z^2`; the bridge
-   divisor check retaining exactly `(23,37,47)` and `(79,65,89)`; the
-   elliptic-orbit witnesses `m = 1` and `m = 3` recomputed from the group
-   law; and, as numerical corroboration only, the printed orbit-density
-   decimal via high-precision `Decimal` quadrature; the Mordell–Weil lock
-   transport; the saturation premises and the
-   `S5` monodromy data (mod 7 irreducible, mod 29 `[2,1,1,1]`, exact
-   discriminant); the `x0=841` quotient algebra and pulled-back t-list;
-   the fixed Bremner-shadow quotient, finite-field counts, torsion bound
-   and parameter elimination;
-   the half-class countercertificate; the torus/endpoint/`{2,3}` replays;
-   the three-prime `W=2x-1` forcing; the four-prime fixtures, cores,
-   closed fibres and addition-curve algebra; the Section-1 quartic
-   witness (Bremner's square over `Q(sqrt3, sqrt133)`) in exact
-   quadratic-field arithmetic; and the Appendix-A height census replayed
-   from scratch. It ends `PASS`, prints
-   `certificate_sha256=283DB388...`, and **fails closed for certificate
-   values**: the live
-   output must hash to the digest pinned inside the verifier and match
-   `certificates/expected_verification.json` byte for byte (also under
-   `python -O`); a missing or drifted certificate is a hard failure. The
-   source manifest separately authenticates the verifier logic itself.
+For the geometric results, check the coordinate bridge in §5 and keep its
+two arithmetic models separate. The degree-five reconstruction over `Q(cone)` has generic Galois group
+`S5`; it belongs to the variable-difference model modulo scale. The full
+signed cover has degree 40, and its group is not identified by the quintic
+calculation. A lift with `d=840` additionally
+requires `L^2=1680W/(RS)`; no fixed-difference Galois-group conclusion is
+asserted.
 
-3. **The frozen external-CAS layer**: results attributed to the official Magma
-   Calculator V2.29-8 (two rank-zero quotients, one certified-complete
-   point list, the six addition-curve rank pairs, two singleton
-   fake-Selmer sets) enter as 13 of the 17 frozen files under `certificates/`
-   — 7 output records/certificates plus the 6 exact calculator inputs for
-   byte-exact resubmission. The verifier pins each by SHA-256 and
-   re-parses the asserted lines; it never runs Magma. The transcripts are
-   normalized records, not raw session dumps (`docs/SOURCE_LOCK.md`): to
-   audit independently, resubmit any `.m` input at
-   `magma.maths.usyd.edu.au/calc/` and compare the asserted values.
-   The remaining four files are two reproducible PARI/GP 2.17.4 pairs:
-   one corroborates the non-load-bearing rank-three quotient in §5; the
-   other supplies the rank-zero interval for Proposition BB. The verifier
-   authenticates and parses them but does not execute PARI/GP.
+## Exact local replay
 
-4. **Run the independent census implementation** (a few seconds):
+Python 3.10+ and its standard library suffice. No external data,
+randomness, network access or commercial software is needed for these
+commands.
 
-   ```bash
-   python scripts/census_reference.py
-   ```
+```bash
+python scripts/verify.py \
+    --output results/verification.json --log results/verification.log
+python scripts/census_reference.py
+python -B scripts/verify_smooth_support.py
+python -B -O scripts/verify_smooth_support.py
+python -B -m unittest discover -s tests -v
+python -B -O -m unittest discover -s tests -v
+```
 
-   It scans centres and differences, independently of the root-based census
-   embedded in `verify.py`, and must report 0 classes at height 46 and 9 at
-   height 47, including 2 with nonsquare centre.
+The original verifier covers the line-sum lattice, recurrence and
+least-shift identities, finite bridge, orbit witnesses, interaction and
+variable-difference surface algebra, finite-class counterexample, support
+identities and frontier calculations. It also checks the quartic witness
+and reconstructs the bounded height census. High-precision quadrature
+corroborates only the decimal of the exact orbit-density formula.
+[REPRODUCE.md](REPRODUCE.md) maps the unchanged certificate-family numbers
+to the reorganized manuscript.
 
-5. **Check the manifest**: `MANIFEST_SHA256.txt` covers every shipped
-   source byte (see `REPRODUCE.md`); the compiled PDF and `results/` are
-   deliberately unpinned (toolchain-dependent / regenerated).
+The original replay ends in `PASS` only when its output matches
+`certificates/expected_verification.json` byte for byte and has the
+internally pinned digest. The independent census must report 0 classes
+through height 46 and 9 through height 47, including 2 with nonsquare
+centre. Its implementation scans centres and differences; the original
+verifier constructs progressions from roots.
 
-6. **Boundary** (read before citing): `docs/PUBLIC_CLAIM_BOUNDARY.md` and
-   the what-this-paper-does-not-claim block of the front matter. In
-   particular: the exclusion for primes at most 19 does not settle arbitrary
-   four-prime supports; no novelty or firstness is asserted, and three claim-use obligations deliberately
-   carried with open human-review gates.
+The smooth-support checker reconstructs all triangle and array lists and
+performs every midpoint test. It must report 3649 additive witnesses,
+12/62/232 primitive triangles, zero midpoint hits and 3/45/384 primitive
+array classes. The expected receipt is mandatory; missing records,
+duplicate keys, damaged witnesses and type/value drift are rejected.
+These finite checks do not re-prove the imported completeness theorem.
 
-7. **The open objects**: `dossiers/` declares the three terminal states
-   exactly (with digest-pinned evidence) and catalogues every exhausted
-   route with its boundary.
+Check `MANIFEST_SHA256.txt` using the commands in
+[REPRODUCE.md](REPRODUCE.md). It covers the shipped source, certificates
+and documentation; the compiled PDF and regenerated `results/` are
+excluded.
 
-8. **Check the new complete-support deduction**:
+## External computer-algebra dependencies
 
-   ```bash
-   python -B scripts/verify_smooth_support.py
-   python -B -O scripts/verify_smooth_support.py
-   python -B -m unittest discover -s tests -v
-   ```
+The official Magma Calculator V2.29-8 results enter as 13 of the 17
+external-CAS files under `certificates/`: seven output records or
+certificates and six exact calculator inputs. They supply the two
+rank-zero quotients, a complete point list, the six addition-curve rank
+pairs and two singleton fake-Selmer sets. The verifier checks hashes and
+parses asserted values; it never runs Magma.
 
-   Read `docs/SMOOTH_SUPPORT.md` and the imported Theorem A alongside the
-   proof. The checker reconstructs the three triangle/array lists and every
-   midpoint test. It requires the frozen expected receipt, rejects damaged
-   or incomplete ABC lists, and compares JSON types strictly. This exact
-   finite replay does not re-prove the imported completeness theorem.
+The records are normalized assertions, not raw session dumps.
+To recompute a Magma-dependent result, resubmit its `.m` input at the
+[official calculator](https://magma.maths.usyd.edu.au/calc/) and compare
+the asserted values. Independent auditing requires Magma or a separate
+implementation of those calculations.
+
+The other four files are two PARI/GP 2.17.4 input/output pairs. One
+corroborates the contextual rank-three quotient of the centre-841 fibre;
+the other supplies the rank-zero interval for the fixed Bremner-shadow
+proposition (`prop:bremnershadow`). The verifier authenticates and
+parses both pairs but does not execute PARI/GP. No new external-CAS
+computation is supplied by this reorganization.
+
+## Scope and remaining review
+
+Read [PUBLIC_CLAIM_BOUNDARY.md](docs/PUBLIC_CLAIM_BOUNDARY.md) with the
+theorem being assessed. The principal distinctions are difference support
+versus entry support, two infinite constructions versus the finite bridge,
+the variable-difference surface versus a fixed-difference lift, and exact
+finite replay versus imported global completeness or rank calculations.
+The uniform least-shift proof does not rely on the bounded census.
+
+[The research dossiers](dossiers/README.md) summarize the unresolved
+residual-cover, higher-lift and degree-90 problems with selected records.
+They are not complete reproducibility packages: the main verifier does not
+reproduce their full calculations or the supplementary taxonomy. The
+coefficient-3 statement concerns the specified generic-family
+specializations; the coefficient-5 lattice has only the stated saturation
+at `2,3,5,7`, without a proved finite index. Their broader open problems
+remain unresolved.
+
+The author used substantial AI assistance in mathematics, code, checks,
+writing and adversarial review. The contribution/source map does not
+certify exhaustive priority, and AI-assisted checks do not substitute for
+the independent specialist review still outstanding for the manuscript.
